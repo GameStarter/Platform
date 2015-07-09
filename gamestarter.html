@@ -1,0 +1,333 @@
+<head>
+  <title>gamestarter</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+</body>
+
+<template name="dropdownMenu">
+        <ul class="right hide-on-med-and-down">
+      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{currentUser.email}} <i class="black-text material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+</template>
+
+<template name="ApplicationLayout">
+
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!" class="logout">Logout</a></li>
+  <li><a href="/admin/users">Users</a></li>
+  <li><a href="/admin/competitions">Competitions</a></li>
+</ul>
+
+  <div class="navbar-fixed">
+    <nav class="z-depth-0 border-top">
+      <div class="nav-wrapper white">
+        <a href="/" class="black-text brand-logo"><img class="responsive-img" width="200px" src="http://i.imgur.com/GKyEzxw.jpg"></a>
+        {{#if currentUser}}
+          {{> dropdownMenu}}
+        {{/if}}
+      </div>
+    </nav>
+  </div>
+{{> yield}}
+
+        <footer class="page-footer light-blue darken-3">
+          <div class="footer-copyright">
+            <div class="white-text text-lighten-4 container">
+            GameStarter © 2014
+            <a class="white-text text-lighten-4 right" href="#!">Facebook</a>
+            <a class="white-text text-lighten-4 right" href="#!">Twitter&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            </div>
+          </div>
+        </footer>
+            
+
+        <script>
+
+  $( document ).ready(function(){
+      $(".dropdown-button").dropdown();
+});
+        
+    $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+
+    $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+        
+          $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+            $(document).ready(function() {
+    $('textarea#title, textarea#description').characterCounter();
+  });
+              $(document).ready(function(){
+    $('.scrollspy').scrollSpy();
+  });
+
+      $('.button2').click(function(){
+        $('ul.tabs').tabs('select_tab', 'brief');
+        $('.button_invisible').trigger('click');
+  });
+        
+      $('.entries-tab').click(function(){
+        $('ul.tabs').tabs('select_tab', 'most-recent');
+  });
+  </script>
+</template>
+
+<template name="home">
+  {{#unless currentUser}}
+  <form class="login">
+  		<input type="email" name="email">
+  		<input type="password" name="password">
+  		<input type="submit" value="Log in">
+  </form>
+  {{/unless}}
+<div class="section light-blue darken-3">
+	<div class="row">
+    <div class="col s12 offset-m2 m4">
+      <img class="responsive-img white-border" style="margin-top:20px;" src="http://i.imgur.com/WjahkWn.png?1">
+    </div>
+    <div class="col m6 s12">
+      <!-- Promo Content 2 goes here -->
+      <h3 class="white-text">{{ competition.title }}</h3>
+      <h4 class="white-text">${{ competition.prize }} USD Prize</h4>
+      <p class="white-text">July 22 - August 01</p>
+      <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 button2">SUBMIT YOUR IDEA</a>
+      <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 z-depth-0 button_invisible hide">ENTER</a>
+    </div>
+  </div>
+</div>
+<div class="section center center-align">
+  <div class="container col s10 offset-s1">
+    <ul class="tabs">
+      <li class="tab large col s4"><a class="active black-text" href="#brief">Brief</a></li>
+      <li class="tab large col s4"><a class="entries-tab black-text" href="#submissions">Entries</a></li>
+    </ul>
+  </div>
+  <div id="brief">
+    <div>
+      <div class="row">
+        <div class="col s2 offset-s1">
+          <h5 class="right">Synopsis</h5>
+        </div>
+        <div class="col s7">
+          <p class="left-align">A smart phone game based on the metro dogs of Moscow which have learnt to ride the subway to get food in downtown Moscow and then ride the subway to get home. </p>
+        </div>
+      </div>
+      
+      <div class="row">
+          <div class="col s2 offset-s1">
+            <h5 class="right">Background </h5>
+          </div>
+          <div class="col s7">
+            <p class="left-align">Ever since reading a New Yorker article on the “commuter dogs” of Russia. I have been fascinated by the resilience, adaptability and intelligence of these dogs whom have figured out how to ride the subway in search of food. </p>
+            <p class="left-align">These dogs are believed to able to determine their routes via an ability to judge the length of time spent on the train in between station /time intervals
+    Recognition of the place names announced over their train's loudspeaker
+    The scents of particular stations </p>
+
+          </div>
+      </div>
+      <div class="row">
+        <div class="col s2 offset-s1">
+          <h5 class="right">Objective </h5>
+        </div>
+        <div class="col s7">
+          <p class="left-align">The objective is to crowdsource GameStarter’s first game from ideation to completion. Moscow Metro Dogs has been a game I have been wanting to do for a while and thought it  would be the perfect candidate.</p>
+        </div>
+      </div>  
+
+      <div class="row">
+        <div class="col s2 offset-s1">
+          <h5 class="right">Key points</h5> 
+        </div>
+        <div class="col s7">
+          <p class="left-align">Submissions are for a smartphone game
+  Keep your ideas simple. We won’t be able to build a MMO or Real Time Strategy Game
+  Keep submission down to 400 characters
+  Be creative with genre 
+  Set in Moscow so incorporate key ideas</p>
+        </div>
+      </div>  
+
+      <div class="row">
+        <div class="col s2 offset-s1">
+          <h5 class="right">Inspiration </h5> 
+        </div>
+        <div class="col s7">
+         <p class="left-align">https://en.wikipedia.org/wiki/Street_dogs_in_Moscow#Metro_dogs
+  https://en.wikipedia.org/wiki/Malchik
+  http://www.newyorker.com/culture/culture-desk/moscows-metro-dogs </p>
+        </div>
+      </div>  
+
+      <div class="row">
+        <div class="col s2 offset-s1">
+          <h5 class="right">Details</h5> 
+        </div>
+        <div class="col s7">
+         <p class="left-align">The Ideation Level will be worth $300. This is the first project on GameStarter so total project worth, number of levels or sequence of levels is yet to be decided </p>
+        </div>
+      </div>  
+      <div>
+        <div class="section col s6 offset-s6">
+          <div class="row">
+            <div class="col s6 offset-s3">
+              <div id="enter" class="scrollspy">
+
+                <form class="createIdea">
+                  <h5 class="black-text">Submit your awesome idea for a chance to win ${{competition.prize}}!</h5>
+                    <div class="row">
+                  <br><br>
+                      <div class="input-field col s12">
+                        <i class="material-icons prefix">wb_incandescent</i>
+                        <textarea id="title" class="materialize-textarea" length="150"></textarea>
+                        <label for="title">Idea</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <i class="material-icons prefix">subject</i>
+                        <textarea id="description" class="materialize-textarea" length="1000"></textarea>
+                        <label for="description">Description</label>
+                      </div>
+                    </div>
+
+                  <input class="btn-large orange accent-4" type="submit" value="Enter!">
+          
+
+                  </form>
+              </div>
+            </div>
+          </div>    
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="submissions">
+  	{{#if ideas}}
+      {{> ideasTemp idea=ideas}}
+  	{{else}}
+      <p>There are currently no submittions! :( Yours can be the first!</p>
+  	{{/if}}
+  </div>
+</div>
+</template>
+
+<template name="adminDashboard">
+  <button>Click Me</button>
+  <li><a href="/admin/users">Users</a></li>
+  <li><a href="/admin/competitions">Competitions</a></li>
+</template>
+
+<template name="adminUsers">
+  {{#each users}}
+  	{{#each emails}}
+  		{{address}}
+  	{{/each}}
+  {{/each}}
+
+</template>
+
+<template name="idea">
+  {{#unless currentUser}}
+  <form class="login">
+      <input type="email" name="email">
+      <input type="password" name="password">
+      <input type="submit" value="Log in">
+  </form>
+  {{/unless}}
+<div class="section light-blue darken-3">
+  <div class="row">
+    <div class="col s12 offset-m2 m4">
+      <img class="responsive-img white-border" style="margin-top:20px;" src="http://i.imgur.com/WjahkWn.png?1">
+    </div>
+    <div class="col m6 s12">
+      <!-- Promo Content 2 goes here -->
+      <h3 class="white-text">{{ competition.title }}</h3>
+      <h4 class="white-text">${{ competition.prize }} USD Prize</h4>
+      <p class="white-text">July 22 - August 01</p>
+      <a href="/#enter" class="waves-effect waves-light btn-large orange accent-4 button2">SUBMIT YOUR IDEA</a>
+      <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 z-depth-0 button_invisible hide">ENTER</a>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="row">
+    <div class="col s12 offset-m2 m8">
+      <h4>{{ idea.title }}</h4>  
+      <p>{{ idea.description}}</p>  
+      <hr>
+    <p>There are currently no comments on your idea. Get people involved!</p>
+    </div>
+
+  </div>
+  <div>
+  </div>
+</div>
+
+</template>
+
+<template name="ideaTemp">
+    <li>
+      <div class="collapsible-header left-align"><a href="moscow-metro-dogs/{{idea._id}}">{{idea.title}}</a><div class="right idea_{{idea._id}} upvote"><i class="material-icons idea_{{idea._id}} right">star_rate</i>{{idea.points}}</div></div>
+      <div class="collapsible-body"><p class="left-align">{{idea.description}}<a class="right" href="/moscow-metro-dogs/{{idea._id}}">Join discussion</a></p> <p class="right"></p></div>
+    </li>
+</template>
+<template name="ideasTemp">
+  <div class="row">
+    <div class="col s3 offset-s6">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active black-text" href="#most-recent">Most Recent</a></li>
+        <li class="tab col s3"><a class="black-text" href="#highest-points">Highest Ranking</a></li>
+        <li class="tab col s3"><a class="black-text" href="#trending">Trending</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+      <div id="most-recent" class="col s10 offset-s1">
+         <ul class="collapsible z-depth-0" data-collapsible="expandable">
+          {{#each idea.recent}}
+              {{> ideaTemp idea=this}}
+          {{/each}}
+          </ul>
+      </div>
+      <div id="highest-points" class="col s10 offset-s1">
+          <ul class="collapsible z-depth-0" data-collapsible="expandable">
+          {{#each idea.best}}
+              {{> ideaTemp idea=this}}
+          {{/each}}
+          </ul>
+        </div>
+      <div id="trending" class="col s10 offset-s1">
+          <ul class="collapsible z-depth-0" data-collapsible="expandable">
+          {{#each idea.trending}}
+              {{> ideaTemp idea=this}}
+          {{/each}}
+          </ul>
+        </div>
+   </div>
+</template>
+<template name="adminCompetitions">
+  Competitions:
+  <br>
+  {{#each competitions}}
+  	{{title}} - ${{prize}} - {{brief}}
+  {{/each}}
+  <br>
+  Create Comp
+  <form class="createComp">
+  		<input type="text" name="title">
+  		<input type="text" name="prize">
+  		<input type="file" accept="image/*" class="image">
+  		<textarea name="brief">Brief</textarea>
+  		<input type="submit" value="Create">
+  </form>
+</template>
