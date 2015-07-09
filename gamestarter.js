@@ -225,8 +225,8 @@ if (Meteor.isServer) {
 
   Meteor.startup(function () {
     // Create admin account
-    admin = Meteor.users.find({email: 'admin@gamestarter.io'});
-    if(!admin){
+    admin = Meteor.users.find({"emails.address": 'admin@gamestarter.io'}).fetch();
+    if(admin.length<=0){
         adminProfile = [];
         Accounts.createUser({
             email: 'admin@gamestarter.io',
