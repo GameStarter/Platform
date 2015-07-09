@@ -1,3 +1,4 @@
+<!-- This is the page structure. The main layout goes inside the body tags. -->
 <head>
   <title>gamestarter</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -7,32 +8,58 @@
 
 </body>
 
+<!-- This template is for the dropdown Menu -->
 <template name="dropdownMenu">
         <ul class="right hide-on-med-and-down">
+                {{#if currentUser}}
+                <li><a class="logout black-text">Logout</a></li>
+                {{else}}
+                <li><a class="black-text modal-trigger" href="#modal1">Login</a></li>
+                {{/if}}
       <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{currentUser.email}} <i class="black-text material-icons right">arrow_drop_down</i></a></li>
         </ul>
 </template>
 
+
+<!-- This is where the whole layout goes -->
 <template name="ApplicationLayout">
 
 <ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!" class="logout">Logout</a></li>
   <li><a href="/admin/users">Users</a></li>
   <li><a href="/admin/competitions">Competitions</a></li>
 </ul>
+  <!-- The login model I've just added in temporarily -->
+  <div id="modal1" class="modal">  
+    <form class="login">
+    <div class="modal-content">
+      <h4>Login</h4>
+
+      <input type="email" name="email">
+      <input type="password" name="password">
+
+    </div>
+    <div class="modal-footer">
+      <input type="submit" class=" modal-action modal-close waves-effect waves-green btn-flat" value="Log in">
+    </div>
+      </form>
+  </div>
 
   <div class="navbar-fixed">
     <nav class="z-depth-0 border-top">
       <div class="nav-wrapper white">
         <a href="/" class="black-text brand-logo"><img class="responsive-img" width="200px" src="http://i.imgur.com/GKyEzxw.jpg"></a>
-        {{#if currentUser}}
-          {{> dropdownMenu}}
+          <!-- This loads the dropdownMenu template -->
+          {{> dropdownMenu}}        
+          <!-- this isn't used atm. But if you need to check if user is currently logged in use this -->
+          {{#if currentUser}}
         {{/if}}
       </div>
     </nav>
   </div>
+  <!-- this is where any templates go inside this layout -->
 {{> yield}}
 
+<!-- The fricking footer -->
         <footer class="page-footer light-blue darken-3">
           <div class="footer-copyright">
             <div class="white-text text-lighten-4 container">
@@ -46,6 +73,7 @@
 
         <script>
 
+// jQuery initialisation and methods. This will not bind when new templates are parsed (aka. If you have some handlebars {{ data }} that needs to be parsed you need to bind the JS after the parsing. )) 
   $( document ).ready(function(){
       $(".dropdown-button").dropdown();
 });
@@ -61,7 +89,6 @@
   });
         
           $(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
   });
             $(document).ready(function() {
@@ -82,21 +109,15 @@
   </script>
 </template>
 
+<!-- template for the home page -->
 <template name="home">
-  {{#unless currentUser}}
-  <form class="login">
-  		<input type="email" name="email">
-  		<input type="password" name="password">
-  		<input type="submit" value="Log in">
-  </form>
-  {{/unless}}
+  <!-- Data send down includes: {{ competition.owner/title/prize/brief/slug }} -->
 <div class="section light-blue darken-3">
 	<div class="row">
     <div class="col s12 offset-m2 m4">
       <img class="responsive-img white-border" style="margin-top:20px;" src="http://i.imgur.com/WjahkWn.png?1">
     </div>
     <div class="col m6 s12">
-      <!-- Promo Content 2 goes here -->
       <h3 class="white-text">{{ competition.title }}</h3>
       <h4 class="white-text">${{ competition.prize }} USD Prize</h4>
       <p class="white-text">July 22 - August 01</p>
@@ -212,6 +233,7 @@
     </div>
   </div>
   <div id="submissions">
+    <!-- this basically checks if there are ideas. If there are it loads up the ideasTemp and sends all the ideas down. -->
   	{{#if ideas}}
       {{> ideasTemp idea=ideas}}
   	{{else}}
@@ -220,37 +242,14 @@
   </div>
 </div>
 </template>
-
-<template name="adminDashboard">
-  <button>Click Me</button>
-  <li><a href="/admin/users">Users</a></li>
-  <li><a href="/admin/competitions">Competitions</a></li>
-</template>
-
-<template name="adminUsers">
-  {{#each users}}
-  	{{#each emails}}
-  		{{address}}
-  	{{/each}}
-  {{/each}}
-
-</template>
-
+<!-- template for the idea page -->
 <template name="idea">
-  {{#unless currentUser}}
-  <form class="login">
-      <input type="email" name="email">
-      <input type="password" name="password">
-      <input type="submit" value="Log in">
-  </form>
-  {{/unless}}
 <div class="section light-blue darken-3">
   <div class="row">
     <div class="col s12 offset-m2 m4">
       <img class="responsive-img white-border" style="margin-top:20px;" src="http://i.imgur.com/WjahkWn.png?1">
     </div>
     <div class="col m6 s12">
-      <!-- Promo Content 2 goes here -->
       <h3 class="white-text">{{ competition.title }}</h3>
       <h4 class="white-text">${{ competition.prize }} USD Prize</h4>
       <p class="white-text">July 22 - August 01</p>
@@ -275,12 +274,14 @@
 
 </template>
 
+<!-- template for each idea in the ideas table -->
 <template name="ideaTemp">
     <li>
       <div class="collapsible-header left-align"><a href="moscow-metro-dogs/{{idea._id}}">{{idea.title}}</a><div class="right idea_{{idea._id}} upvote"><i class="material-icons idea_{{idea._id}} right">star_rate</i>{{idea.points}}</div></div>
       <div class="collapsible-body"><p class="left-align">{{idea.description}}<a class="right" href="/moscow-metro-dogs/{{idea._id}}">Join discussion</a></p> <p class="right"></p></div>
     </li>
 </template>
+<!-- template for generating all the ideas -->
 <template name="ideasTemp">
   <div class="row">
     <div class="col s3 offset-s6">
@@ -294,6 +295,7 @@
   <div class="row">
       <div id="most-recent" class="col s10 offset-s1">
          <ul class="collapsible z-depth-0" data-collapsible="expandable">
+          <!-- this loads the ideaTemp for each idea. Following divs do the same -->
           {{#each idea.recent}}
               {{> ideaTemp idea=this}}
           {{/each}}
@@ -315,6 +317,7 @@
         </div>
    </div>
 </template>
+<!-- template for the admin competition management -->
 <template name="adminCompetitions">
   Competitions:
   <br>
@@ -330,4 +333,18 @@
   		<textarea name="brief">Brief</textarea>
   		<input type="submit" value="Create">
   </form>
+</template>
+<!-- template for the admin dashboard -->
+<template name="adminDashboard">
+  <button>Click Me</button>
+  <li><a href="/admin/users">Users</a></li>
+  <li><a href="/admin/competitions">Competitions</a></li>
+</template>
+<!-- template for the admin user management -->
+<template name="adminUsers">
+  {{#each users}}
+    {{#each emails}}
+      {{address}}
+    {{/each}}
+  {{/each}}
 </template>

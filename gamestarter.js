@@ -72,8 +72,7 @@ Meteor.methods({
             slug: slugify(title),
             prize: prize,
             brief: brief,
-            createdAt: new Date(),
-            ideas: []
+            createdAt: new Date()
         });
     },
     addIdea: function(competition,title,description){
@@ -181,16 +180,6 @@ Template.home.helpers({
   });
 
   Template.home.events({
-    'submit .login': function (event) {
-      // increment the counter when button is clicked
-      if(event.target.email.value && event.target.password.value){
-        Meteor.loginWithPassword(event.target.email.value, event.target.password.value, function(error){
-            console.log(error.reason);
-        });
-      }
-        // Prevent default form submit
-    return false;
-    },
     'submit .createIdea': function (event) {
 
           var title = event.target.title.value;
@@ -214,6 +203,16 @@ Template.home.helpers({
     }
   });
     Template.ApplicationLayout.events({
+    'submit .login': function (event) {
+      // increment the counter when button is clicked
+      if(event.target.email.value && event.target.password.value){
+        Meteor.loginWithPassword(event.target.email.value, event.target.password.value, function(error){
+            console.log(error.reason);
+        });
+      }
+        // Prevent default form submit
+    return false;
+    },
     'click .logout': function (event) {
         Meteor.logout();
         event.preventDefault();
