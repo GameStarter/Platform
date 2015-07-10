@@ -63,6 +63,20 @@ Router.route('/:competition/:idea', function () {
   this.render('idea');
 });
 
+Router.route('/:competition', function () {
+
+  var competition = Competitions.findOne({slug: this.params.competition});
+  var ideas = Ideas.find({competition: competition._id});
+  this.layout('ApplicationLayout', {
+    data: {
+      competition: competition,
+      ideas: ideas,
+      title: 'Gamestarter'
+    }
+  });
+  this.render('competition');
+});
+
 Meteor.methods({
     addComp: function(title,prize,brief){
       if (! Meteor.userId()) {
