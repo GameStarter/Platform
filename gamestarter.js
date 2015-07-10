@@ -3,7 +3,7 @@ Ideas = new Mongo.Collection("ideas");
 
 
 // We have a main competition!
-var main_comp = 'moscow-metro-dogs';
+var main_comp = 'Moscow Metro Dogs';
 var competition_id;
 Router.route('/', function () {
   this.layout('ApplicationLayout', {
@@ -145,12 +145,12 @@ Template.dropdownMenu.onRendered(function(){
 
 Template.home.helpers({
   competition: function () {
-    competition = Competitions.findOne({slug: main_comp});
+    competition = Competitions.findOne({slug: slugify(main_comp)});
     competition_id = competition;
     return competition;
   },
     ideas: function () {
-      competition = Competitions.findOne({slug: main_comp});
+      competition = Competitions.findOne({slug: slugify(main_comp)});
       ideas = {
         recent: Ideas.find({competition: competition._id}, {sort: {createdAt: -1}}).fetch(),
         best: Ideas.find({competition: competition._id}, {sort: {points: -1}}).fetch(),
@@ -233,6 +233,16 @@ if (Meteor.isServer) {
             profile: {
                 admin: 1
             }
+        });
+    }
+    competition = Competitions.findOne({slug: slugify(main_comp)});
+    if(!competition){
+      Competitions.insert({
+            title: main_comp,
+            slug: slugify(main_comp),
+            prize: '300',
+            brief: 'None yet',
+            createdAt: new Date()
         });
     }
   });
