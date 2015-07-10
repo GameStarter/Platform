@@ -21,6 +21,9 @@
     border-width:5px;
     border-color:white;
   }
+  .container{
+    width:60%;
+  }
 
   .border-top{
     border-top-style:solid;
@@ -55,4 +58,11 @@
    .input-field .prefix.active {
      color: #000;
    }
-       
+
+   .splash-hero {
+    padding: 175px 0;
+   }
+
+   .Competition-hero {
+    padding: 120px 0;
+   }

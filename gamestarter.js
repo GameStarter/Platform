@@ -8,30 +8,17 @@ var competition_id;
 Router.route('/', function () {
   this.layout('ApplicationLayout', {
     data: {
-      title: 'KiwiJam'
+      title: 'Gamestarter'
     }
   });
   this.render('home');
 });
 
-Router.route('/:competition/:idea', function () {
-
-  var competition = Competitions.findOne({slug: this.params.competition});
-  var idea = Ideas.findOne({_id: this.params.idea});
-  this.layout('ApplicationLayout', {
-    data: {
-      competition: competition,
-      idea: idea,
-      title: 'KiwiJam'
-    }
-  });
-  this.render('idea');
-});
 
 Router.route('/admin/competitions', function () {
   this.layout('ApplicationLayout', {
     data: {
-      title: 'KiwiJam Admin',
+      title: ' Admin',
       competitions: function () {
         return Competitions.find().fetch();
       }
@@ -43,7 +30,7 @@ Router.route('/admin/competitions', function () {
 Router.route('/admin/users', function () {
   this.layout('ApplicationLayout', {
     data: {
-      title: 'KiwiJam Admin',
+      title: ' Admin',
       users: function () {
         return Meteor.users.find().fetch();
       }
@@ -55,10 +42,25 @@ Router.route('/admin/users', function () {
 Router.route('/admin', function () {
   this.layout('ApplicationLayout', {
     data: {
-      title: 'KiwiJam Admin'
+      title: ' Admin'
     }
   });
   this.render('adminDashboard');
+});
+
+
+Router.route('/:competition/:idea', function () {
+
+  var competition = Competitions.findOne({slug: this.params.competition});
+  var idea = Ideas.findOne({_id: this.params.idea});
+  this.layout('ApplicationLayout', {
+    data: {
+      competition: competition,
+      idea: idea,
+      title: 'Gamestarter'
+    }
+  });
+  this.render('idea');
 });
 
 Meteor.methods({

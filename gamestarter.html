@@ -107,24 +107,91 @@
         $('ul.tabs').tabs('select_tab', 'most-recent');
   });
   </script>
-</template>
+</template> 
+
+<!-- template for the home page -->
+
+<template name="Splash">
+
+<div class="section blue lighten-4">
+  
+  <div class="row">
+    <div class="col s12">
+    <div class="container">
+      <div class="splash-hero center-align">
+        <h1 class="valign" style="padding-bottom: 30px;" >
+        Start Your Journey Here, <br> Become a Game Creator Now!
+        </h1>
+        <a class="waves-effect waves-light btn-large">
+        <i class="material-icons left"></i>Learn More</a>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col s12" style="padding-top: 40px;">
+    
+      <h3> Discover Projects </h3>
+     
+    </div>
+    <div class="col s6">
+      <img class="responsive-img" src="http://placehold.it/700x300">
+      <h5>Moscow Metro Dogs</h5>
+      <p>Active Project</p>
+      <p>$300.00 USD</p>
+      <p>17/07/2015</p>
+    </div>
+    <div class="col s6">
+      <img class="responsive-img" src="http://placehold.it/700x300">
+      <h5>Moscow Metro Dogs</h5>
+      <p>Active Project</p>
+      <p>$300.00 USD</p>
+      <p>17/07/2015</p>
+    </div>
+    <div class="col s6">
+      <img class="responsive-img" src="http://placehold.it/700x300">
+      <h5>Moscow Metro Dogs</h5>
+      <p>Active Project</p>
+      <p>$300.00 USD</p>
+      <p>17/07/2015</p>
+    </div>
+    <div class="col s6">
+      <img class="responsive-img" src="http://placehold.it/700x300">
+      <h5>Moscow Metro Dogs</h5>
+      <p>Active Project</p>
+      <p>$300.00 USD</p>
+      <p>17/07/2015</p>
+    </div>
+  </div>
+</div>
+
+
+</template> 
+
 
 <!-- template for the home page -->
 <template name="home">
   <!-- Data send down includes: {{ competition.owner/title/prize/brief/slug }} -->
-<div class="section light-blue darken-3">
+<div class="section blue lighten-4 Competition-hero">
+<div class="container">
 	<div class="row">
-    <div class="col s12 offset-m2 m4">
-      <img class="responsive-img white-border" style="margin-top:20px;" src="http://i.imgur.com/WjahkWn.png?1">
+    <div class="col s12">
+    <h1 class="white-text">{{ competition.title }}</h1>
     </div>
     <div class="col m6 s12">
-      <h3 class="white-text">{{ competition.title }}</h3>
+      
       <h4 class="white-text">${{ competition.prize }} USD Prize</h4>
       <p class="white-text">July 22 - August 01</p>
-      <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 button2">SUBMIT YOUR IDEA</a>
+    </div>
+    <div class="col m6 s12 align-center">
+      <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 button2 " >SUBMIT YOUR IDEA</a>
       <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 z-depth-0 button_invisible hide">ENTER</a>
     </div>
   </div>
+</div>
 </div>
 <div class="section center center-align">
   <div class="container col s10 offset-s1">
