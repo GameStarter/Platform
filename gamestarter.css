@@ -22,7 +22,7 @@
     border-color:white;
   }
   .container{
-    width:60%;
+    width:55%;
   }
 
   .border-top{
@@ -66,3 +66,13 @@
    .Competition-hero {
     padding: 120px 0;
    }
+
+   nav.submenu ul a {
+  padding: 0 35px;
+}
+
+.row .gs-hints {
+  margin-top: 43px;
+  padding: 0 20px 0 40px;
+  font-size: 13px;
+}

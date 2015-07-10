@@ -160,10 +160,8 @@ Template.dropdownMenu.onRendered(function(){
 
 
 Template.home.helpers({
-  competition: function () {
-    competition = Competitions.findOne({slug: slugify(main_comp)});
-    competition_id = competition;
-    return competition;
+  competitions: function () {
+    return Competitions.find();
   },
     ideas: function () {
       competition = Competitions.findOne({slug: slugify(main_comp)});
@@ -195,7 +193,7 @@ Template.home.helpers({
     }
   });
 
-  Template.home.events({
+  Template.competition.events({
     'submit .createIdea': function (event) {
 
           var title = event.target.title.value;

@@ -137,13 +137,15 @@
       <h3> Discover Projects </h3>
      
     </div>
+    {{#each competitions}}
     <div class="col s6">
-      <img class="responsive-img" src="http://placehold.it/700x300">
-      <h5>Moscow Metro Dogs</h5>
+      <a href="/{{slug}}" ><img class="responsive-img" src="http://placehold.it/700x300"></a>
+      <h5>{{title}}</h5>
       <p>Active Project</p>
-      <p>$300.00 USD</p>
+      <p>${{prize}}.00 USD</p>
       <p>17/07/2015</p>
     </div>
+    {{/each}}
     <div class="col s6">
       <img class="responsive-img" src="http://placehold.it/700x300">
       <h5>Moscow Metro Dogs</h5>
@@ -182,132 +184,133 @@
     <h1 class="white-text">{{ competition.title }}</h1>
     </div>
     <div class="col m6 s12">
-      
+      <p class="white-text">Created by HamiP</p>
       <h4 class="white-text">${{ competition.prize }} USD Prize</h4>
       <p class="white-text">July 22 - August 01</p>
     </div>
     <div class="col m6 s12 align-center">
+      <p>3days 17:52:12</p>
       <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 button2 " >SUBMIT YOUR IDEA</a>
       <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 z-depth-0 button_invisible hide">ENTER</a>
+      <p>Learn More about GameStarter</p>
     </div>
   </div>
 </div>
 </div>
-<div class="section center center-align">
-  <div class="container col s10 offset-s1">
-    <ul class="tabs">
-      <li class="tab large col s4"><a class="active black-text" href="#brief">Brief</a></li>
-      <li class="tab large col s4"><a class="entries-tab black-text" href="#submissions">Entries</a></li>
-    </ul>
+
+  <nav class="submenu">
+    <div class="nav-wrapper">
+      <div class="container"> 
+      <ul id="nav-mobile" class=" hide-on-med-and-down">
+        <li><a href="#prizes">Prizes</a></li>
+        <li><a href="#brief">Brief</a></li>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#submissions">Submit</a></li>
+        <li class="right hide-on-med-and-down"><a href="#submissions">All Entries</a></li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+
+
+<div class="section container" id="prizes">
+  <div class="row">
+    <div class="col s8">
+      <h5>Prizes</h5>
+      <ol>
+        <li>Prizes</li>
+        <li>Brief</li>
+        <li>Examples</li>
+        <li>Submit</li>
+      </ol>
+    </div>
+        <div class="col s3 gs-hints">
+      <p>This is the submission form, Write down your awesome 500 word Idea and be in the chance to win $300.00 USD!!</p>
+    </div>
   </div>
-  <div id="brief">
-    <div>
-      <div class="row">
-        <div class="col s2 offset-s1">
-          <h5 class="right">Synopsis</h5>
-        </div>
-        <div class="col s7">
-          <p class="left-align">A smart phone game based on the metro dogs of Moscow which have learnt to ride the subway to get food in downtown Moscow and then ride the subway to get home. </p>
-        </div>
-      </div>
-      
-      <div class="row">
-          <div class="col s2 offset-s1">
-            <h5 class="right">Background </h5>
-          </div>
-          <div class="col s7">
-            <p class="left-align">Ever since reading a New Yorker article on the “commuter dogs” of Russia. I have been fascinated by the resilience, adaptability and intelligence of these dogs whom have figured out how to ride the subway in search of food. </p>
-            <p class="left-align">These dogs are believed to able to determine their routes via an ability to judge the length of time spent on the train in between station /time intervals
-    Recognition of the place names announced over their train's loudspeaker
-    The scents of particular stations </p>
+</div>
 
-          </div>
-      </div>
-      <div class="row">
-        <div class="col s2 offset-s1">
-          <h5 class="right">Objective </h5>
-        </div>
-        <div class="col s7">
-          <p class="left-align">The objective is to crowdsource GameStarter’s first game from ideation to completion. Moscow Metro Dogs has been a game I have been wanting to do for a while and thought it  would be the perfect candidate.</p>
-        </div>
-      </div>  
+<div class="section container" id="brief">
+  <div class="row">
+    <div class="col s8">
+      <h5>Brief</h5>
+      <p>A smart phone game based on the metro dogs of Moscow which have learnt to ride the subway to get food in downtown Moscow and then ride the subway to get home. </p>
+      <p class="left-align">Ever since reading a New Yorker article on the “commuter dogs” of Russia. I have been fascinated by the resilience, adaptability and intelligence of these dogs whom have figured out how to ride the subway in search of food. </p>
+      <p class="left-align">These dogs are believed to able to determine their routes via an ability to judge the length of time spent on the train in between station /time intervals
+      Recognition of the place names announced over their train's loudspeaker
+      The scents of particular stations </p>
+      <p class="left-align">The objective is to crowdsource GameStarter’s first game from ideation to completion. Moscow Metro Dogs has been a game I have been wanting to do for a while and thought it  would be the perfect candidate.</p>
+      <p class="left-align">Submissions are for a smartphone game
+       Keep your ideas simple. We won’t be able to build a MMO or Real Time Strategy Game
+       Keep submission down to 400 characters
+       Be creative with genre 
+       Set in Moscow so incorporate key ideas</p>
+      <p class="left-align">https://en.wikipedia.org/wiki/Street_dogs_in_Moscow#Metro_dogs
+       https://en.wikipedia.org/wiki/Malchik
+      http://www.newyorker.com/culture/culture-desk/moscows-metro-dogs </p>
+      <p class="left-align">The Ideation Level will be worth $300. This is the first project on GameStarter so total project worth, number of levels or sequence of levels is yet to be decided </p>
+    </div>
+    <div class="col s3 gs-hints">
+      <p>This is the submission form, Write down your awesome 500 word Idea and be in the chance to win $300.00 USD!!</p>
+    </div>
 
-      <div class="row">
-        <div class="col s2 offset-s1">
-          <h5 class="right">Key points</h5> 
-        </div>
-        <div class="col s7">
-          <p class="left-align">Submissions are for a smartphone game
-  Keep your ideas simple. We won’t be able to build a MMO or Real Time Strategy Game
-  Keep submission down to 400 characters
-  Be creative with genre 
-  Set in Moscow so incorporate key ideas</p>
-        </div>
-      </div>  
 
-      <div class="row">
-        <div class="col s2 offset-s1">
-          <h5 class="right">Inspiration </h5> 
-        </div>
-        <div class="col s7">
-         <p class="left-align">https://en.wikipedia.org/wiki/Street_dogs_in_Moscow#Metro_dogs
-  https://en.wikipedia.org/wiki/Malchik
-  http://www.newyorker.com/culture/culture-desk/moscows-metro-dogs </p>
-        </div>
-      </div>  
+  </div>
+</div>
 
-      <div class="row">
-        <div class="col s2 offset-s1">
-          <h5 class="right">Details</h5> 
-        </div>
-        <div class="col s7">
-         <p class="left-align">The Ideation Level will be worth $300. This is the first project on GameStarter so total project worth, number of levels or sequence of levels is yet to be decided </p>
-        </div>
-      </div>  
-      <div>
-        <div class="section col s6 offset-s6">
+<div class="section container" id="examples">
+  <div class="row">
+    <div class="col s8">
+      <h5>Examples</h5>
+    </div>
+        <div class="col s3 gs-hints">
+      <p>This is the submission form, Write down your awesome 500 word Idea and be in the chance to win $300.00 USD!!</p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="section container" id="submissions">
+  <div class="row">
+    <div class="col s8">
+      <div id="enter" class="scrollspy">
+        <form class="createIdea">
+          <h5 class="black-text">Submit your awesome idea for a chance to win ${{competition.prize}}!</h5>
           <div class="row">
-            <div class="col s6 offset-s3">
-              <div id="enter" class="scrollspy">
-
-                <form class="createIdea">
-                  <h5 class="black-text">Submit your awesome idea for a chance to win ${{competition.prize}}!</h5>
-                    <div class="row">
-                  <br><br>
-                      <div class="input-field col s12">
-                        <i class="material-icons prefix">wb_incandescent</i>
-                        <textarea id="title" class="materialize-textarea" length="150"></textarea>
-                        <label for="title">Idea</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="input-field col s12">
-                        <i class="material-icons prefix">subject</i>
-                        <textarea id="description" class="materialize-textarea" length="1000"></textarea>
-                        <label for="description">Description</label>
-                      </div>
-                    </div>
-
-                  <input class="btn-large orange accent-4" type="submit" value="Enter!">
-          
-
-                  </form>
-              </div>
+            <br><br>
+            <div class="input-field col s12">
+              <i class="material-icons prefix">wb_incandescent</i>
+              <textarea id="title" class="materialize-textarea" length="150"></textarea>
+              <label for="title">Idea</label>
             </div>
-          </div>    
-        </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">subject</i>
+              <textarea id="description" class="materialize-textarea" length="1000"></textarea>
+              <label for="description">Description</label>
+            </div>
+          </div>
+          <input class="btn-large orange accent-4" type="submit" value="Enter!">
+        </form>
       </div>
     </div>
-  </div>
-  <div id="submissions">
+    <div class="col s3 gs-hints">
+      <p>This is the submission form, Write down your awesome 500 word Idea and be in the chance to win $300.00 USD!!</p>
+    </div>
+  </div>    
+</div>
+ 
+
     <!-- this basically checks if there are ideas. If there are it loads up the ideasTemp and sends all the ideas down. -->
   	{{#if ideas}}
       {{> ideasTemp idea=ideas}}
   	{{else}}
       <p>There are currently no submittions! :( Yours can be the first!</p>
   	{{/if}}
-  </div>
-</div>
+
+
 </template>
 <!-- template for the idea page -->
 <template name="idea">
@@ -384,6 +387,23 @@
         </div>
    </div>
 </template>
+
+<template name="profile">
+</template>
+
+<template name="store">
+</template>
+
+<template name="about">
+</template>
+
+<template name="login">
+</template>
+
+<template name="register">
+</template>
+
+
 <!-- template for the admin competition management -->
 <template name="adminCompetitions">
   Competitions:
