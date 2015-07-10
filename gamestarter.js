@@ -49,10 +49,26 @@ Router.route('/admin', function () {
 });
 
 
+Router.route('/:competition/entries', function () {
+
+  var competition = Competitions.findOne({slug: this.params.competition});
+  var ideas = Ideas.find({competition: competition._id});
+  competition_id = competition._id;
+  this.layout('ApplicationLayout', {
+    data: {
+      competition: competition,
+      ideas: ideas,
+      title: 'Gamestarter'
+    }
+  });
+  this.render('idea');
+});
+
 Router.route('/:competition/:idea', function () {
 
   var competition = Competitions.findOne({slug: this.params.competition});
   var idea = Ideas.findOne({_id: this.params.idea});
+  competition_id = competition._id;
   this.layout('ApplicationLayout', {
     data: {
       competition: competition,
@@ -67,6 +83,7 @@ Router.route('/:competition', function () {
 
   var competition = Competitions.findOne({slug: this.params.competition});
   var ideas = Ideas.find({competition: competition._id});
+  competition_id = competition._id;
   this.layout('ApplicationLayout', {
     data: {
       competition: competition,
