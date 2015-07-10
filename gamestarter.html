@@ -47,7 +47,13 @@
   <div class="navbar-fixed">
     <nav class="z-depth-0 border-top">
       <div class="nav-wrapper white">
-        <a href="/" class="black-text brand-logo"><img class="responsive-img" width="200px" src="http://i.imgur.com/GKyEzxw.jpg"></a>
+
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+        
+          <li>        <a href="/" class="brand-logo"><img class="left responsive-img" width="200px" src="http://i.imgur.com/GKyEzxw.jpg"></a></li>
+          <li><a class="black-text" href="sass.html">Store</a></li>
+          <li><a class="black-text" href="sass.html">Store</a></li>
+        </ul>
           <!-- This loads the dropdownMenu template -->
           {{> dropdownMenu}}        
           <!-- this isn't used atm. But if you need to check if user is currently logged in use this -->
@@ -173,6 +179,11 @@
 
 </template> 
 
+<template name="entries">
+{{#each ideas}}
+<a href="/{{competition}}/{{_id}}">{{title}}</a>
+{{/each}}
+</template>
 
 <!-- template for the home page -->
 <template name="competition">

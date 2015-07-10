@@ -52,7 +52,10 @@ Router.route('/admin', function () {
 Router.route('/:competition/entries', function () {
 
   var competition = Competitions.findOne({slug: this.params.competition});
-  var ideas = Ideas.find({competition: competition._id});
+  var ideas = Ideas.find({competition: competition._id}).fetch();
+  for(i=0;i<ideas.length;i++){
+    ideas[i].competition = competition.slug;
+  }
   competition_id = competition._id;
   this.layout('ApplicationLayout', {
     data: {
@@ -61,7 +64,7 @@ Router.route('/:competition/entries', function () {
       title: 'Gamestarter'
     }
   });
-  this.render('idea');
+  this.render('entries');
 });
 
 Router.route('/:competition/:idea', function () {
@@ -113,7 +116,7 @@ Meteor.methods({
         throw new Meteor.Error("not-authorized");
       }
       Ideas.insert({
-            competition: competition._id,
+            competition: competition,
             owner: Meteor.user(),
             title: title,
             slug: slugify(title),
@@ -122,7 +125,7 @@ Meteor.methods({
             createdAt: new Date(),
             voters: []
         });
-      $('ul.tabs').tabs('select_tab', 'submissions');
+      //$('ul.tabs').tabs('select_tab', 'submissions');
 
     },
     upvoteIdea: function(idea){
