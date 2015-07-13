@@ -73,6 +73,7 @@
 
 .row .gs-hints {
   margin-top: 43px;
-  padding: 0 20px 0 40px;
+  padding: 0 30px 0 00px;
   font-size: 13px;
+  float: right;
 }

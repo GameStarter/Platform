@@ -50,8 +50,8 @@
 
         <ul id="nav-mobile" class="left hide-on-med-and-down">
 
-          <li><a href="/" class=""><img class="left responsive-img" width="200px" src="http://i.imgur.com/GKyEzxw.jpg"></a></li>
-          <li><a class="black-text" href="sass.html">Store</a></li>
+          <li><a href="/" style="padding: 15px;"><img class="left responsive-img" width="200px" src="http://i.imgur.com/GKyEzxw.jpg"></a></li>
+          <li><a class="black-text " href="sass.html">Store</a></li>
         </ul>
           <!-- This loads the dropdownMenu template -->
           {{> dropdownMenu}}        
@@ -179,10 +179,63 @@ a
 </template> 
 
 <template name="entries">
-{{#each ideas}}
-<a href="/{{competition}}/{{_id}}">{{title}}</a>
-{{/each}}
+<div class="section blue lighten-4">
+  <div class="row">
+    <div class="container">
+      <div class="col s12 m12">  
+        <div class="col s8 m9">    
+              <h3 class="white-text">{{ competition.title }}</h3>
+              <h4 class="white-text">${{ competition.prize }} USD Prize</h4>
+        </div>
+          <div class="col s4 m3" style="padding-top: 30px; text-align: center;">
+              <p class="white-text">July 22 - August 01</p>   
+              <a href="/#enter" class="waves-effect waves-light btn-large orange accent-4 button2">SUBMIT YOUR IDEA</a>
+              <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 z-depth-0 button_invisible hide">ENTER</a>
+              <p class="white-text">Learn more about GameStarter</p>              
+          </div>  
+
+
+             
+      
+    </div>
+   </div>
+  </div> 
+</div>
+
+  <nav class="submenu">
+    <div class="nav-wrapper">
+      <div class="container"> 
+      <div class="col s12">
+      <ul id="nav-mobile" class=" hide-on-med-and-down">
+        <li><a href="#prizes">Prizes</a></li>
+        <li><a href="#brief">Brief</a></li>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#submissions">Submit</a></li>
+        <li class="right hide-on-med-and-down" style="padding-right: 5px;"><a href="#submissions">All Entries</a></li>
+      </ul>
+    </div>
+    </div>
+    </div>
+  </nav>
+
+
+  <div class="section container">
+    <div class="row">
+      <div class="col s8">
+
+        {{#each ideas}}
+        <a href="/{{competition}}/{{_id}}">{{title}}</a>
+        {{/each}}
+      </div>
+      <div class="col s3 gs-hints">
+      <p>Have a browse through all the submitted ideas! If any grab your attention jump into the link where you can vote or leave an encouraging comment!</p>
+      </div>
+    </div>  
+  </div>
+
 </template>
+
+
 
 <!-- template for the home page -->
 <template name="competition">
@@ -191,20 +244,23 @@ a
 <div class="container">
 	<div class="row">
     <div class="col s12">
+    <div class="col s8 m8">
     <h1 class="white-text">{{ competition.title }}</h1>
-    </div>
-    <div class="col m6 s12">
       <p class="white-text">Created by HamiP</p>
       <h4 class="white-text">${{ competition.prize }} USD Prize</h4>
       <p class="white-text">July 22 - August 01</p>
     </div>
-    <div class="col m6 s12 align-center">
-      <p>3days 17:52:12</p>
+    <div class="col s4" style="padding: 60px 30px;">
+      
+      <div style="float: right; text-align: center;">
+      <p class="white-text">3days 17:52:12</p>
       <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 button2 " >SUBMIT YOUR IDEA</a>
       <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 z-depth-0 button_invisible hide">ENTER</a>
-      <p>Learn More about GameStarter</p>
+      <p class="white-text">Learn More about GameStarter</p>
+    </div>
     </div>
   </div>
+</div>
 </div>
 </div>
 
@@ -235,7 +291,7 @@ a
       </ol>
     </div>
         <div class="col s3 gs-hints">
-      <p>This is the submission form, Write down your awesome 500 word Idea and be in the chance to win $300.00 USD!!</p>
+      <p>These are the list of Awards you can win! Not only can you win cash, but you can also win <a>GameStarter Tokens</a> which you can purchase all sort of awesome prizes with!</p> 
     </div>
   </div>
 </div>
@@ -311,48 +367,69 @@ a
     </div>
   </div>    
 </div>
- 
+</template>
+
+
+<!-- template for the idea page -->
+
+
+<template name="idea">
+<div class="section blue lighten-4">
+  <div class="row">
+    <div class="container">
+      <div class="col s12 m12">  
+        <div class="col s8 m9">    
+              <h3 class="white-text">{{ competition.title }}</h3>
+              <h4 class="white-text">${{ competition.prize }} USD Prize</h4>
+          </div>
+          <div class="col s4 m3" style="padding-top: 30px; text-align: center">
+              <p class="white-text">July 22 - August 01</p>   
+              <a href="/#enter" class="waves-effect waves-light btn-large orange accent-4 button2">SUBMIT YOUR IDEA</a>
+              <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 z-depth-0 button_invisible hide">ENTER</a>
+              <p class="white-text">Learn more about GameStarter</p>             
+          </div>    
+    </div>
+   </div>
+  </div> 
+</div>
+
+  <nav class="submenu">
+    <div class="nav-wrapper">
+      <div class="container"> 
+      <div class="col s12">
+      <ul id="nav-mobile" class=" hide-on-med-and-down">
+        <li><a href="#prizes">Prizes</a></li>
+        <li><a href="#brief">Brief</a></li>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#submissions">Submit</a></li>
+        <li class="right hide-on-med-and-down" style="padding-right: 5px;"><a href="#submissions">All Entries</a></li>
+      </ul>
+    </div>
+    </div>
+    </div>
+  </nav>
+
+<div class="section">
+  <div class="row container">
+    <div class="col s8">
+       <h4>{{ idea.title }}</h4>  
+         <p>{{ idea.description}}</p>  
+          <hr>
+         <p>There are currently no comments on your idea. Get people involved!</p>
+       </div>
+           <div class="col s3 gs-hints">
+              <p>Here you can read the full idea and vote if you enjoy the Idea vote it up to help it win!</p>
+           </div>
+     </div>
+    </div>
 
     <!-- this basically checks if there are ideas. If there are it loads up the ideasTemp and sends all the ideas down. -->
-  	{{#if ideas}}
-      {{> ideasTemp idea=ideas}}
-  	{{else}}
-      <p>There are currently no submittions! :( Yours can be the first!</p>
-  	{{/if}}
-
-
+ 
 </template>
-<!-- template for the idea page -->
-<template name="idea">
-<div class="section light-blue darken-3">
-  <div class="row">
-    <div class="col s12 offset-m2 m4">
-      <img class="responsive-img white-border" style="margin-top:20px;" src="http://i.imgur.com/WjahkWn.png?1">
-    </div>
-    <div class="col m6 s12">
-      <h3 class="white-text">{{ competition.title }}</h3>
-      <h4 class="white-text">${{ competition.prize }} USD Prize</h4>
-      <p class="white-text">July 22 - August 01</p>
-      <a href="/#enter" class="waves-effect waves-light btn-large orange accent-4 button2">SUBMIT YOUR IDEA</a>
-      <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 z-depth-0 button_invisible hide">ENTER</a>
-    </div>
-  </div>
-</div>
-<div class="section">
-  <div class="row">
-    <div class="col s12 offset-m2 m8">
-      <h4>{{ idea.title }}</h4>  
-      <p>{{ idea.description}}</p>  
-      <hr>
-    <p>There are currently no comments on your idea. Get people involved!</p>
-    </div>
 
-  </div>
-  <div>
-  </div>
-</div>
 
-</template>
+
+
 
 <!-- template for each idea in the ideas table -->
 <template name="ideaTemp">
@@ -381,6 +458,7 @@ a
           {{/each}}
           </ul>
       </div>
+
       <div id="highest-points" class="col s10 offset-s1">
           <ul class="collapsible z-depth-0" data-collapsible="expandable">
           {{#each idea.best}}
@@ -396,12 +474,20 @@ a
           </ul>
         </div>
    </div>
+      {{#if ideas}}
+      {{> ideasTemp idea=ideas}}
+    {{else}}
+      <p>There are currently no submittions! :( Yours can be the first!</p>
+    {{/if}}
 </template>
 
 <template name="profile">
 </template>
 
 <template name="store">
+
+
+
 </template>
 
 <template name="about">
