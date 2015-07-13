@@ -27,8 +27,12 @@
 
   .border-top{
     border-top-style:solid;
-    border-top-width:10px;
     border-top-color:#ff6d00;
+  }
+
+    .border-bottom{
+    border-bottom-style:solid;
+    border-bottom-color:#ff6d00;
   }
 
   /* label color */
@@ -68,6 +72,11 @@
    }
 
    nav.submenu ul a {
+  padding: 0 35px;
+}
+
+   nav.submenu_about ul a {
+  background-color: #0000000;
   padding: 0 35px;
 }
 
