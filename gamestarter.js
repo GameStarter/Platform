@@ -39,6 +39,52 @@ Router.route('/admin/users', function () {
   this.render('adminUsers');
 });
 
+
+Router.route('/login', function () {
+  this.layout('ApplicationLayout', {
+    data: {
+      title: 'Login'
+    }
+  });
+  this.render('login');
+});
+
+Router.route('/register', function () {
+  this.layout('ApplicationLayout', {
+    data: {
+      title: 'Register'
+    }
+  });
+  this.render('register');
+});
+
+Router.route('/about', function () {
+  this.layout('ApplicationLayout', {
+    data: {
+      title: 'About'
+    }
+  });
+  this.render('about');
+});
+
+Router.route('/store', function () {
+  this.layout('ApplicationLayout', {
+    data: {
+      title: 'Store'
+    }
+  });
+  this.render('store');
+});
+
+Router.route('/profile', function () {
+  this.layout('ApplicationLayout', {
+    data: {
+      title: 'Profile'
+    }
+  });
+  this.render('profile');
+});
+
 Router.route('/admin', function () {
   this.layout('ApplicationLayout', {
     data: {
