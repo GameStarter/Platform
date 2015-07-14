@@ -116,6 +116,15 @@
   //     $(document).ready(function(){
   //   $('.navbar-fixed').pushpin({ top: $('.submenu').offset().top });
   // });
+
+  $(document).ready(function(){
+    $('ul.gs-about-menu').tabs();
+  });
+
+  $(document).ready(function() {
+    $('input#input_text, textarea#textarea1').characterCounter();
+  });
+
   </script>
 </template> 
 
@@ -131,7 +140,7 @@
         <h1 class="valign" style="padding-bottom: 30px;" >
         Start Your Journey Here, <br> Become a Game Creator Today!
         </h1>
-        <a class="waves-effect waves-light btn-large">
+        <a href="/about" class="waves-effect waves-light btn-large">
         <i class="material-icons left"></i>Learn More</a>
       </div>
     </div>
@@ -332,6 +341,8 @@
   <div class="row">
     <div class="col s8">
       <h5>Examples</h5>
+
+ 
     </div>
         <div class="col s3 gs-hints">
       <p>This is the submission form, Write down your awesome 500 word Idea and be in the chance to win $300.00 USD!!</p>
@@ -485,46 +496,231 @@
     {{/if}}
 </template>
 
+<template name="profileMenu">
+  <div class="section blue lighten-4">
+    <div class="row">
+      <div class="container">
+        <div class="col s2">
+          <img class="responsive-img" src="http://placehold.it/150x150">
+        </div>
+        <div class="col s10">    
+          <h3 class="white-text">Username</h3>
+          <p class="white-text">XX tokens<br>XX hero points</p>
+        </div>
+      </div>
+    </div> 
+  </div>
+
+  <nav class="submenu">
+    <div class="nav-wrapper">
+      <div class="container"> 
+        <div class="col s12">
+          <ul id="nav-mobile" class=" hide-on-med-and-down">
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/profile/tokens">Tokens</a></li>
+            <li><a href="/profile/tokens">Changing Room</a></li>
+            <li><a href="/profile/settings">Settings</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</template>
+
 <template name="profile">
+  {{> profileMenu}}
+
+  <div class="section" id="bio">
+    <div class="container row">
+      <div class="col s8">
+        <h5>Bio</h5>
+        <p>Tongue bacon shank meatball capicola hamburger t-bone alcatra landjaeger. Beef pig chicken venison. Filet mignon tri-tip boudin, brisket corned beef doner pork loin strip steak t-bone pork belly. Bresaola ground round jerky boudin meatball. Short ribs tongue strip steak frankfurter pancetta beef tail cupim alcatra cow spare ribs turducken andouille. Pig ball tip meatloaf frankfurter fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
+      </div>
+      <div class="col s3 gs-hints">
+        <p>Tell other users who you are and what interests you.</p>
+        <p><a href="/profile/settings">Edit in settings</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="badges">
+    <div class="container row">
+      <div class="col s8">
+        <h5>Badges</h5>
+        <p>
+          <img class="responsive-img gs-badge" src="http://placehold.it/120x120">
+          <img class="responsive-img gs-badge" src="http://placehold.it/120x120">
+          <img class="responsive-img gs-badge" src="http://placehold.it/120x120">
+          <img class="responsive-img gs-badge" src="http://placehold.it/120x120">
+          <img class="responsive-img gs-badge" src="http://placehold.it/120x120">
+          <img class="responsive-img gs-badge" src="http://placehold.it/120x120">
+          <img class="responsive-img gs-badge" src="http://placehold.it/120x120">
+          <img class="responsive-img gs-badge" src="http://placehold.it/120x120">
+          <img class="responsive-img gs-badge" src="http://placehold.it/120x120">
+          <img class="responsive-img gs-badge" src="http://placehold.it/120x120">
+          <img class="responsive-img gs-badge" src="http://placehold.it/120x120">
+          <img class="responsive-img gs-badge" src="http://placehold.it/120x120">
+        </p>
+      </div>
+      <div class="col s3 gs-hints">
+        <p>Collect new badges by contributing to quests.</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="tokens">
+  {{> profileMenu}}
+
+  <div class="section" id="tokens">
+    <div class="container row">
+      <div class="col s8">
+        <h5>Your Balance</h5>
+        <p class="flow-text">So far you've earned <span class="red-text">xx</span> tokens. You can redeem them for awesome prizes in our <a href="">store</a>. Here are some of the most popular items.</p>
+        <div class="row">
+          <div class="col s6">
+            <img class="responsive-img" src="http://placehold.it/700x300">
+            <h5>Xbox</h5>
+            <p>Price: 5000 tokens</p>
+          </div>
+          <div class="col s6">
+            <img class="responsive-img" src="http://placehold.it/700x300">
+            <h5>Xbox</h5>
+            <p>Price: 5000 tokens</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s3 gs-hints">
+        <p>You earn tokens whenever you submit new ideas or comment.</p>
+        <p><a href="/about/tokens">Learn how to earn more tokens.</a></p>
+      </div>
+    </div>
+  </div>
+
+
 
 </template>
 
+<template name="settings">
+  {{> profileMenu}}
+
+  <div class="section" id="settings">
+    <div class="container row">
+      <div class="col s8">
+        <h5>Account Settings</h5>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="col s2">
+                <img class="responsive-img" src="http://placehold.it/200x200">
+              </div>
+              <div class="file-field input-field col s10">
+                <input class="file-path validate" type="text"/>
+                <div class="btn">
+                  <span>Choose picture</span>
+                  <input type="file" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="username" type="text" class="validate">
+                <label for="username">Username</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email">Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="password" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="password2" type="password" class="validate">
+                <label for="password2">Repeat password</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col s3 gs-hints">
+        <p>Hint</p>
+      </div>
+      <div class="col s8">
+        <h5>Email Notifications</h5>
+        <p>
+          <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
+          <label for="filled-in-box">Comments on my ideas</label>
+        </p>
+        <p>
+          <input type="checkbox" class="filled-in" id="filled-in-box" />
+          <label for="filled-in-box">New quest starts</label>
+        </p>
+        <p>
+          <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
+          <label for="filled-in-box">Quest enters next level</label>
+        </p>
+      </div>
+      <div class="col s3 gs-hints">
+        <p>Choose when to receive email notifications from GameStarter.</p>
+      </div>
+    </div>
+  </div>
+</template>
+
 <template name="store">
+  <div class="section" style="padding-top: 0px;">
+    <div class="col s12 blue lighten-4" style="height: 175px;">
+
+    
+        <div class="container" style="padding: 40px 0 0 0;">
+
+        <h3  class="white-text"> GameStaters Catalogue </h3>
+      </div>
+
+    </div>
+  </div>
 
 <div class="container">
   <div class="row">
-    <div class="col s12" style="padding-top: 40px;">
+    <div class="col s12" style="padding-top: 10px;">
     
-      <h3> GameStaters Catalogue </h3>
+      
      <p>You currently have <a href="/profile">XX</a> GS Tokens. Choose from the Catalogue below to redeem your Items!</p>
      <p><a href="/about">Learn More</a> about GS Tokens</p>
     </div>
     <div class="col s6">
       <img class="responsive-img" src="http://placehold.it/700x300">
       <h5>Xbox One</h5>
-      <p>Value $1000.00 USD</p>
       <p>3500 GS Tokens</p>
+      <p>Value $1000.00 USD</p>
       <p>Hero Rank 4</p>
     </div>
     <div class="col s6">
       <img class="responsive-img" src="http://placehold.it/700x300">
       <h5>PlayStation 4</h5>
-      <p>Value $1000.00 USD</p>
       <p>3500 GS Tokens</p>
+      <p>Value $1000.00 USD</p>
       <p>Hero Rank 4</p>
     </div>
     <div class="col s6">
       <img class="responsive-img" src="http://placehold.it/700x300">
       <h5>Steam Gift Voucher</h5>
-      <p>Value $200.00 USD</p>
       <p>1200 GS Tokens</p>
+      <p>Value $200.00 USD</p>
       <p>Hero Rank 2</p>
     </div>
     <div class="col s6">
       <img class="responsive-img" src="http://placehold.it/700x300">
       <h5>Plunge Tshirt</h5>
-      <p>Value $50.00 USD</p>
       <p>200 GS Tokens</p>
+      <p>Value $50.00 USD</p>
       <p>Hero Rank 1</p>
     </div>
   </div>
@@ -532,28 +728,33 @@
 
 </template>
 
-<template name="about">
+<template name="aboutMenu">
 <div class="navbar-fixed">
     <nav class="submenu blue lighten-3">
     <div class="nav-wrapper">
       <div class="container"> 
-      <ul id="nav-mobile" class=" hide-on-med-and-down">
-        <li><a href="#about">About</a></li>
-        <li><a href="#competitions">Competitions</a></li>
-        <li><a href="#tokens">Tokens</a></li>
-        <li><a href="#hero">Hero Points</a></li>
-        <li><a href="#winning">Winning</a></li>
-        <li><a href="#team">The Team</a></li>
+      <ul id="nav-mobile" class="hide-on-med-and-down">
+        <li><a href="/about" class="{{#if equals slug 'about' }}blue lighten-1{{/if}}">About</a></li>
+        <li><a href="/about/competitions" class="{{#if equals slug 'competitions' }}blue lighten-1{{/if}}">Competitions</a></li>
+        <li><a href="/about/tokens" class="{{#if equals slug 'gamestarter-tokens' }}blue lighten-1{{/if}}">Tokens</a></li>
+        <li><a href="/about/heropoints" class="{{#if equals slug 'hero-points' }}blue lighten-1{{/if}}">Hero Points</a></li>
+        <li><a href="/about/winning" class="{{#if equals slug 'winning' }}blue lighten-1{{/if}}">Winning</a></li>
+        <li><a href="/about/team" class="{{#if equals slug 'the-team' }}blue lighten-1{{/if}}">The Team</a></li>
+        <li><a href="/about/create" class="{{#if equals slug 'host-a-competition' }}blue lighten-1{{/if}}">Host a Competition</a></li>
       </ul>
     </div>
     </div>
   </nav>
   </div>
+</template>
+
+<template name="about">
+  {{> aboutMenu}}
 
   <div class="section" id="about">
     <div class="container row">
       <div class="col s12">
-          <h5>About</h5>
+          <h5>{{title}}</h5>
           <p>Bacon ipsum dolor amet leberkas meatloaf turkey porchetta frankfurter. Leberkas landjaeger short loin rump shoulder beef frankfurter sirloin chuck shank. Turducken kielbasa beef shank ham pork pastrami turkey jerky alcatra. Chicken frankfurter porchetta alcatra leberkas, doner fatback kielbasa shankle.</p>
           <p>
           Tongue bacon shank meatball capicola hamburger t-bone alcatra landjaeger. Beef pig chicken venison. Filet mignon tri-tip boudin, brisket corned beef doner pork loin strip steak t-bone pork belly. Bresaola ground round jerky boudin meatball. Short ribs tongue strip steak frankfurter pancetta beef tail cupim alcatra cow spare ribs turducken andouille. Pig ball tip meatloaf frankfurter fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
@@ -561,10 +762,16 @@
     </div>
   </div>
 
+</template>
+
+<template name="aboutCompetitions">
+  {{> aboutMenu}}
+
+
     <div class="section" id="competitions">
     <div class="container row">
       <div class="col s12">
-          <h5>Competitions</h5>
+          <h5>{{title}}</h5>
           <p>Bacon ipsum dolor amet leberkas meatloaf turkey porchetta frankfurter. Leberkas landjaeger short loin rump shoulder beef frankfurter sirloin chuck shank. Turducken kielbasa beef shank ham pork pastrami turkey jerky alcatra. Chicken frankfurter porchetta alcatra leberkas, doner fatback kielbasa shankle.</p>
           <p>
           Tongue bacon shank meatball capicola hamburger t-bone alcatra landjaeger. Beef pig chicken venison. Filet mignon tri-tip boudin, brisket corned beef doner pork loin strip steak t-bone pork belly. Bresaola ground round jerky boudin meatbal.</p>
@@ -572,43 +779,66 @@
     </div>
   </div>
 
+
+</template>
+
+<template name="aboutTokens">
+  {{> aboutMenu}}
+
+
     <div class="section" id="tokens">
     <div class="container row">
       <div class="col s12">
-          <h5>GameStarter Tokens</h5>
+          <h5>{{title}}</h5>
           <p>Bacon ipsum dolor amet leberkas meatloaf turkey porchetta frankfurter. Leberkas landjaeger short loin rump shoulder beef frankfurter sirloin chuck shank. Turducken kielbasa beef shank ham pork pastrami turkey jerky alcatra. Chicken frankfurter porchetta alcatra leberkas, doner fatback kielbasa shankle.</p>
           <p>
           Tongue bacon shank meatball capicola hamburger t-bone alcatra landjaeger. Beef pig chicken venison. Filet mignon tri-tip boudin, brisket corned beef doner pork loin strip steak t-bone pork belly. Bresaola ground round jerky boudin meatball. Short ribs tongue strip steak frankfurter pancetta beef tail cupim alcatra cow spare ribs turducken andouille. Pig ball tip meatloaf frankfurter fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
       </div>
     </div>
   </div>
+
+
+</template>
+
+<template name="aboutHeroPoints">
+  {{> aboutMenu}}
 
   <div class="section" id="hero">
     <div class="container row">
       <div class="col s12">
-          <h5>Hero Points</h5>
+          <h5>{{title}}</h5>
           <p>Bacon ipsum dolor amet leberkas meatloaf turkey porchetta frankfurter. Leberkas landjaeger short loin rump shoulder beef frankfurter sirloin chuck shank. Turducken kielbasa beef shank ham pork pastrami turkey jerky alcatra. Chicken frankfurter porchetta alcatra leberkas, doner fatback kielbasa shankle.</p>
           <p>
           Tongue bacon shank meatball capicola hamburger t-bone alcatra landjaeger. Beef pig chicken venison. Filet mignon tri-tip boudin, brisket corned beef doner pork loin strip steak t-bone pork belly. Bresaola ground round jerky boudin meatball. Short ribs tongue strip steak frankfurter pancetta beef tail cupim alcatra cow spare ribs turducken andouille. Pig ball tip meatloaf frankfurter fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
       </div>
     </div>
   </div>
+
+</template>
+
+<template name="aboutWinning">
+  {{> aboutMenu}}
 
     <div class="section" id="winning">
     <div class="container row">
       <div class="col s12">
-          <h5>Winning</h5>
+          <h5>{{title}}</h5>
           <p>Bacon ipsum dolor amet leberkas meatloaf turkey porchetta frankfurter. Leberkas landjaeger short loin rump shoulder beef frankfurter sirloin chuck shank. Turducken kielbasa beef shank ham pork pastrami turkey jerky alcatra. Chicken frankfurter porchetta alcatra leberkas, doner fatback kielbasa shankle.</p>
           <p>
           Tongue bacon shank meatball capicola hamburger t-bone alcatra landjaeger. Beef pig chicken venison. Filet mignon tri-tip boudin, brisket corned beef doner pork loin strip steak t-bone pork belly. Bresaola ground round jerky boudin meatball. Short ribs tongue strip steak frankfurter pancetta beef tail cupim alcatra cow spare ribs turducken andouille. Pig ball tip meatloaf frankfurter fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
       </div>
     </div>
   </div>
+
+</template>
+
+<template name="aboutTeam">
+  {{> aboutMenu}}
 
 <div class="section" id="team">
     <div class="container row">
       <div class="col s12">
-          <h5>The Team</h5>
+          <h5>{{title}}</h5>
           <p>Bacon ipsum dolor amet leberkas meatloaf turkey porchetta frankfurter. Leberkas landjaeger short loin rump shoulder beef frankfurter sirloin chuck shank. Turducken kielbasa beef shank ham pork pastrami turkey jerky alcatra. Chicken frankfurter porchetta alcatra leberkas, doner fatback kielbasa shankle.</p>
           <p>
           Tongue bacon shank meatball capicola hamburger t-bone alcatra landjaeger. Beef pig chicken venison. Filet mignon tri-tip boudin, brisket corned beef doner pork loin strip steak t-bone pork belly. Bresaola ground round jerky boudin meatball. Short ribs tongue strip steak frankfurter pancetta beef tail cupim alcatra cow spare ribs turducken andouille. Pig ball tip meatloaf frankfurter fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
@@ -616,13 +846,142 @@
     </div>
   </div>
 
+</template>
+
+<template name="aboutCreate">
+  {{> aboutMenu}}
+
+<div class="section" id="create">
+    <div class="container row">
+      <div class="col s12">
+          <h5>{{title}}</h5>
+          <p>Bacon ipsum dolor amet leberkas meatloaf turkey porchetta frankfurter. Leberkas landjaeger short loin rump shoulder beef frankfurter sirloin chuck shank. Turducken kielbasa beef shank ham pork pastrami turkey jerky alcatra. Chicken frankfurter porchetta alcatra leberkas, doner fatback kielbasa shankle.</p>
+          <p>
+          Tongue bacon shank meatball capicola hamburger t-bone alcatra landjaeger. Beef pig chicken venison. Filet mignon tri-tip boudin, brisket corned beef doner pork loin strip steak t-bone pork belly. Bresaola ground round jerky boudin meatball. Short ribs tongue strip steak frankfurter pancetta beef tail cupim alcatra cow spare ribs turducken andouille. Pig ball tip meatloaf frankfurter fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
+      </div>
+    </div>
+  </div>
 
 </template>
 
 <template name="login">
+  <div class="section indigo lighten-4" style="padding: 0;">
+    <div class="container row" style="padding: 40px 0;">
+       <div class="row" >
+    
+    <form action="#" class="col s6 offset-s3 z-depth-3" style="background:white; ">
+
+      <div class="row" style="padding: 10px 0">
+        <div class="input-field col s10 offset-s1">
+          <h4>Login</h4>
+        </div>
+      </div>
+
+    <div class="row" >
+        <div class="input-field col s10 offset-s1">
+          <input  id="username" type="text" class="validate">
+          <label for="Username">Username or Email</label>
+        </div>
+      </div>
+
+            <div class="row">
+        <div class="input-field col s10 offset-s1">
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+
+
+
+     <div class="row">
+        <div class="input-field col s10 offset-s1 center" style="padding: 0 0 20px;">
+      <a class="waves-effect waves-light btn-large" >Login</a><br><br>
+      <a href="/register">Or Register</a>
+
+      </div>
+
+      </div>
+    </form>
+
+      <div class="row center" style="padding: 10px 0">
+        <div class="input-field col s10 offset-s1" >
+          <a href="/about">Learn More About GameStarter</a>
+        </div>
+      </div>
+
+  </div>
+    </div>
+  </div>
 </template>
 
 <template name="register">
+  <div class="section indigo lighten-4 " style="padding: 0;">
+    <div class="container row" style="padding: 40px 0;">
+       <div class="row" >
+    
+    <form action="#" class="col s6 offset-s3 z-depth-3" style="background:white;">
+
+      <div class="row" style="padding: 10px 0">
+        <div class="input-field col s10 offset-s1">
+          <h4>Register</h4>
+        </div>
+      </div>
+
+    <div class="row" >
+        <div class="input-field col s10 offset-s1">
+          <input  id="username" type="text" class="validate">
+          <label for="Username">First Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s10 offset-s1">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+            <div class="row">
+        <div class="input-field col s10 offset-s1">
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s5 offset-s1">
+          <p>
+    <input type="checkbox" class="filled-in" id="tac"   />
+    <label for="test5">Terms & Conditions</label>
+  </p>
+  </div>
+        <div class="input-field col 5  ">
+  <p>
+    <input type="checkbox" class="filled-in" id="emails"   />
+    <label for="test5">Recieve GS Updates</label>
+  </p>
+        </div>
+      </div>
+
+     <div class="row">
+        <div class="input-field col s10 offset-s1 center" style="padding: 0 0 20px;">
+      <a class="waves-effect waves-light btn-large" >Register</a><br><br>
+      <a href="/login">Or Login</a>
+
+      </div>
+
+      </div>
+    </form>
+
+      <div class="row center" style="padding: 10px 0">
+        <div class="input-field col s10 offset-s1" >
+          <a href="/about">Learn More About GameStarter</a>
+        </div>
+      </div>
+
+  </div>
+    </div>
+  </div>
+
+
 </template>
 
 

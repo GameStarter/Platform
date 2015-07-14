@@ -1,3 +1,8 @@
+UI.registerHelper('equals', function(a, b) {
+  return a == b; // == intentional
+});
+
+
 Competitions = new Mongo.Collection("competitions");
 Ideas = new Mongo.Collection("ideas");
 
@@ -59,12 +64,80 @@ Router.route('/register', function () {
 });
 
 Router.route('/about', function () {
+  title = 'About';
   this.layout('ApplicationLayout', {
     data: {
-      title: 'About'
+      title: title,
+      slug: slugify(title)
     }
   });
   this.render('about');
+});
+
+Router.route('/about/competitions', function () {
+  title = 'Competitions';
+  this.layout('ApplicationLayout', {
+    data: {
+      title: title,
+      slug: slugify(title)
+    }
+  });
+  this.render('aboutCompetitions');
+});
+
+Router.route('/about/tokens', function () {
+  title = 'GameStarter Tokens';
+  this.layout('ApplicationLayout', {
+    data: {
+      title: title,
+      slug: slugify(title)
+    }
+  });
+  this.render('aboutTokens');
+});
+
+Router.route('/about/heropoints', function () {
+  title = 'Hero Points';
+  this.layout('ApplicationLayout', {
+    data: {
+      title: title,
+      slug: slugify(title)
+    }
+  });
+  this.render('aboutHeroPoints');
+});
+
+Router.route('/about/Winning', function () {
+  title = 'Winning';
+  this.layout('ApplicationLayout', {
+    data: {
+      title: title,
+      slug: slugify(title)
+    }
+  });
+  this.render('aboutWinning');
+});
+
+Router.route('/about/Team', function () {
+  title = 'The Team';
+  this.layout('ApplicationLayout', {
+    data: {
+      title: title,
+      slug: slugify(title)
+    }
+  });
+  this.render('aboutTeam');
+});
+
+Router.route('/about/Create', function () {
+  title = 'Host a Competition';
+  this.layout('ApplicationLayout', {
+    data: {
+      title: title,
+      slug: slugify(title)
+    }
+  });
+  this.render('aboutCreate');
 });
 
 Router.route('/store', function () {
@@ -77,12 +150,36 @@ Router.route('/store', function () {
 });
 
 Router.route('/profile', function () {
+  title = 'Profile';
   this.layout('ApplicationLayout', {
     data: {
-      title: 'Profile'
+      title: title,
+      slug: slugify(title)
     }
   });
   this.render('profile');
+});
+
+Router.route('/profile/tokens', function () {
+  title = 'Tokens';
+  this.layout('ApplicationLayout', {
+    data: {
+      title: title,
+      slug: slugify(title)
+    }
+  });
+  this.render('tokens');
+});
+
+Router.route('/profile/settings', function () {
+  title = 'Settings';
+  this.layout('ApplicationLayout', {
+    data: {
+      title: title,
+      slug: slugify(title)
+    }
+  });
+  this.render('settings');
 });
 
 Router.route('/admin', function () {
