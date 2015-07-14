@@ -1,5 +1,13 @@
+// The Gamestarter Competitions and ideas collections
 Competitions = new Mongo.Collection("competitions");
 Ideas = new Mongo.Collection("ideas");
+
+// The Gamestarter Quest collections
+Badges = new Mongo.Collection("badges");
+Quests = new Mongo.Collection("quests");
+Store = new Mongo.Collection("store");
+Prizes = new Mongo.Collection("prizes");
+
 
 
 // We have a main competition!
@@ -283,6 +291,20 @@ Template.home.helpers({
     }
   });
     Template.ApplicationLayout.events({
+    'submit .register': function (event) {
+      // increment the counter when button is clicked
+      if(event.target.email.value && event.target.password.value){
+        Accounts.createUser({
+            email: event.target.email.value,
+            password: event.target.password.value,
+            profile: {
+                admin: 1
+            }
+        });
+      }
+        // Prevent default form submit
+    return false;
+    },
     'submit .login': function (event) {
       // increment the counter when button is clicked
       if(event.target.email.value && event.target.password.value){
