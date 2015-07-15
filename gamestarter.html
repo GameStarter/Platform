@@ -14,7 +14,7 @@
                 {{#if currentUser}}
                 <li><a class="logout black-text">Logout</a></li>
                 {{else}}
-                <li><a class="black-text modal-trigger" href="#modal1">Login</a></li>
+                <li><a class="black-text modal-trigger" href="/login">Login</a></li>
                 {{/if}}
       <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{currentUser.email}} <i class="black-text material-icons right">arrow_drop_down</i></a></li>
         </ul>
@@ -55,6 +55,7 @@
           <li><a class="black-text " href="/store">Store</a></li>
           <li><a class="black-text " href="/quests">Quests</a></li>
           <li><a class="black-text " href="/about">About</a></li>
+        {{#if currentUser.profile.admin}}<li><a class="black-text " href="/admin">Admin</a></li>{{/if}}
         </ul>
           <!-- This loads the dropdownMenu template -->
           {{> dropdownMenu}}        
@@ -891,7 +892,7 @@
     <div class="container row" style="padding: 40px 0;">
        <div class="row" >
     
-    <form action="#" class="col s6 offset-s3 z-depth-3" style="background:white; ">
+    <form action="#" class="login col s6 offset-s3 z-depth-3" style="background:white; ">
 
       <div class="row" style="padding: 10px 0">
         <div class="input-field col s10 offset-s1">
@@ -901,14 +902,14 @@
 
     <div class="row" >
         <div class="input-field col s10 offset-s1">
-          <input  id="username" type="text" class="validate">
+          <input  id="username" name="email" type="text" class="validate">
           <label for="Username">Username or Email</label>
         </div>
       </div>
 
             <div class="row">
         <div class="input-field col s10 offset-s1">
-          <input id="password" type="password" class="validate">
+          <input id="password" name="password" type="password" class="validate">
           <label for="password">Password</label>
         </div>
       </div>
@@ -917,7 +918,7 @@
 
      <div class="row">
         <div class="input-field col s10 offset-s1 center" style="padding: 0 0 20px;">
-      <a class="waves-effect waves-light btn-large" >Login</a><br><br>
+      <input type="submit" class="waves-effect waves-light btn-large" value="Login"><br><br>
       <a href="/register">Or Register</a>
 
       </div>
@@ -1114,17 +1115,64 @@
     }
   </style>
 
-            <nav>
                <ul class="side-nav fixed hide-on-med-and-down">
-                <button>Click Me</button>
-                <li><a href="">Analytics</a></li>
+                <li><a href="/admin">Dashboard</a></li>
                 <li><a href="/admin/users">Users</a></li>
-                <li><a href="">Current Competitions</a></li>
+                <li><a href="/admin/store">Store</a></li>
                 <li><a href="/admin/competitions">Competitions</a></li>
+                <li><a href="#">Ranks</a></li>
+                <li><a href="/admin/settings">Settings</a></li>
                 </ul>
-            </nav>
 
+</template>
+<!-- template for the admin settings management -->
+<template name="adminSettings">
+  {{> adminMenu}}
+    <div class="section">
+<div class="row">
+     <div class="col s12">
+     <div class="col s10 offset-s1">
+        <h3>Settings</h3>
 
+  <br>
+
+        <table>
+        <thead>
+          <tr>
+              <th data-field="id">Title</th>
+              <th data-field="name">Description</th>
+              <th data-field="price">Value</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each settings}}
+            <tr>
+              <td>{{title}}</td>
+              <td>{{description}}</td>
+              <td><input type="text" class="settingValue" id="{{slug}}" name="setting" value="{{value}}" placeholder="{{title}}"></td>
+            </tr>
+        {{/each}}
+        </tbody>
+      </table>
+  <br>
+  Create Setting
+  <form class="createSetting">
+      <input type="text" name="title" placeholder="Title">
+      <input type="text" name="description" placeholder="Description">
+    <label>Browser Select</label>
+    <select class="browser-default" name="type">
+      <option value="" disabled selected>Choose type</option>
+      <option value="1">Text</option>
+      <option value="2">Options</option>
+      <option value="3">Checkboxes</option>
+    </select>
+      <input type="submit" value="Create">
+  </form>
+         </div>
+     </div>
+     </div>
+     </div>
 </template>
 
 <!-- template for the admin competition management -->
@@ -1136,12 +1184,31 @@
 <div class="row">
      <div class="col s12">
      <div class="col s10 offset-s1">
-        <h3> Admin</h3>
-  Competitions:
+        <h3>Competitions</h3>
   <br>
-  {{#each competitions}}
-  	{{title}} - ${{prize}} - {{brief}}
-  {{/each}}
+          <table>
+        <thead>
+          <tr>
+              <th data-field="id"></th>
+              <th data-field="id"></th>
+              <th data-field="id">Title</th>
+              <th data-field="name">Prize</th>
+              <th data-field="price">Brief</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each competitions}}
+            <tr>
+              <td>x</td>
+              <td>Edit</td>
+              <td>{{title}}</td>
+              <td>${{prize}}.00</td>
+              <td>\/</td>
+            </tr>
+        {{/each}}
+        </tbody>
+      </table>
   <br>
   Create Comp
   <form class="createComp">
@@ -1157,22 +1224,58 @@
      </div>   
   </div>
 </template>
+<<<<<<< HEAD
 
 
 
 
 
 
+=======
+
+>>>>>>> origin/master
 <!-- template for the admin store management -->
 <template name="adminStore">
 {{> adminMenu}}
+  <div class="section">
+<div class="row">
+     <div class="col s12">
+     <div class="col s10 offset-s1">
 
-  Prizes:
+        <h3>Prizes</h3>
   <br>
-  {{#each prizes}}
-    {{category}} - {{title}} - ${{value}}.00 - {{description}} - {{ points }} Points - {{#if equals digital 1}} Digital Prize {{else}} Physical Prize {{/if}}
-      <br>
-  {{/each}}
+        <table>
+        <thead>
+          <tr>
+              <th data-field="id"></th>
+              <th data-field="id"></th>
+              <th data-field="id">Category</th>
+              <th data-field="name">Title</th>
+              <th data-field="price">Value</th>
+              <th data-field="price">description</th>
+              <th data-field="price">points</th>
+              <th data-field="price">Type</th>
+              <th data-field="price">Digital</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each prizes}}
+            <tr>
+              <td>x</td>
+              <td>Edit</td>
+              <td>{{category}}</td>
+              <td>{{title}}</td>
+              <td>${{value}}.00</td>
+              <td>{{description}}</td>
+              <td>{{points}} Points</td>
+              <td>Auction</td>
+              <td>{{#if equals digital 1}}Yes{{else}}No{{/if}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+      </table>
+
   <br>
   Create Prize
   <form class="createPrize">
@@ -1193,6 +1296,10 @@
     </p>
       <input type="submit" value="Create">
   </form>
+       </div>
+     </div>
+     </div>   
+  </div>
 </template>
 
 <!-- template for the admin dashboard -->
@@ -1223,11 +1330,38 @@
      <div class="col s10 offset-s1">
         <h3> Users</h3>
 
-  {{#each users}}
-    {{#each emails}}
-      {{address}}
-    {{/each}}
-  {{/each}}
+        <table>
+        <thead>
+          <tr>
+              <th data-field="id"></th>
+              <th data-field="id"></th>
+              <th data-field="name">Username</th>
+              <th data-field="price">Email</th>
+              <th data-field="price">Hero</th>
+              <th data-field="price">Points</th>
+              <th data-field="price">Experience</th>
+              <th data-field="price">Rank</th>
+              <th data-field="price">Notifications</th>
+              <th data-field="price">Admin</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each users}}
+            <tr>
+              <td>x</td>
+              <td>Edit</td>
+              <td>{{username}}</td>
+              <td>{{#each emails}}{{address}}{{/each}}</td>
+              <td>{{ profile.hero }}</td>
+              <td>{{ profile.points }}</td>
+              <td>{{ profile.experience }}</td>
+              <td>{{ profile.rank }}</td>
+              <td>\/</td>
+              <td>{{#if profile.admin}}<input type="checkbox" id="admin" checked="checked" />{{else}}<input id="admin" type="checkbox" />{{/if}}<label for="admin"></label></td>
+            </tr>
+        {{/each}}
+        </tbody>
+      </table>
 
        </div>
      </div>
