@@ -3,16 +3,23 @@ UI.registerHelper('equals', function(a, b) {
 });
 
 
+<<<<<<< HEAD
 //=======
 // The Gamestarter Competitions and ideas collections
 //>>>>>>> origin/master
+=======
+Settings = new Mongo.Collection("settings");
+
+// The Gamestarter Competitions and ideas collections
+>>>>>>> origin/master
 Competitions = new Mongo.Collection("competitions");
 Ideas = new Mongo.Collection("ideas");
 
 // The Gamestarter Quest collections
-Badges = new Mongo.Collection("badges");
+Heroes = new Mongo.Collection("heroes");
 Quests = new Mongo.Collection("quests");
 Store = new Mongo.Collection("store");
+StoreCategories = new Mongo.Collection("storeCategories");
 Prizes = new Mongo.Collection("prizes");
 
 
@@ -29,6 +36,17 @@ Router.route('/', function () {
   this.render('home');
 });
 
+Router.route('/admin/settings', function () {
+  this.layout('ApplicationLayout', {
+    data: {
+      title: ' Admin',
+      settings: function () {
+        return Settings.find().fetch();
+      }
+    }
+  });
+  this.render('adminSettings');
+});
 
 Router.route('/admin/competitions', function () {
   this.layout('ApplicationLayout', {
@@ -40,6 +58,18 @@ Router.route('/admin/competitions', function () {
     }
   });
   this.render('adminCompetitions');
+});
+
+Router.route('/admin/store', function () {
+  this.layout('ApplicationLayout', {
+    data: {
+      title: ' Admin',
+      prizes: function () {
+        return Prizes.find().fetch();
+      }
+    }
+  });
+  this.render('adminStore');
 });
 
 Router.route('/admin/users', function () {
@@ -260,7 +290,7 @@ Router.route('/:competition', function () {
 });
 
 Meteor.methods({
-    addComp: function(title,prize,brief){
+    addComp: function(title,prize,type,brief){
       if (! Meteor.userId()) {
         throw new Meteor.Error("not-authorized");
       }
@@ -270,6 +300,7 @@ Meteor.methods({
             slug: slugify(title),
             prize: prize,
             brief: brief,
+            type: type,
             createdAt: new Date()
         });
     },
@@ -286,6 +317,40 @@ Meteor.methods({
             points: 0,
             createdAt: new Date(),
             voters: []
+        });
+      //$('ul.tabs').tabs('select_tab', 'submissions');
+
+    },
+    addSetting: function(title,description,type){
+      if (! Meteor.userId()) {
+        throw new Meteor.Error("not-authorized");
+      }
+      Settings.insert({
+            owner: Meteor.user(),
+            title: title,
+            slug: slugify(title),
+            description: description,
+            type: type,
+            createdAt: new Date(),
+            value: null
+        });
+      //$('ul.tabs').tabs('select_tab', 'submissions');
+
+    },
+    addPrize: function(category,title,value,description,digital){
+      if (! Meteor.userId()) {
+        throw new Meteor.Error("not-authorized");
+      }
+      Prizes.insert({
+            competition: competition,
+            digital: digital,
+            category: category,
+            owner: Meteor.user(),
+            title: title,
+            slug: slugify(title),
+            value: value,
+            description: description,
+            createdAt: new Date()
         });
       //$('ul.tabs').tabs('select_tab', 'submissions');
 
@@ -365,15 +430,74 @@ Template.home.helpers({
 
           var brief = event.target.brief.value;
 
-        Meteor.call("addComp", title,prize,brief);
+          var type = event.target.type.value;
+
+        Meteor.call("addComp", title,prize,type,brief);
 
         event.target.title.value = "";
         event.target.prize.value = "";
         event.target.brief.value = "";
+        event.target.type.value = "";
         // Prevent default form submit
     return false;
     }
   });
+
+    Template.adminStore.events({
+    'submit .createPrize': function (event) {
+      // increment the counter when button is clicked
+
+          var category = null;
+
+          var title = event.target.title.value;
+
+          var value = event.target.value.value;
+
+          var description = event.target.description.value;
+
+          var digital = event.target.digital.value;
+
+        Meteor.call("addPrize", category,title,value,description,digital);
+
+        event.target.title.value = "";
+        event.target.value.value = "";
+        event.target.description.value = "";
+        event.target.digital.value = "";
+        // Prevent default form submit
+    return false;
+    }
+  });
+
+    Template.adminSettings.events({
+    'submit .createSetting': function (event) {
+      // increment the counter when button is clicked
+
+          var title = event.target.title.value;
+
+          var description = event.target.description.value;
+
+          var type = event.target.type.value;
+
+        Meteor.call("addSetting",title,description,type);
+
+        event.target.title.value = "";
+        event.target.value.value = "";
+        event.target.description.value = "";
+        event.target.digital.value = "";
+        // Prevent default form submit
+    return false;
+    },
+    'change .settingValue': function (event) {
+
+          var setting = event.target.setting.value;
+
+        Meteor.call("setSetting",setting);
+
+        event.target.setting.value = "";
+      return false;
+    }
+  });
+
 
   Template.competition.events({
     'submit .createIdea': function (event) {
@@ -418,6 +542,7 @@ Template.home.helpers({
       if(event.target.email.value && event.target.password.value){
         Meteor.loginWithPassword(event.target.email.value, event.target.password.value, function(error){
             console.log(error.reason);
+
         });
       }
         // Prevent default form submit
@@ -426,6 +551,21 @@ Template.home.helpers({
     'click .logout': function (event) {
         Meteor.logout();
         event.preventDefault();
+    }
+  });
+        Template.login.events({
+    'submit .login': function (event) {
+      // increment the counter when button is clicked
+      if(event.target.email.value && event.target.password.value){
+        Meteor.loginWithPassword(event.target.email.value, event.target.password.value, function(error){
+            if(!error){
+              Router.go('/');
+            }
+            console.log(error.reason);
+        });
+      }
+        // Prevent default form submit
+    return false;
     }
   });
 }

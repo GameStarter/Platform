@@ -14,7 +14,7 @@
                 {{#if currentUser}}
                 <li><a class="logout black-text">Logout</a></li>
                 {{else}}
-                <li><a class="black-text modal-trigger" href="#modal1">Login</a></li>
+                <li><a class="black-text modal-trigger" href="/login">Login</a></li>
                 {{/if}}
       <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{currentUser.email}} <i class="black-text material-icons right">arrow_drop_down</i></a></li>
         </ul>
@@ -886,7 +886,7 @@
     <div class="container row" style="padding: 40px 0;">
        <div class="row" >
     
-    <form action="#" class="col s6 offset-s3 z-depth-3" style="background:white; ">
+    <form action="#" class="login col s6 offset-s3 z-depth-3" style="background:white; ">
 
       <div class="row" style="padding: 10px 0">
         <div class="input-field col s10 offset-s1">
@@ -896,14 +896,14 @@
 
     <div class="row" >
         <div class="input-field col s10 offset-s1">
-          <input  id="username" type="text" class="validate">
-          <label for="Username">Username or Email</label>
+          <input  id="username" type="email" name="email" class="validate">
+          <label for="Username">Email</label>
         </div>
       </div>
 
             <div class="row">
         <div class="input-field col s10 offset-s1">
-          <input id="password" type="password" class="validate">
+          <input id="password" type="password" name="password" class="validate">
           <label for="password">Password</label>
         </div>
       </div>
@@ -912,7 +912,7 @@
 
      <div class="row">
         <div class="input-field col s10 offset-s1 center" style="padding: 0 0 20px;">
-      <a class="waves-effect waves-light btn-large" >Login</a><br><br>
+      <input type="submit" class="waves-effect waves-light btn-large" value="Login"><br><br>
       <a href="/register">Or Register</a>
 
       </div>
@@ -1001,8 +1001,32 @@
 
 </template>
 
+<<<<<<< HEAD
 <template name="quests">
 
+=======
+<!-- template for the admin settings management -->
+<template name="adminSettings">
+  Settings:
+  <br>
+  {{#each settings}}
+    {{title}} - {{description}} - <input type="text" class="settingValue" id="{{slug}}" name="setting" value="{{value}}" placeholder="{{title}}">
+  {{/each}}
+  <br>
+  Create Setting
+  <form class="createSetting">
+      <input type="text" name="title" placeholder="Title">
+      <input type="text" name="description" placeholder="Description">
+    <label>Browser Select</label>
+    <select class="browser-default" name="type">
+      <option value="" disabled selected>Choose type</option>
+      <option value="1">Text</option>
+      <option value="2">Options</option>
+      <option value="3">Checkboxes</option>
+    </select>
+      <input type="submit" value="Create">
+  </form>
+>>>>>>> origin/master
 </template>
 <!-- template for the admin competition management -->
 <template name="adminCompetitions">
@@ -1016,16 +1040,45 @@
   <form class="createComp">
   		<input type="text" name="title">
   		<input type="text" name="prize">
-  		<input type="file" accept="image/*" class="image">
+  		Image: <input type="file" accept="image/*" class="image">
   		<textarea name="brief">Brief</textarea>
   		<input type="submit" value="Create">
   </form>
 </template>
+<!-- template for the admin store management -->
+<template name="adminStore">
+  Prizes:
+  <br>
+  {{#each prizes}}
+    {{category}} - {{title}} - ${{value}}.00 - {{description}}
+  {{/each}}
+  <br>
+  Create Prize
+  <form class="createPrize">
+      <input type="text" name="title" placeholder="Title">
+      <input type="text" name="value" placeholder="Value">
+      <input type="text" name="description" placeholder="Description">
+      Picture: <input type="file" accept="image/*" class="image">
+      <p>
+      Is digital?
+    </p>
+    <p>
+      <input name="digital" type="radio" id="digital-false" value="0" checked />
+      <label for="digital-false">No</label>
+    </p>
+    <p>
+      <input name="digital" type="radio" id="digital-true"  value="1" />
+      <label for="digital-true">Yes</label>
+    </p>
+      <input type="submit" value="Create">
+  </form>
+</template>
 <!-- template for the admin dashboard -->
 <template name="adminDashboard">
-  <button>Click Me</button>
   <li><a href="/admin/users">Users</a></li>
   <li><a href="/admin/competitions">Competitions</a></li>
+  <li><a href="/admin/store">Store</a></li>
+  <li><a href="/admin/settings">Settings</a></li>
 </template>
 <!-- template for the admin user management -->
 <template name="adminUsers">
