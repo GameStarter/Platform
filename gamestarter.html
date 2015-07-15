@@ -1050,7 +1050,8 @@
   Prizes:
   <br>
   {{#each prizes}}
-    {{category}} - {{title}} - ${{value}}.00 - {{description}}
+    {{category}} - {{title}} - ${{value}}.00 - {{description}} - {{ points }} Points - {{#if equals digital 1}} Digital Prize {{else}} Physical Prize {{/if}}
+      <br>
   {{/each}}
   <br>
   Create Prize
