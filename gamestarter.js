@@ -3,15 +3,11 @@ UI.registerHelper('equals', function(a, b) {
 });
 
 
-<<<<<<< HEAD
-//=======
-// The Gamestarter Competitions and ideas collections
-//>>>>>>> origin/master
-=======
+
 Settings = new Mongo.Collection("settings");
 
 // The Gamestarter Competitions and ideas collections
->>>>>>> origin/master
+
 Competitions = new Mongo.Collection("competitions");
 Ideas = new Mongo.Collection("ideas");
 
@@ -586,6 +582,7 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // Create admin account
     admin = Meteor.users.find({"emails.address": 'admin@gamestarter.io'}).fetch();
+
     if(admin.length<=0){
         adminProfile = [];
         Accounts.createUser({

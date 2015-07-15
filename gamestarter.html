@@ -54,6 +54,7 @@
           <li><a class="black-text " href="/store">Store</a></li>
           <li><a class="black-text " href="/quests">Quests</a></li>
           <li><a class="black-text " href="/about">About</a></li>
+        {{#if currentUser.profile.admin}}<li><a class="black-text " href="/admin">Admin</a></li>{{/if}}
         </ul>
           <!-- This loads the dropdownMenu template -->
           {{> dropdownMenu}}        
@@ -1001,10 +1002,10 @@
 
 </template>
 
-<<<<<<< HEAD
 <template name="quests">
 
-=======
+
+</template>
 <!-- template for the admin settings management -->
 <template name="adminSettings">
   Settings:
@@ -1026,7 +1027,6 @@
     </select>
       <input type="submit" value="Create">
   </form>
->>>>>>> origin/master
 </template>
 <!-- template for the admin competition management -->
 <template name="adminCompetitions">
