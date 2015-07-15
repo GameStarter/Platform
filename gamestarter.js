@@ -1,12 +1,11 @@
-<<<<<<< HEAD
 UI.registerHelper('equals', function(a, b) {
   return a == b; // == intentional
 });
 
 
-=======
+//=======
 // The Gamestarter Competitions and ideas collections
->>>>>>> origin/master
+//>>>>>>> origin/master
 Competitions = new Mongo.Collection("competitions");
 Ideas = new Mongo.Collection("ideas");
 
@@ -72,6 +71,15 @@ Router.route('/register', function () {
     }
   });
   this.render('register');
+});
+
+Router.route('/quests', function () {
+  this.layout('ApplicationLayout', {
+    data: {
+      title: 'Quests'
+    }
+  });
+  this.render('quests');
 });
 
 Router.route('/about', function () {
