@@ -1069,10 +1069,44 @@
      </div>   
   </div>
 </template>
+<<<<<<< HEAD
 
 
 
 
+=======
+<!-- template for the admin store management -->
+<template name="adminStore">
+{{> adminMenu}}
+
+  Prizes:
+  <br>
+  {{#each prizes}}
+    {{category}} - {{title}} - ${{value}}.00 - {{description}} - {{ points }} Points - {{#if equals digital 1}} Digital Prize {{else}} Physical Prize {{/if}}
+      <br>
+  {{/each}}
+  <br>
+  Create Prize
+  <form class="createPrize">
+      <input type="text" name="title" placeholder="Title">
+      <input type="text" name="value" placeholder="Value">
+      <input type="text" name="description" placeholder="Description">
+      Picture: <input type="file" accept="image/*" class="image">
+      <p>
+      Is digital?
+    </p>
+    <p>
+      <input name="digital" type="radio" id="digital-false" value="0" checked />
+      <label for="digital-false">No</label>
+    </p>
+    <p>
+      <input name="digital" type="radio" id="digital-true"  value="1" />
+      <label for="digital-true">Yes</label>
+    </p>
+      <input type="submit" value="Create">
+  </form>
+</template>
+>>>>>>> origin/master
 <!-- template for the admin dashboard -->
 <template name="adminDashboard">
   {{> adminMenu}}

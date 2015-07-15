@@ -61,11 +61,17 @@ Router.route('/admin/competitions', function () {
 });
 
 Router.route('/admin/store', function () {
+  var dollarValue = Settings.findOne({slug: 'dollar-value'});
+  var prizes = Prizes.find().fetch();
+  for(i=0;i<prizes.length;i++){
+    prizes[i].points = prizes[i].value * dollarValue.value;
+  }
+  console.log(prizes);
   this.layout('ApplicationLayout', {
     data: {
       title: ' Admin',
       prizes: function () {
-        return Prizes.find().fetch();
+        return prizes;
       }
     }
   });
@@ -337,6 +343,15 @@ Meteor.methods({
       //$('ul.tabs').tabs('select_tab', 'submissions');
 
     },
+    setSetting: function(slug,value){
+      if (! Meteor.userId()) {
+        throw new Meteor.Error("not-authorized");
+      }
+
+      Settings.update({slug: slug},{$set: {value: value}});
+      //$('ul.tabs').tabs('select_tab', 'submissions');
+
+    },
     addPrize: function(category,title,value,description,digital){
       if (! Meteor.userId()) {
         throw new Meteor.Error("not-authorized");
@@ -488,12 +503,8 @@ Template.home.helpers({
     return false;
     },
     'change .settingValue': function (event) {
-
-          var setting = event.target.setting.value;
-
-        Meteor.call("setSetting",setting);
-
-        event.target.setting.value = "";
+          Meteor.call("setSetting",event.target.id,event.target.value);
+        event.target.value = "";
       return false;
     }
   });

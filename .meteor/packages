@@ -12,3 +12,4 @@ accounts-password
 iron:router
 materialize:materialize
 yasaricli:slugify
+lepozepo:cloudinary
