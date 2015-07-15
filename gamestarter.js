@@ -3,11 +3,23 @@ UI.registerHelper('equals', function(a, b) {
 });
 
 
+<<<<<<< HEAD
 
 Settings = new Mongo.Collection("settings");
 
 // The Gamestarter Competitions and ideas collections
 
+=======
+//<<<<<<< HEAD
+//=======
+// The Gamestarter Competitions and ideas collections
+//>>>>>>> origin/master
+//=======
+//Settings = new Mongo.Collection("settings");
+
+// The Gamestarter Competitions and ideas collections
+//>>>>>>> origin/master
+>>>>>>> origin/master
 Competitions = new Mongo.Collection("competitions");
 Ideas = new Mongo.Collection("ideas");
 

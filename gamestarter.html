@@ -14,7 +14,7 @@
                 {{#if currentUser}}
                 <li><a class="logout black-text">Logout</a></li>
                 {{else}}
-                <li><a class="black-text modal-trigger" href="/login">Login</a></li>
+                <li><a class="black-text modal-trigger" href="#modal1">Login</a></li>
                 {{/if}}
       <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{currentUser.email}} <i class="black-text material-icons right">arrow_drop_down</i></a></li>
         </ul>
@@ -44,6 +44,7 @@
       </form>
   </div>
 
+  <header>
   <div class="navbar-fixed">
     <nav class="z-depth-0 border-bottom">
       <div class="nav-wrapper white">
@@ -64,20 +65,23 @@
       </div>
     </nav>
   </div>
-  <!-- this is where any templates go inside this layout -->
-{{> yield}}
+  </header>
+      <!-- this is where any templates go inside this layout -->
+      <main>
+      {{> yield}}
+      </main>
 
-<!-- The fricking footer -->
-        <footer class="page-footer light-blue darken-3">
-          <div class="footer-copyright">
-            <div class="white-text text-lighten-4 container">
-            GameStarter © 2014
-            <a class="white-text text-lighten-4 right" href="#!">Facebook</a>
-            <a class="white-text text-lighten-4 right" href="#!">Twitter&nbsp;&nbsp;&nbsp;&nbsp;</a>
-            </div>
+      <!-- The fricking footer -->
+      <footer class="page-footer light-blue darken-3">
+        <div class="footer-copyright">
+          <div class="white-text text-lighten-4 container">
+          GameStarter © 2014
+          <a class="white-text text-lighten-4 right" href="#!">Facebook</a>
+          <a class="white-text text-lighten-4 right" href="#!">Twitter&nbsp;&nbsp;&nbsp;&nbsp;</a>
           </div>
-        </footer>
-            
+        </div>
+      </footer>
+    
 
         <script>
 
@@ -130,6 +134,14 @@
   $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50});
   });
+
+  // Initialize collapse button
+  $(".button-collapse").sideNav({
+     edge: 'right'
+  });
+  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+  //$('.collapsible').collapsible();
+
 
   </script>
 </template> 
@@ -887,7 +899,7 @@
     <div class="container row" style="padding: 40px 0;">
        <div class="row" >
     
-    <form action="#" class="login col s6 offset-s3 z-depth-3" style="background:white; ">
+    <form action="#" class="col s6 offset-s3 z-depth-3" style="background:white; ">
 
       <div class="row" style="padding: 10px 0">
         <div class="input-field col s10 offset-s1">
@@ -897,14 +909,14 @@
 
     <div class="row" >
         <div class="input-field col s10 offset-s1">
-          <input  id="username" type="email" name="email" class="validate">
-          <label for="Username">Email</label>
+          <input  id="username" type="text" class="validate">
+          <label for="Username">Username or Email</label>
         </div>
       </div>
 
             <div class="row">
         <div class="input-field col s10 offset-s1">
-          <input id="password" type="password" name="password" class="validate">
+          <input id="password" type="password" class="validate">
           <label for="password">Password</label>
         </div>
       </div>
@@ -913,7 +925,7 @@
 
      <div class="row">
         <div class="input-field col s10 offset-s1 center" style="padding: 0 0 20px;">
-      <input type="submit" class="waves-effect waves-light btn-large" value="Login"><br><br>
+      <a class="waves-effect waves-light btn-large" >Login</a><br><br>
       <a href="/register">Or Register</a>
 
       </div>
@@ -1003,7 +1015,30 @@
 </template>
 
 <template name="quests">
+</template>
 
+
+
+
+<template name="adminMenu">
+  <style type="text/css">
+    header, main, footer {
+      padding-left: 240px;
+    }
+  </style>
+
+            <nav>
+               <ul class="side-nav fixed hide-on-med-and-down">
+                <button>Click Me</button>
+                <li><a href="">Analytics</a></li>
+                <li><a href="/admin/users">Users</a></li>
+                <li><a href="">Current Competitions</a></li>
+                <li><a href="/admin/competitions">Competitions</a></li>
+                </ul>
+            </nav>
+
+
+<<<<<<< HEAD
 
 </template>
 <!-- template for the admin settings management -->
@@ -1027,9 +1062,20 @@
     </select>
       <input type="submit" value="Create">
   </form>
+=======
+>>>>>>> origin/master
 </template>
+
 <!-- template for the admin competition management -->
 <template name="adminCompetitions">
+  {{> adminMenu}}
+
+
+  <div class="section">
+<div class="row">
+     <div class="col s12">
+     <div class="col s10 offset-s1">
+        <h3> Admin</h3>
   Competitions:
   <br>
   {{#each competitions}}
@@ -1040,13 +1086,26 @@
   <form class="createComp">
   		<input type="text" name="title">
   		<input type="text" name="prize">
-  		Image: <input type="file" accept="image/*" class="image">
+  		<input type="file" accept="image/*" class="image">
   		<textarea name="brief">Brief</textarea>
   		<input type="submit" value="Create">
   </form>
+
+     </div>
+     </div>
+     </div>   
+  </div>
 </template>
+<<<<<<< HEAD
+
+
+
+
+=======
 <!-- template for the admin store management -->
 <template name="adminStore">
+{{> adminMenu}}
+
   Prizes:
   <br>
   {{#each prizes}}
@@ -1074,18 +1133,43 @@
       <input type="submit" value="Create">
   </form>
 </template>
+>>>>>>> origin/master
 <!-- template for the admin dashboard -->
 <template name="adminDashboard">
-  <li><a href="/admin/users">Users</a></li>
-  <li><a href="/admin/competitions">Competitions</a></li>
-  <li><a href="/admin/store">Store</a></li>
-  <li><a href="/admin/settings">Settings</a></li>
+  {{> adminMenu}}
+     
+
+  <div class="section">
+<div class="row">
+     <div class="col s12">
+     <div class="col s10 offset-s1">
+        <h3> Admin</h3>
+     </div>
+     </div>
+     </div>   
+  </div>
+  
 </template>
+
+
 <!-- template for the admin user management -->
 <template name="adminUsers">
+  {{> adminMenu}}
+     
+  <div class="section">
+<div class="row">
+     <div class="col s12">
+     <div class="col s10 offset-s1">
+        <h3> Users</h3>
+
   {{#each users}}
     {{#each emails}}
       {{address}}
     {{/each}}
   {{/each}}
+
+       </div>
+     </div>
+     </div>
+     </div>
 </template>
