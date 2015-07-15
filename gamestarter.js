@@ -2,24 +2,11 @@ UI.registerHelper('equals', function(a, b) {
   return a == b; // == intentional
 });
 
-
-<<<<<<< HEAD
-
 Settings = new Mongo.Collection("settings");
 
-// The Gamestarter Competitions and ideas collections
-
-=======
-//<<<<<<< HEAD
-//=======
-// The Gamestarter Competitions and ideas collections
-//>>>>>>> origin/master
-//=======
-//Settings = new Mongo.Collection("settings");
 
 // The Gamestarter Competitions and ideas collections
-//>>>>>>> origin/master
->>>>>>> origin/master
+
 Competitions = new Mongo.Collection("competitions");
 Ideas = new Mongo.Collection("ideas");
 
@@ -600,8 +587,19 @@ if (Meteor.isServer) {
         Accounts.createUser({
             email: 'admin@gamestarter.io',
             password: 'theMan',
+            username: 'Boss',
             profile: {
-                admin: 1
+                hero: null,
+                points: 0,
+                experience: 0,
+                rank: 1,
+                admin: 1,
+                notifications: {
+                  idea_comments: 0,
+                  new_quests: 0,
+                  quest_level_change: 0,
+                  newsletter: 0
+                }
             }
         });
     }
