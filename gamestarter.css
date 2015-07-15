@@ -89,3 +89,17 @@
   width: 20%;
   margin: 0 2rem 2rem 0;
 }
+
+.gs-quest-box {
+  background-color: #ddd;
+  width: 100%;
+  padding: 20px;
+}
+
+.gs-quest-box h5 {
+  margin-top: 0;
+}
+
+.gs-quest-box p:last-child {
+  margin-bottom: 0;
+}
