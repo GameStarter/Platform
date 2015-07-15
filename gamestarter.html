@@ -1128,10 +1128,19 @@
 <!-- template for the admin settings management -->
 <template name="adminSettings">
   {{> adminMenu}}
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#settingsstats">Stats</a></li>
+        <li class="tab col s3"><a href="#settingsform">Form</a></li>
+      </ul>
+
+
+
     <div class="section">
 <div class="row">
      <div class="col s12">
      <div class="col s10 offset-s1">
+
+     <div id="#settingsstats">
         <h3>Settings</h3>
 
   <br>
@@ -1155,8 +1164,12 @@
         {{/each}}
         </tbody>
       </table>
+      </div>
   <br>
-  Create Setting
+
+<div id="#settingsform">
+ <div class="col s6 offset-s3 center-align"> 
+  <h3>Create Settings</h3>
   <form class="createSetting">
       <input type="text" name="title" placeholder="Title">
       <input type="text" name="description" placeholder="Description">
@@ -1173,19 +1186,28 @@
      </div>
      </div>
      </div>
+     </div>
+     </div>
+
+
 </template>
 
 <!-- template for the admin competition management -->
 <template name="adminCompetitions">
   {{> adminMenu}}
+    <br>
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#compstats">Stats</a></li>
+        <li class="tab col s3"><a href="#compform">Form</a></li>
+      </ul>
 
 
   <div class="section">
-<div class="row">
+    <div class="row">
      <div class="col s12">
-     <div class="col s10 offset-s1">
+        <div class="col s10 offset-s1">
+          <div  id="#compstats">
         <h3>Competitions</h3>
-  <br>
           <table>
         <thead>
           <tr>
@@ -1209,41 +1231,47 @@
         {{/each}}
         </tbody>
       </table>
-  <br>
-  Create Comp
-  <form class="createComp">
-  		<input type="text" name="title">
-  		<input type="text" name="prize">
-  		<input type="file" accept="image/*" class="image">
-  		<textarea name="brief">Brief</textarea>
-  		<input type="submit" value="Create">
-  </form>
+        </div>
 
-     </div>
-     </div>
-     </div>   
+
+        <div  id="#compform" >
+           <div class="col s6 offset-s3 center-align">
+              <h3>Create Comp</h3>
+                    <form class="createComp">
+                    		<input type="text" name="title">
+                    		<input type="text" name="prize">
+                    		<input type="file" accept="image/*" class="image">
+                    		<textarea name="brief">Brief</textarea>
+                    		<input type="submit" value="Create">
+                    </form>
+
+           </div>
+        </div>
+  </div>   
+  </div>
+  </div>
   </div>
 </template>
-<<<<<<< HEAD
 
-
-
-
-
-
-=======
-
->>>>>>> origin/master
 <!-- template for the admin store management -->
 <template name="adminStore">
 {{> adminMenu}}
+    <ul class="tabs">
+        <li class="tab col s3"><a href="#storestats">Form</a></li>
+        <li class="tab col s3"><a href="#storeform">Stats</a></li>
+      </ul>
+
+
+
   <div class="section">
 <div class="row">
      <div class="col s12">
      <div class="col s10 offset-s1">
-
-        <h3>Prizes</h3>
+     
+        
   <br>
+  <div id="#storestats" >
+  <h3>Prizes</h3>
         <table>
         <thead>
           <tr>
@@ -1275,9 +1303,15 @@
         {{/each}}
         </tbody>
       </table>
+      </div>
+
 
   <br>
-  Create Prize
+
+<div id="#storeform">
+
+  <div class="col s6 offset-s3 center-align">
+    <h3 class="left">Create Prizes</h3>
   <form class="createPrize">
       <input type="text" name="title" placeholder="Title">
       <input type="text" name="value" placeholder="Value">
@@ -1296,9 +1330,11 @@
     </p>
       <input type="submit" value="Create">
   </form>
+  </div>
        </div>
      </div>
      </div>   
+  </div>
   </div>
 </template>
 
