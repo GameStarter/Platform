@@ -139,6 +139,7 @@
   $(".button-collapse").sideNav({
      edge: 'right'
   });
+
   // Initialize collapsible (uncomment the line below if you use the dropdown variation)
   //$('.collapsible').collapsible();
 
@@ -534,8 +535,8 @@
           <img class="responsive-img" src="http://placehold.it/150x150">
         </div>
         <div class="col s10">    
-          <h3 class="white-text">Username</h3>
-          <p class="white-text">XX tokens<br>XX hero points</p>
+          <h3 class="white-text">{{currentUser.username}}</h3>
+          <p class="white-text">{{currentUser.profile.points}} tokens<br>{{currentUser.profile.experience}} experience</p>
         </div>
       </div>
     </div> 
@@ -654,14 +655,14 @@
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="username" type="text" class="validate">
-                <label for="username">Username</label>
+                <input id="username" type="text" class="validate" value="{{currentUser.username}}">
+                <label class="active" for="username">Username</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="email" type="email" class="validate">
-                <label for="email">Email</label>
+                <input id="email" type="email" class="validate" value="{{#each currentUser.emails}}{{address}}{{/each}}">
+                <label class="active" for="email">Email</label>
               </div>
             </div>
             <div class="row">
@@ -685,16 +686,20 @@
       <div class="col s8">
         <h5>Email Notifications</h5>
         <p>
-          <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-          <label for="filled-in-box">Comments on my ideas</label>
+          {{#if currentUser.profile.notifications.newsletter }}<input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />{{ else }}<input type="checkbox" class="filled-in" id="filled-in-box" />{{/if}}
+          <label for="filled-in-box">Recieve newsletter</label>
         </p>
         <p>
-          <input type="checkbox" class="filled-in" id="filled-in-box" />
-          <label for="filled-in-box">New quest starts</label>
+          {{#if currentUser.profile.notifications.idea_comments }}<input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />{{ else }}<input type="checkbox" class="filled-in" id="filled-in-box2" />{{/if}}
+          <label for="filled-in-box2">Comments on my ideas</label>
         </p>
         <p>
-          <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-          <label for="filled-in-box">Quest enters next level</label>
+          {{#if currentUser.profile.notifications.new_quests }}<input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />{{ else }}<input type="checkbox" class="filled-in" id="filled-in-box3" />{{/if}}
+          <label for="filled-in-box3">New quest starts</label>
+        </p>
+        <p>
+          {{#if currentUser.profile.notifications.quest_level_change }}<input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />{{ else }}<input type="checkbox" class="filled-in" id="filled-in-box4" />{{/if}}
+          <label for="filled-in-box4">Quest enters next level</label>
         </p>
       </div>
       <div class="col s3 gs-hints">
@@ -1026,7 +1031,6 @@
       padding-left: 240px;
     }
   </style>
-
                <ul class="side-nav fixed hide-on-med-and-down">
                 <li><a href="/admin">Dashboard</a></li>
                 <li><a href="/admin/users">Users</a></li>
@@ -1040,6 +1044,7 @@
 <!-- template for the admin settings management -->
 <template name="adminSettings">
   {{> adminMenu}}
+
     <div class="section">
 <div class="row">
      <div class="col s12">
@@ -1214,7 +1219,7 @@
 <div class="row">
      <div class="col s12">
      <div class="col s10 offset-s1">
-        <h3> Admin</h3>
+        <h3> Dashboard</h3>
      </div>
      </div>
      </div>   
