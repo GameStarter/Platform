@@ -242,6 +242,16 @@ Router.route('/admin', function () {
 });
 
 
+Router.route('/test', function () {
+  this.layout('ApplicationLayout', {
+    data: {
+      title: 'Test page'
+    }
+  });
+  this.render('test');
+});
+
+
 Router.route('/:competition/entries', function () {
 
   var competition = Competitions.findOne({slug: this.params.competition});
