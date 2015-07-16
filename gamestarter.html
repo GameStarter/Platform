@@ -947,7 +947,7 @@
     <div class="container row" style="padding: 40px 0;">
        <div class="row" >
     
-    <form action="#" class="col s6 offset-s3 z-depth-3" style="background:white;">
+    <form action="#" class="register col s6 offset-s3 z-depth-3" style="background:white;">
 
       <div class="row" style="padding: 10px 0">
         <div class="input-field col s10 offset-s1">
@@ -957,41 +957,52 @@
 
     <div class="row" >
         <div class="input-field col s10 offset-s1">
-          <input  id="username" type="text" class="validate">
-          <label for="Username">First Name</label>
+          <input  id="username" name="username" type="text" class="validate">
+          <label for="Username">Username</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s10 offset-s1">
-          <input id="email" type="email" class="validate">
+          <input id="email" name="email" type="email" class="validate">
           <label for="email">Email</label>
         </div>
       </div>
             <div class="row">
         <div class="input-field col s10 offset-s1">
-          <input id="password" type="password" class="validate">
+          <input id="password" name="original_password" type="password" class="validate">
           <label for="password">Password</label>
+        </div>
+      </div>
+            <div class="row">
+        <div class="input-field col s10 offset-s1">
+          <input id="password" name="repeat_password" type="password" class="validate">
+          <label for="password">Repeat password</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s5 offset-s1">
           <p>
-    <input type="checkbox" class="filled-in" id="tac"   />
-    <label for="test5">Terms & Conditions</label>
+    <input type="checkbox" class="filled-in" name="tac" id="tac"  />
+    <label for="tac">Terms & Conditions</label>
   </p>
   </div>
-        <div class="input-field col 5  ">
+        <div class="input-field col s5  ">
   <p>
-    <input type="checkbox" class="filled-in" id="emails"   />
-    <label for="test5">Recieve GS Updates</label>
+    <input type="checkbox" class="filled-in" name="notifications" id="emails"  value="1"  />
+    <label for="emails">Recieve GS Updates</label>
   </p>
+        </div>
+      </div>
+
+      <div class="errors row">
+        <div class="error input-field col s10 offset-s1">
         </div>
       </div>
 
      <div class="row">
         <div class="input-field col s10 offset-s1 center" style="padding: 0 0 20px;">
-      <a class="waves-effect waves-light btn-large" >Register</a><br><br>
+      <input type="submit" class="waves-effect waves-light btn-large" value="Register"><br><br>
       <a href="/login">Or Login</a>
 
       </div>
@@ -1124,6 +1135,7 @@
                 <li><a href="/admin/users">Users</a></li>
                 <li><a href="/admin/store">Store</a></li>
                 <li><a href="/admin/competitions">Competitions</a></li>
+                <li><a href="/admin/heroes">Heroes</a></li>
                 <li><a href="#">Ranks</a></li>
                 <li><a href="/admin/settings">Settings</a></li>
                 </ul>
@@ -1132,15 +1144,10 @@
 <!-- template for the admin settings management -->
 <template name="adminSettings">
   {{> adminMenu}}
-<<<<<<< HEAD
-=======
       <ul class="tabs">
         <li class="tab col s3"><a href="#settingsstats">Stats</a></li>
         <li class="tab col s3"><a href="#settingsform">Form</a></li>
       </ul>
-
-
->>>>>>> origin/master
 
     <div class="section">
 <div class="row">
@@ -1199,6 +1206,71 @@
 
 </template>
 
+<!-- template for the admin heroes management -->
+<template name="adminHeroes">
+  {{> adminMenu}}
+    <br>
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#compstats">Stats</a></li>
+        <li class="tab col s3"><a href="#compform">Form</a></li>
+      </ul>
+
+
+  <div class="section">
+    <div class="row">
+     <div class="col s12">
+        <div class="col s10 offset-s1">
+          <div  id="#compstats">
+        <h3>Heroes</h3>
+          <table>
+        <thead>
+          <tr>
+              <th data-field="id"></th>
+              <th data-field="id"></th>
+              <th data-field="id">Title</th>
+              <th data-field="name">Image</th>
+              <th data-field="name">Minimum Rank</th>
+              <th data-field="name">Quests</th>
+              <th data-field="price">Uses</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each heroes}}
+            <tr>
+              <td>x</td>
+              <td>Edit</td>
+              <td>{{title}}</td>
+              <td>{{image}}</td>
+              <td>{{rank}}</td>
+              <td>{{quests}}</td>
+              <td>{{uses}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+      </table>
+        </div>
+
+
+        <div  id="#compform" >
+           <div class="col s6 offset-s3 center-align">
+              <h3>Create Hero</h3>
+                    <form class="createComp">
+                        <input type="text" name="title">
+                        <input type="text" name="prize">
+                        <input type="file" accept="image/*" class="image">
+                        <textarea name="brief">Brief</textarea>
+                        <input type="submit" value="Create">
+                    </form>
+
+           </div>
+        </div>
+  </div>   
+  </div>
+  </div>
+  </div>
+</template>
+
 <!-- template for the admin competition management -->
 <template name="adminCompetitions">
   {{> adminMenu}}
@@ -1222,6 +1294,7 @@
               <th data-field="id"></th>
               <th data-field="id">Title</th>
               <th data-field="name">Prize</th>
+              <th data-field="name">Type</th>
               <th data-field="price">Brief</th>
           </tr>
         </thead>
@@ -1233,6 +1306,7 @@
               <td>Edit</td>
               <td>{{title}}</td>
               <td>${{prize}}.00</td>
+              <td>{{type}}</td>
               <td>\/</td>
             </tr>
         {{/each}}
@@ -1245,8 +1319,28 @@
            <div class="col s6 offset-s3 center-align">
               <h3>Create Comp</h3>
                     <form class="createComp">
-                    		<input type="text" name="title">
-                    		<input type="text" name="prize">
+                    		<input type="text" name="title" placeholder="Title">
+                    		<input type="text" name="prize" placeholder="Prize">
+                        <select class="browser-default" name="type">
+                          <option value="" disabled selected>Choose type</option>
+                          <option value="ideation-concept">Ideation - Concept</option>
+                          <option value="ideation-levels" disabled>Ideation - Levels</option>
+                          <option value="ideation-characters" disabled>Ideation - Characters</option>
+                          <option value="ideation-features" disabled>Ideation - Features</option>
+                          <option value="ideation-all" disabled>Ideation - All</option>
+                          <option value="design-concept" disabled>Design - Concept</option>
+                          <option value="design-levels" disabled>Design - Levels</option>
+                          <option value="design-characters" disabled>Design - Characters</option>
+                          <option value="design-features" disabled>Design - Features</option>
+                          <option value="design-all" disabled>Design - All</option>
+                          <option value="design-levels" disabled>Development - Levels</option>
+                          <option value="design-characters" disabled>Development - Characters</option>
+                          <option value="design-features" disabled>Development - Features</option>
+                          <option value="design-all" disabled>Development - All</option>
+                          <option value="ideation-design" disabled>Ideation + Design</option>
+                          <option value="design-development" disabled>Design + Development</option>
+                          <option value="ideation-design-development" disabled>Ideation + Design + Development</option>
+                        </select>
                     		<input type="file" accept="image/*" class="image">
                     		<textarea name="brief">Brief</textarea>
                     		<input type="submit" value="Create">

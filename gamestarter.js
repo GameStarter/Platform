@@ -43,12 +43,35 @@ Router.route('/admin/settings', function () {
   this.render('adminSettings');
 });
 
+Router.route('/admin/heroes', function () {
+  this.layout('ApplicationLayout', {
+    data: {
+      title: ' Admin',
+      settings: function () {
+        return Heroes.find().fetch();
+      }
+    }
+  });
+  this.render('adminHeroes');
+});
+
 Router.route('/admin/competitions', function () {
+  var competitions = Competitions.find().fetch();
+  for(i=0;i<competitions.length;i++){
+    if(competitions[i].type){
+      competitions[i].type = competitions[i].type.split("-");
+      typeString = '';
+      for(j=0;j<competitions[i].type.length;j++){
+        typeString += competitions[i].type[j].charAt(0).toUpperCase() + competitions[i].type[j].slice(1) + ' - ';
+      }
+      competitions[i].type = typeString;
+    }
+  }
   this.layout('ApplicationLayout', {
     data: {
       title: ' Admin',
       competitions: function () {
-        return Competitions.find().fetch();
+        return competitions;
       }
     }
   });
@@ -290,7 +313,32 @@ Router.route('/:competition', function () {
   this.render('competition');
 });
 
+
 Meteor.methods({
+    addUser: function(username,email,password,notifications,verified){  
+      if(!verified)verified = false;
+        user = Accounts.createUser({
+            email: email,
+            password: password,
+            username: username.toLowerCase(),
+            profile: {
+                hero: null,
+                points: 0,
+                experience: 0,
+                rank: 1,
+                admin: 0,
+                notifications: {
+                  idea_comments: 0,
+                  new_quests: 0,
+                  quest_level_change: 0,
+                  newsletter: notifications
+                },
+                verified: verified
+            }
+        });
+
+
+    },
     addComp: function(title,prize,type,brief){
       if (! Meteor.userId()) {
         throw new Meteor.Error("not-authorized");
@@ -394,6 +442,7 @@ Meteor.methods({
 });
 
 if (Meteor.isClient) {
+
   // counter starts at 0
   Session.setDefault('counter', 0);
   Template.home.onRendered(function(){
@@ -430,6 +479,53 @@ Template.home.helpers({
     return ideas;
   },
 });
+    Template.register.events({
+    'submit .register': function (event) {
+      // increment the counter when button is clicked
+
+          var username = event.target.username.value.toLowerCase();
+
+          var email = event.target.email.value;
+
+          console.log(event.target.original_password);
+          console.log(event.target.repeat_password);
+          var password = event.target.original_password.value;
+
+          var repeat_password = event.target.repeat_password.value;
+
+          var tac = event.target.tac.checked;
+          var notifications = event.target.notifications.checked;
+          var errors = "";
+          user = Meteor.users.findOne({username: username});
+          if(password != repeat_password || !password){
+              errors += "<p>Mate check your passwords eh.</p>"
+          }
+          if(!tac) errors += "<p>Plz sign the terms n conderpshns.</p>";
+          if(user) errors += "<p>Your username already fucking exists.</p>";
+          if(errors){
+            event.target.childNodes[13].childNodes[1].innerHTML = errors;
+          }else{
+            Meteor.call("addUser", username,email,password,notifications,false);
+            event.target.username.value = "";
+            event.target.email.value = "";
+            event.target.original_password.value = "";
+            event.target.tac.value = "";
+            event.target.notifications.value = "";
+            Meteor.loginWithPassword(username, password, function(error){
+                if(error) console.log(error);
+                Router.go('/');
+            });
+          }
+        
+
+
+        event.target.original_password.value = "";
+        event.target.repeat_password.value = "";
+        // Prevent default form submit
+    return false;
+    }
+  });
+
     Template.adminCompetitions.events({
     'submit .createComp': function (event) {
       // increment the counter when button is clicked
@@ -529,31 +625,6 @@ Template.home.helpers({
     }
   });
     Template.ApplicationLayout.events({
-    'submit .register': function (event) {
-      // increment the counter when button is clicked
-      if(event.target.email.value && event.target.password.value){
-        Accounts.createUser({
-            email: event.target.email.value,
-            password: event.target.password.value,
-            profile: {
-                admin: 1
-            }
-        });
-      }
-        // Prevent default form submit
-    return false;
-    },
-    'submit .login': function (event) {
-      // increment the counter when button is clicked
-      if(event.target.email.value && event.target.password.value){
-        Meteor.loginWithPassword(event.target.email.value, event.target.password.value, function(error){
-            console.log(error.reason);
-
-        });
-      }
-        // Prevent default form submit
-    return false;
-    },
     'click .logout': function (event) {
         Meteor.logout();
         event.preventDefault();
@@ -563,7 +634,7 @@ Template.home.helpers({
     'submit .login': function (event) {
       // increment the counter when button is clicked
       if(event.target.email.value && event.target.password.value){
-        Meteor.loginWithPassword(event.target.email.value, event.target.password.value, function(error){
+        Meteor.loginWithPassword(event.target.email.value.toLowerCase(), event.target.password.value, function(error){
             if(!error){
               Router.go('/');
             }
