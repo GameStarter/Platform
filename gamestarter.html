@@ -51,7 +51,7 @@
 
         <ul id="nav-mobile" class="left hide-on-med-and-down">
 
-          <li><a href="/" style="padding: 15px;"><img class="left responsive-img" width="200px" src="http://i.imgur.com/GKyEzxw.jpg"></a></li>
+          <li><a href="/" style="padding: 15px;"><img class="left responsive-img-nav" width="200px" src="http://i.imgur.com/GKyEzxw.jpg"></a></li>
           <li><a class="black-text " href="/store">Store</a></li>
           <li><a class="black-text " href="/quests">Quests</a></li>
           <li><a class="black-text " href="/about">About</a></li>
@@ -72,15 +72,48 @@
       </main>
 
       <!-- The fricking footer -->
-      <footer class="page-footer light-blue darken-3">
-        <div class="footer-copyright">
-          <div class="white-text text-lighten-4 container">
-          GameStarter © 2014
-          <a class="white-text text-lighten-4 right" href="#!">Facebook</a>
-          <a class="white-text text-lighten-4 right" href="#!">Twitter&nbsp;&nbsp;&nbsp;&nbsp;</a>
+<footer class="page-footer light-blue darken-3">
+        
+            <div class="row">
+                  <div class="col l6 offset-l3 s12">
+                      
+                            <div class="col l4 offset-l2 s12">
+                              <h5 class="white-text">About</h5>
+                              <ul>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                              </ul>
+                            </div>
+                                                        <div class="col l4 offset-l2 s12">
+                              <h5 class="white-text">Social</h5>
+                              <ul>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                              </ul>
+                            </div>
+                  </div>  
+            </div>
+          <div class="footer-copyright light-blue darken-4">
+                <div class="row">
+                  <div class="col offset-l3 l6 s12">
+             GameStarter © 2015
+              <a class="white-text text-lighten-4 right" href="#!">Facebook</a>
+              <a class="white-text text-lighten-4 right" href="#!">Twitter&nbsp;&nbsp;&nbsp;&nbsp;</a>
+              
+           </div>
           </div>
-        </div>
-      </footer>
+           
+          </div>
+        </footer>
+
+
+
+
+     
     
 
         <script>
@@ -191,13 +224,13 @@
     //   });
     // };
 
-    //if ($('.submenu').length) {
-      //$('.submenu').pushpin({
-        //top: $('.submenu').offset().top
-     // });
-   // };
+    if ($('.submenu').length) {
+      $('.submenu').pushpin({
+        top: $('.submenu').offset().top
+      });
+    };
 
-  //});
+  });
 
   // var options = [
   //   {selector: '#brief', offset: 000, callback: '$(".gs-hint-box div").fadeIn()' },
@@ -210,74 +243,150 @@
 <!-- template for the home page -->
 
 <template name="home">
-<div class="section blue lighten-4">
-  
-  <div class="row">
-    <div class="col s12">
-      <div class="container" >
-        <div class="splash-hero center-align" >
-        <h1 class="valign">
+<div>
+
+  <div class="row banner" >
+
+    <div class="col s12 " style="top: 0px; left: 0px; z-index: 100; opacity: 1;  display: block; background-size:100%; background-image: url(http://res.cloudinary.com/gamestarter/image/upload/o_40/v1436999623/Assets/heroes/web_banner_large.png);">
+
+      <div class="container row" >
+      <div class="splash-hero center"  >
+       
+        <div class="center-align">
+        <h1 class="valign" >
         Start Your Journey Here, <br> Become a Game Creator Today!
         </h1>
         </div>
         <div class="row center-align" style="padding: 0 0 30px;">
-          <div class="col s6 " >
-            <a href="#quests" class="btn tooltipped waves-effect waves-light btn-large right" data-position="bottom" data-delay="300" data-tooltip="Start your adventure here!" style="width: 300px; height: 100px; padding: 20px 0;">
+          <div class="col s12 m6" >
+            <a href="#quests" class="btn tooltipped waves-effect waves-light btn-large-splash right" data-position="bottom" data-delay="300" data-tooltip="Start your adventure here!" >
             Start Questing!</a>
           </div>
-          <div class="col s6 ">
-             <a href="/about/create" class="btn tooltipped waves-effect waves-light btn-large left" data-position="bottom" data-delay="300" data-tooltip="Click here to create your own competition" style="width: 300px; height: 100px; padding: 20px 0;">Host Your Own Quest!</a>
+          <div class="col s12 m6">
+             <a href="/about/create" class="btn tooltipped waves-effect waves-light btn-large-splash left" data-position="bottom" data-delay="300" data-tooltip="Click here to create your own competition">Host Your Own Quest!</a>
           </div>
-            <div class="col s12"  style="padding: 15px;">
-         <a href="/about" >Learn More about Gamestarter</a>
+            <div class="col s12 "  style="padding: 15px;">
+         <a style="color: #ff8f00; font-weight:400; " href="/about" >Learn More about Gamestarter</a>
           </div>
         </div> 
+
       </div>
     </div>
   </div>
 </div>
-
+  </div>
 <div class="container" id="quests">
   <div class="row">
-    <div class="col s12" style="padding: 40px 0;">
+    <div class="col s12 m12 l12" style="padding:10px 0" >
 
-    <div class="col s12" style="padding-bottom: 40px;" >
-    <a> <img class="responsive-img" src="http://placehold.it/1200x120"></a>
-    </div>
+
     
-      <h3> Start Questing Now! </h3>
+      <h5> Start Questing Now! </h5>
      
     </div>
+    <div class="section row">
     {{#each competitions}}
+    
     <div class="col s6">
-      <a  class="tooltipped" data-position="bottom" data-delay="300" data-tooltip="Click on a quest to start competing" href="/{{slug}}" ><img class="responsive-img" src="http://placehold.it/700x300"></a>
-      <h5>{{title}}</h5>
-      <p>Active Project</p>
-      <p>${{prize}}.00 USD</p>
-      <p>17/07/2015</p>
+
+          <div class="card small z-depth-0" >
+                  <div class="card-image "  href="/{{slug}}">
+                    <a href="http://localhost:3000/moscow-metro-dogs"><img  src="https://res.cloudinary.com/gamestarter/image/upload/v1437066521/Competition/Moscow_Metro_Dog_v01-01.jpg"></a>
+                  </div>
+                  <div class="card-content">
+                    <h6>{{title}}</h6>
+                      <p>fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
+                      
+                    <div class="fadeout"></div>
+                  </div>
+            <div class="card-action z-depth-0">
+              <a>Active Project</a>
+              <a>${{prize}}.00 USD</a>
+              <a>17/07/2015</a>
+            </div>
+          </div>
+
+
+      
     </div>
     {{/each}}
-    <div class="col s6">
-      <img class="responsive-img" src="http://placehold.it/700x300">
-      <h5>Moscow Metro Dogs</h5>
-      <p>Active Project</p>
-      <p>$300.00 USD</p>
-      <p>17/07/2015</p>
+
+{{#each competitions}}
+        <div class="col s6">
+
+          <div class="card small z-depth-0" >
+                  <div class="card-image "  href="/{{slug}}">
+                    <a href="http://localhost:3000/moscow-metro-dogs"><img  src="https://res.cloudinary.com/gamestarter/image/upload/v1437066521/Competition/Moscow_Metro_Dog_v01-01.jpg"></a>
+                  </div>
+                  <div class="card-content z-depth-0">
+                    <h6>{{title}}</h6>
+                      <p>fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
+                      
+                   <div class="fadeout"></div>
+                  </div>
+            <div class="card-action z-depth-0">
+              <a>Active Project</a>
+              <a>${{prize}}.00 USD</a>
+              <a>17/07/2015</a>
+            </div>
+          </div>
+
+
+      
     </div>
-    <div class="col s6">
-      <img class="responsive-img" src="http://placehold.it/700x300">
-      <h5>Moscow Metro Dogs</h5>
-      <p>Active Project</p>
-      <p>$300.00 USD</p>
-      <p>17/07/2015</p>
+    {{/each}}
+      
     </div>
-    <div class="col s6">
-      <img class="responsive-img" src="http://placehold.it/700x300">
-      <h5>Moscow Metro Dogs</h5>
-      <p>Active Project</p>
-      <p>$300.00 USD</p>
-      <p>17/07/2015</p>
+     {{#each competitions}}
+        <div class="col s6">
+
+          <div class="card small z-depth-0" >
+                  <div class="card-image "  href="/{{slug}}">
+                    <a href="http://localhost:3000/moscow-metro-dogs"><img  src="https://res.cloudinary.com/gamestarter/image/upload/v1437066521/Competition/Moscow_Metro_Dog_v01-01.jpg"></a>
+                  </div>
+                  <div class="card-content z-depth-0">
+                    <h6>{{title}}</h6>
+                      <p>fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
+                      <div class="fadeout"></div>
+                   
+                  </div>
+            <div class="card-action z-depth-0">
+              <a>Active Project</a>
+              <a>${{prize}}.00 USD</a>
+              <a>17/07/2015</a>
+            </div>
+          </div>
+
+
+      
     </div>
+    {{/each}}
+     {{#each competitions}}
+        <div class="col s6">
+
+          <div class="card small z-depth-0" >
+                  <div class="card-image "  href="/{{slug}}">
+                    <a href="http://localhost:3000/moscow-metro-dogs"><img  src="https://res.cloudinary.com/gamestarter/image/upload/v1437066521/Competition/Moscow_Metro_Dog_v01-01.jpg"></a>
+                  </div>
+                  <div class="card-content z-depth-0">
+                    <h6>{{title}}</h6>
+                      <p>fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
+                      
+                   <div class="fadeout"></div>
+                  </div>
+            <div class="card-action z-depth-0">
+              <a>Active Project</a>
+              <a>${{prize}}.00 USD</a>
+              <a>17/07/2015</a>
+            </div>
+          </div>
+
+
+      
+    </div>
+    {{/each}}
+
+
   </div>
 </div>
 
@@ -328,10 +437,39 @@
   <div class="section container">
     <div class="row">
       <div class="col s8">
+        <table>
+        <thead>
+          <tr>
+              <th data-field="id"></th>
+              <th data-field="name">Idea</th>
+              <th data-field="name">Votes</th>
+          </tr>
+        </thead>
+
+        <tbody>
         {{#each ideas}}
-        <a href="/{{competition}}/{{_id}}">{{title}}</a>
+          <tr>
+            <td>{{#if owner.username }}{{owner.username}}: {{/if}}</td>
+            <td><a href="/{{competition}}/{{_id}}">{{title}}</a></td>
+            <td>{{points}}</td>
+          </tr>
         {{/each}}
+        </tbody>
+      </table>
+          <div class="row">
+      <div class="col s6 offset-s3">
+       <ul class="pagination center-align">
+          <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+          <li class="active"><a href="#!">1</a></li>
+          <li class="waves-effect"><a href="#!">2</a></li>
+          <li class="waves-effect"><a href="#!">3</a></li>
+          <li class="waves-effect"><a href="#!">4</a></li>
+          <li class="waves-effect"><a href="#!">5</a></li>
+          <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+        </ul>
       </div>
+       </div>
+    </div>  
       <div class="col s3 gs-hints">
       <p>Have a browse through all the submitted ideas! If any grab your attention jump into the link where you can vote or leave an encouraging comment!</p>
       </div>
@@ -394,6 +532,7 @@
         <li>Brief</li>
         <li>Examples</li>
         <li>Submit</li>
+
       </ol>
     </div>
         <div class="col s3 gs-hints">
@@ -620,11 +759,11 @@
       <div class="container"> 
       <div class="col s12">
       <ul id="nav-mobile" class=" hide-on-med-and-down">
-        <li><a href="#prizes">Prizes</a></li>
-        <li><a href="#brief">Brief</a></li>
-        <li><a href="#examples">Examples</a></li>
-        <li><a href="#submissions">Submit</a></li>
-        <li class="right hide-on-med-and-down" style="padding-right: 5px;"><a href="">All Entries</a></li>
+        <li><a href="/moscow-metro-dogs/#prizes">Prizes</a></li>
+        <li><a href="/moscow-metro-dogs/#brief">Brief</a></li>
+        <li><a href="/moscow-metro-dogs/#examples">Examples</a></li>
+        <li><a href="/moscow-metro-dogs/#submissions">Submit</a></li>
+        <li class="right hide-on-med-and-down" style="padding-right: 5px;"><a href="/moscow-metro-dogs/entries">All Entries</a></li>
       </ul>
     </div>
     </div>
@@ -634,7 +773,7 @@
 <div class="section">
   <div class="row container">
     <div class="col s8">
-       <h4>{{ idea.title }}</h4>  
+        <h4><a href="/{{ competition.slug }}/entries"><i class="material-icons">keyboard_arrow_left</i></a> {{ idea.title }}</h4>  
          <p>{{ idea.description}}</p>  
           <hr>
          <p>There are currently no comments on your idea. Get people involved!</p>
@@ -895,45 +1034,70 @@
   </div>
 
   <div class="container">
-    <div class="row">
-      <div class="col s12" style="padding-top: 10px; padding-bottom: 30px;">
-       <p class="flow-text">You currently have <a href="/profile">XX</a> GS Tokens. Choose from the Catalogue below to redeem your Items!</p>
+    <div class="row" style="padding: 40px 0 0 0;">
+              <div class="col s3 right-align">
+        <h5>Categories</h5>
+        <ul>
+        <li>All</li>
+        <li>Consoles</li>
+        <li>Games</li>
+        <li>Vouchers</li>
+        <li>Support Us</li>
+        </ul>
+          <hr>
+            <p>You currently have <a href="/profile">XX</a> GS Tokens. Choose from the Catalogue below to redeem your Items!</p>
        <p><a href="/about">Learn more about GS Tokens</a></p>
       </div>
-      <div class="col s6">
-        <img class="responsive-img" src="http://placehold.it/700x300">
-        <h5>Xbox One</h5>
-        <p>3500 GS Tokens</p>
-        <p>Value $1000.00 USD</p>
-        <p>Hero Rank 4</p>
-      </div>
-      <div class="col s6">
-        <img class="responsive-img" src="http://placehold.it/700x300">
-        <h5>PlayStation 4</h5>
-        <p>3500 GS Tokens</p>
-        <p>Value $1000.00 USD</p>
-        <p>Hero Rank 4</p>
-      </div>
-      <div class="col s6">
-        <img class="responsive-img" src="http://placehold.it/700x300">
-        <h5>Steam Gift Voucher</h5>
-        <p>1200 GS Tokens</p>
-        <p>Value $200.00 USD</p>
-        <p>Hero Rank 2</p>
-      </div>
-      <div class="col s6">
-        <img class="responsive-img" src="http://placehold.it/700x300">
-        <h5>Plunge Tshirt</h5>
-        <p>200 GS Tokens</p>
-        <p>Value $50.00 USD</p>
-        <p>Hero Rank 1</p>
-      </div>
+      <div class="col s9">
+        <div class="col s4">
+          <img class="responsive-img" src="http://placehold.it/200x200">
+          <h5>Xbox One</h5>
+          <p>3500 GS Tokens</p>
+          <p>Value $1000.00 USD</p>
+          <p>Hero Rank 4</p>
+        </div>
+        <div class="col s4">
+          <img class="responsive-img" src="http://placehold.it/200x200">
+          <h5>PlayStation 4</h5>
+          <p>3500 GS Tokens</p>
+          <p>Value $1000.00 USD</p>
+          <p>Hero Rank 4</p>
+        </div>
+        <div class="col s4">
+          <img class="responsive-img" src="http://placehold.it/200x200">
+          <h5>Steam Gift Voucher</h5>
+          <p>1200 GS Tokens</p>
+          <p>Value $200.00 USD</p>
+          <p>Hero Rank 2</p>
+        </div>
+        <div class="col s4">
+          <img class="responsive-img" src="http://placehold.it/200x200">
+          <h5>Plunge Tshirt</h5>
+          <p>200 GS Tokens</p>
+          <p>Value $50.00 USD</p>
+          <p>Hero Rank 1</p>
+        </div>
+        <div class="col s4">
+          <img class="responsive-img" src="http://placehold.it/200x200">
+          <h5>Plunge Tshirt</h5>
+          <p>200 GS Tokens</p>
+          <p>Value $50.00 USD</p>
+          <p>Hero Rank 1</p>
+        </div>
+        <div class="col s4">
+          <img class="responsive-img" src="http://placehold.it/200x200">
+          <h5>Plunge Tshirt</h5>
+          <p>200 GS Tokens</p>
+          <p>Value $50.00 USD</p>
+          <p>Hero Rank 1</p>
+        </div>
+      </div>  
     </div>
   </div>
 </template>
 
 <template name="aboutMenu">
-<div class="navbar-fixed">
+<div class="navbar">
     <nav class=" blue lighten-3">
     <div class="nav-wrapper">
       <div class="container"> 
@@ -986,10 +1150,7 @@
             <div class="col s3 right">
                <img class="responsive-img" src="http://placehold.it/300x300">
             </div>
-          </div>
-
-          
-          
+          </div>   
       </div>
     </div>
   </div>
@@ -1002,11 +1163,20 @@
 
     <div class="section" id="competitions">
     <div class="container row">
-      <div class="col s12">
-          <h5>{{title}}</h5>
-          <p>Bacon ipsum dolor amet leberkas meatloaf turkey porchetta frankfurter. Leberkas landjaeger short loin rump shoulder beef frankfurter sirloin chuck shank. Turducken kielbasa beef shank ham pork pastrami turkey jerky alcatra. Chicken frankfurter porchetta alcatra leberkas, doner fatback kielbasa shankle.</p>
+      <div class="col s12 about-font">
+          <h3>{{title}}</h3>
           <p>
-          Tongue bacon shank meatball capicola hamburger t-bone alcatra landjaeger. Beef pig chicken venison. Filet mignon tri-tip boudin, brisket corned beef doner pork loin strip steak t-bone pork belly. Bresaola ground round jerky boudin meatbal.</p>
+          Story Quests  - full ideation from A to B
+          </p>
+          <p>
+          Side quests  -  smaller mission within a larger storyline. Done by game creators whom have come up with the concept and are looking for more level or character ideas.
+          </p>
+          <p>
+          Completing quests can earn you rewards including loot - cash prizes or cool gear, tokens and experience points 
+          </p>
+          <p>
+          GameStarter is still leveling up itself. Can expect design, development and testing phases as we continue on our own quest.
+          </p>
       </div>
     </div>
   </div>
@@ -1019,12 +1189,20 @@
 
 
     <div class="section" id="tokens">
-    <div class="container row">
-      <div class="col s12">
-          <h5>{{title}}</h5>
-          <p>Bacon ipsum dolor amet leberkas meatloaf turkey porchetta frankfurter. Leberkas landjaeger short loin rump shoulder beef frankfurter sirloin chuck shank. Turducken kielbasa beef shank ham pork pastrami turkey jerky alcatra. Chicken frankfurter porchetta alcatra leberkas, doner fatback kielbasa shankle.</p>
+      <div class="container row">
+        <div class="col s12 about-font">
+          <h3>{{title}}</h3>
           <p>
-          Tongue bacon shank meatball capicola hamburger t-bone alcatra landjaeger. Beef pig chicken venison. Filet mignon tri-tip boudin, brisket corned beef doner pork loin strip steak t-bone pork belly. Bresaola ground round jerky boudin meatball. Short ribs tongue strip steak frankfurter pancetta beef tail cupim alcatra cow spare ribs turducken andouille. Pig ball tip meatloaf frankfurter fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
+          When you finish actions you earn token or win quests you receive GameStarter’s in-game platform currency.
+          </p>
+          <p>
+          This can be used to buy <br>
+          Monthly loot <br>
+          Costumes for your followers <br>
+          </p>
+          <p>
+          Completing quests can reward you with Loot
+          </p>
       </div>
     </div>
   </div>
@@ -1037,11 +1215,17 @@
 
   <div class="section" id="hero">
     <div class="container row">
-      <div class="col s12">
-          <h5>{{title}}</h5>
-          <p>Bacon ipsum dolor amet leberkas meatloaf turkey porchetta frankfurter. Leberkas landjaeger short loin rump shoulder beef frankfurter sirloin chuck shank. Turducken kielbasa beef shank ham pork pastrami turkey jerky alcatra. Chicken frankfurter porchetta alcatra leberkas, doner fatback kielbasa shankle.</p>
+      <div class="col s12 about-font">
+          <h3>{{title}}</h3>
           <p>
-          Tongue bacon shank meatball capicola hamburger t-bone alcatra landjaeger. Beef pig chicken venison. Filet mignon tri-tip boudin, brisket corned beef doner pork loin strip steak t-bone pork belly. Bresaola ground round jerky boudin meatball. Short ribs tongue strip steak frankfurter pancetta beef tail cupim alcatra cow spare ribs turducken andouille. Pig ball tip meatloaf frankfurter fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
+          Completing actions and successfully completing quests earns you experience points. 
+          </p>
+          <p>
+          Level up and your submissions, comments and votes start to get stronger. This is to make sure our communities’ experts stand out. 
+          </p>
+          <p>
+          Stronger heros also attract GS Noobs. Use your tokens to buy them new costumes and accessories to show how powerful you are.
+          </p>
       </div>
     </div>
   </div>
@@ -1053,11 +1237,9 @@
 
     <div class="section" id="winning">
     <div class="container row">
-      <div class="col s12">
+      <div class="col s12 about-font">
           <h5>{{title}}</h5>
-          <p>Bacon ipsum dolor amet leberkas meatloaf turkey porchetta frankfurter. Leberkas landjaeger short loin rump shoulder beef frankfurter sirloin chuck shank. Turducken kielbasa beef shank ham pork pastrami turkey jerky alcatra. Chicken frankfurter porchetta alcatra leberkas, doner fatback kielbasa shankle.</p>
-          <p>
-          Tongue bacon shank meatball capicola hamburger t-bone alcatra landjaeger. Beef pig chicken venison. Filet mignon tri-tip boudin, brisket corned beef doner pork loin strip steak t-bone pork belly. Bresaola ground round jerky boudin meatball. Short ribs tongue strip steak frankfurter pancetta beef tail cupim alcatra cow spare ribs turducken andouille. Pig ball tip meatloaf frankfurter fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
+          <p>Bacon ipsum dolor amet leberkas meatloaf turkey porchetta frankfurter. Leberkas landjaeger short loin rump shoulder beef frankfurter sirloin chuck shank. Turducken </p>
       </div>
     </div>
   </div>
@@ -1069,11 +1251,9 @@
 
 <div class="section" id="team">
     <div class="container row">
-      <div class="col s12">
+      <div class="col s12 about-font">
           <h5>{{title}}</h5>
           <p>Bacon ipsum dolor amet leberkas meatloaf turkey porchetta frankfurter. Leberkas landjaeger short loin rump shoulder beef frankfurter sirloin chuck shank. Turducken kielbasa beef shank ham pork pastrami turkey jerky alcatra. Chicken frankfurter porchetta alcatra leberkas, doner fatback kielbasa shankle.</p>
-          <p>
-          Tongue bacon shank meatball capicola hamburger t-bone alcatra landjaeger. Beef pig chicken venison. Filet mignon tri-tip boudin, brisket corned beef doner pork loin strip steak t-bone pork belly. Bresaola ground round jerky boudin meatball. Short ribs tongue strip steak frankfurter pancetta beef tail cupim alcatra cow spare ribs turducken andouille. Pig ball tip meatloaf frankfurter fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
       </div>
     </div>
   </div>
@@ -1238,11 +1418,93 @@
 
   <div class="container">
     <div class="row">
-      <div class="col s12" style="padding-top: 20px; padding-bottom: 20px;">
-        <h4>Featured Quests</h4>
+          <div class="col s12" style="padding-top: 20px; padding-bottom: 20px;">
+            <h5>Featured Quests</h5>
+          </div>
+      
+
+
+        <div class="col s6">
+
+          <div class="card small z-depth-0" >
+                  <div class="card-image"  href="/{{slug}}">
+                    <a href="http://localhost:3000/moscow-metro-dogs"><img  src="https://res.cloudinary.com/gamestarter/image/upload/v1437066521/Competition/Moscow_Metro_Dog_v01-01.jpg"></a>
+                  </div>
+                  <div class="card-content z-depth-0">
+                    <h6>Moscow Metro Dogs</h6>
+                      <p>fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
+                      
+                   <div class="fadeout"></div>
+                  </div>
+            <div class="card-action z-depth-0">
+              <a>Active Project</a>
+              <a>17/07/2015</a>
+              <a>${{prize}}.00 USD</a>
+            </div>
+          </div>
+
+
+      
+    </div>
+
+
+
+
+        <div class="col s6">
+
+          <div class="card small z-depth-0" >
+                  <div class="card-image "  href="/{{slug}}">
+                    <a href="http://localhost:3000/moscow-metro-dogs"><img  src="https://res.cloudinary.com/gamestarter/image/upload/v1437066521/Competition/Moscow_Metro_Dog_v01-01.jpg"></a>
+                  </div>
+                  <div class="card-content z-depth-0">
+                    <h6>Moscow Metro Dogs</h6>
+                      <p>fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
+                      <div class="fadeout"></div>
+                   
+                  </div>
+            <div class="card-action z-depth-0">
+              <a>Active Project</a>
+              <a>${{prize}}.00 USD</a>
+              <a>17/07/2015</a>
+            </div>
+          </div>
+
+
+      
+    </div>
+
+
+
+
+      <div class="col s12 m12" style="padding-top: 20px; padding-bottom: 20px;">
+        <h5>Collecting Ideas</h5>
       </div>
-      <div class="col s6">
-        <img class="responsive-img" src="http://placehold.it/700x300">
+      <div class="col s4 m4">
+
+
+          
+              <div class="card small z-depth-0" >
+                  <div class="card-image"  href="/{{slug}}">
+                    <a href="http://localhost:3000/moscow-metro-dogs"><img  src="https://res.cloudinary.com/gamestarter/image/upload/v1437066521/Competition/Moscow_Metro_Dog_v01-01.jpg"></a>
+                  </div>
+                  <div class="card-content z-depth-0">
+                    <h6>Moscow Metro Dogs</h6>
+                      <p>fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.fatback brisket. Fatback pork alcatra, doner porchetta turducken cow ham hock short loin spare ribs meatloaf pig frankfurter.</p>
+                      
+                   <div class="fadeout"></div>
+                  </div>
+            <div class="card-action z-depth-0">
+              <a>Active Project</a>
+              <a>17/07/2015</a>
+              <a>${{prize}}.00 USD</a>
+            </div>
+          </div>
+
+
+
+      </div>
+      <div class="col s4 m4">
+        <img class="responsive-img" src="http://placehold.it/700x400">
         <div class="gs-quest-box">
           <h5>Moscow Metro Dogs</h5>
           <p>Active Project</p>
@@ -1250,8 +1512,8 @@
           <p>17/07/2015</p>
         </div>
       </div>
-      <div class="col s6">
-        <img class="responsive-img" src="http://placehold.it/700x300">
+      <div class="col s4 m4">
+        <img class="responsive-img" src="http://placehold.it/700x400">
         <div class="gs-quest-box">
           <h5>Moscow Metro Dogs</h5>
           <p>Active Project</p>
@@ -1261,38 +1523,7 @@
       </div>
 
       <div class="col s12" style="padding-top: 20px; padding-bottom: 20px;">
-        <h4>Collecting Ideas</h4>
-      </div>
-      <div class="col s4">
-        <img class="responsive-img" src="http://placehold.it/700x400">
-        <div class="gs-quest-box">
-          <h5>Moscow Metro Dogs</h5>
-          <p>Active Project</p>
-          <p>$300.00 USD</p>
-          <p>17/07/2015</p>
-        </div>
-      </div>
-      <div class="col s4">
-        <img class="responsive-img" src="http://placehold.it/700x400">
-        <div class="gs-quest-box">
-          <h5>Moscow Metro Dogs</h5>
-          <p>Active Project</p>
-          <p>$300.00 USD</p>
-          <p>17/07/2015</p>
-        </div>
-      </div>
-      <div class="col s4">
-        <img class="responsive-img" src="http://placehold.it/700x400">
-        <div class="gs-quest-box">
-          <h5>Moscow Metro Dogs</h5>
-          <p>Active Project</p>
-          <p>$300.00 USD</p>
-          <p>17/07/2015</p>
-        </div>
-      </div>
-
-      <div class="col s12" style="padding-top: 20px; padding-bottom: 20px;">
-        <h4>Searching for Designs</h4>
+        <h5>Searching for Designs</h5>
       </div>
       <div class="col s4">
         <img class="responsive-img" src="http://placehold.it/700x400">
@@ -1322,11 +1553,15 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
+
+  
 </template>
 
 
+<template name="press">
 
+</template>
 
 <template name="adminMenu">
   <style type="text/css">

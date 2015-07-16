@@ -5,6 +5,50 @@
     flex-direction: column;
   }
 
+@media screen and (max-width: 600px) {
+    h1 {
+      font-size: 20pt;  
+    }
+}
+
+
+@media screen and (max-width: 992px) {
+    h1 {
+     font-size: 15pt;
+    }
+    .splash-hero{
+      height:300px;
+    }
+
+    .btn-large-splash{
+      width: 180px;
+      height:40px; 
+      padding: 32px 0 0; 
+    }
+}
+
+
+@media screen and (min-width: 992px) {
+    h1 {
+     font-size: 40pt;
+    }
+
+    .splash-hero{
+      height:550px;
+    }
+    .btn-large-splash{
+      width: 300px;
+      height:100px;
+      padding: 32px 0 0; 
+    }
+
+}
+
+.page-footer {
+  height: 200px;
+}
+
+
   main {
     flex: 1 0 auto;
   }
@@ -65,12 +109,23 @@
      color: #000;
    }
 
+
    .splash-hero {
-    padding: 145px 0 15px;
+    padding: 80px 0 0;
+
+
    }
 
+    .banner{
+
+      border-color: lightgray;
+      border-bottom-style: solid;
+      border-bottom-width: thin;
+    }
+
    .Competition-hero {
-    padding: 120px 0;
+    padding: 150px 0;
+
    }
 
    nav.submenu ul a {
@@ -104,6 +159,14 @@
   background-color: #eeeeee;
 }
 
+h1{
+  color: #000;
+
+}
+
+h5{
+  color: #212121;
+}
 /*.gs-speech-bubble:before {
   content: ' ';
   position: absolute;
@@ -156,6 +219,72 @@
 .about-font {
   font-weight: 400;
   font-size: 22px;
+}
 
+img.responsive-img {
 
 }
+
+.card {
+    border-radius:10px;
+    border-color: lightgray;
+    border-style: solid;
+    border-width: thin;
+    margin: 0;
+}
+
+.card .card-image img {
+  width: 100%;
+}
+
+.card .card-content {
+  font-size: 11pt;
+  padding: 10px 15px 0 15px;
+overflow: none;
+}
+
+.card .card-action {
+  padding:10px;
+  border-top: 1px solid;
+  border-color: lightgray;
+  font-size: 11pt;
+  font-color: #ffab40;
+  text-align: center;
+  background-color: #fff;
+}
+
+
+.card .card-content p {
+  height: 100px;
+  font-size: 8pt;
+  overflow: none;
+  font-weight: 400;
+  color: #757575; 
+}
+
+
+.card .card-content h6 {
+  font-size: 9pt;
+  font-weight: 500;
+  font: bold;
+
+}
+
+.card .card-action a {
+  
+  font-size: 8pt;
+  font-weight: 400;
+  color: #ffab40; 
+
+  transition: color .7s ease;
+}
+
+.fadeout {
+    position: relative; 
+    bottom: 6em;
+    height: 4em;
+    background: -webkit-linear-gradient(
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 100%
+    ); 
+} 

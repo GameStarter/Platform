@@ -274,6 +274,15 @@ Router.route('/test', function () {
   this.render('test');
 });
 
+Router.route('/press', function () {
+  this.layout('ApplicationLayout', {
+    data: {
+      title: 'Press Release'
+    }
+  });
+  this.render('press');
+});
+
 
 Router.route('/:competition/entries', function () {
 
