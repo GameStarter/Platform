@@ -1,46 +1,56 @@
 /* CSS declarations go here */
-  body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
 @media screen and (max-width: 600px) {
-    h1 {
-      font-size: 20pt;  
-    }
+  h1 {
+    font-size: 20pt;  
+  }
+ .splash-hero {
+  height:300px;
+}
 }
 
 
 @media screen and (max-width: 992px) {
-    h1 {
-     font-size: 15pt;
-    }
-    .splash-hero{
-      height:300px;
-    }
+  h1 {
+    font-size: 15pt;
+  }
 
-    .btn-large-splash{
-      width: 180px;
-      height:40px; 
-      padding: 32px 0 0; 
-    }
+  .splash-hero{
+    height:250px;
+  }
+
+  .btn-large-splash{
+    width: 180px;
+    height:40px; 
+    padding: px 0 0; 
+  }
+  .splash-hero {
+ height:300px;
+}
 }
 
 
 @media screen and (min-width: 992px) {
-    h1 {
-     font-size: 40pt;
-    }
+  h1 {
+    font-size: 40pt;
+  }
 
-    .splash-hero{
-      height:550px;
-    }
-    .btn-large-splash{
-      width: 300px;
-      height:100px;
-      padding: 32px 0 0; 
-    }
+  .splash-hero{
+    height:550px;
+  }
+  .btn-large-splash{
+    width: 300px;
+    height:100px;
+    padding: 32px 0 0; 
+  }
+  .splash-hero {
+ height:450px;
+}
 
 }
 
@@ -49,90 +59,92 @@
 }
 
 
-  main {
-    flex: 1 0 auto;
-  }
+main {
+  flex: 1 0 auto;
+}
 
-  .tab{
-  	font-size: 10pt;
-  }
+.tab{
+	font-size: 10pt;
+}
 
-  .large{
-    font-size: 14pt;
-  }
+.large{
+  font-size: 14pt;
+}
 
-  .white-border{
-    border-style: solid;
-    border-width: 5px;
-    border-color: white;
-  }
-  .container{
-    width:55%;
-  }
+.white-border{
+  border-style: solid;
+  border-width: 5px;
+  border-color: white;
+}
+.container{
+  width:45%;
+}
 
-  .border-top{
-    border-top-style: solid;
-    border-top-color: #ff6d00;
-  }
+.border-top{
+  border-top-style: solid;
+  border-top-color: #ff6d00;
+}
 
-  .border-bottom{
-    border-bottom-style: solid;
-    border-bottom-color: #ccc;
-    border-bottom-width: 1px;
-  }
+.border-bottom{
+  border-bottom-style: solid;
+  border-bottom-color: #ccc;
+  border-bottom-width: 1px;
+}
 
-  /* label color */
-   .input-field label {
-     color: #000;
-   }
-   /* label focus color */
-   .input-field input[type=text]:focus + label {
-     color: #000;
-   }
-   /* label underline focus color */
-   .input-field input[type=text]:focus {
-     border-bottom: 1px solid #000;
-     box-shadow: 0 1px 0 0 #000;
-   }
-   /* valid color */
-   .input-field input[type=text].valid {
-     border-bottom: 1px solid #000;
-     box-shadow: 0 1px 0 0 #000;
-   }
-   /* invalid color */
-   .input-field input[type=text].invalid {
-     border-bottom: 1px solid #000;
-     box-shadow: 0 1px 0 0 #000;
-   }
-   /* icon prefix focus color */
-   .input-field .prefix.active {
-     color: #000;
-   }
-
-
-   .splash-hero {
-    padding: 80px 0 0;
+/* label color */
+.input-field label {
+  color: #000;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: #000;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
+/* valid color */
+.input-field input[type=text].valid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #000;
+}
 
 
-   }
+.splash-hero {
+  padding: 80px 0 0;
+}
 
-    .banner{
+.banner {
+  border-color: lightgray;
+  border-bottom-style: solid;
+  border-bottom-width: thin;
+}
 
-      border-color: lightgray;
-      border-bottom-style: solid;
-      border-bottom-width: thin;
-    }
+.Competition-hero {
+  padding: 80px 0;
+}
 
-   .Competition-hero {
-    padding: 150px 0;
+.Competition-hero h1 {
+  font-weight: 500px;
+}
 
-   }
 
-   nav.submenu ul a {
+
+
+nav.submenu ul a {
   padding: 0 35px;
 }
 
- 
 
 .row .gs-hints {
   margin-top: 43px;
@@ -167,6 +179,7 @@ h1{
 h5{
   color: #212121;
 }
+
 /*.gs-speech-bubble:before {
   content: ' ';
   position: absolute;

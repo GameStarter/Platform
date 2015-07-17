@@ -1,7 +1,7 @@
 <!-- This is the page structure. The main layout goes inside the body tags. -->
 <head>
   <title>gamestarter</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -10,70 +10,65 @@
 
 <!-- This template is for the dropdown Menu -->
 <template name="dropdownMenu">
-        <ul class="right hide-on-med-and-down">
-                {{#if currentUser}}
-                <li><a class="logout black-text">Logout</a></li>
-                {{else}}
-                <li><a class="black-text modal-trigger" href="/login">Login</a></li>
-                {{/if}}
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{currentUser.email}} <i class="black-text material-icons right">arrow_drop_down</i></a></li>
-        </ul>
+  <ul class="right hide-on-med-and-down">
+    {{#if currentUser}}
+    <li><a class="logout black-text">Logout</a></li>
+    {{else}}
+    <li><a class="black-text modal-trigger" href="/login">Login</a></li>
+    {{/if}}
+    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{currentUser.email}} <i class="black-text material-icons right">arrow_drop_down</i></a></li>
+  </ul>
 </template>
 
 
 <!-- This is where the whole layout goes -->
 <template name="ApplicationLayout">
-
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="/admin/users">Users</a></li>
-  <li><a href="/admin/competitions">Competitions</a></li>
-</ul>
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="/admin/users">Users</a></li>
+    <li><a href="/admin/competitions">Competitions</a></li>
+  </ul>
   <!-- The login model I've just added in temporarily -->
   <div id="modal1" class="modal">  
     <form class="login">
-    <div class="modal-content">
-      <h4>Login</h4>
-
-      <input type="email" name="email">
-      <input type="password" name="password">
-
-    </div>
-    <div class="modal-footer">
-      <input type="submit" class=" modal-action modal-close waves-effect waves-green btn-flat" value="Log in">
-    </div>
-      </form>
+      <div class="modal-content">
+        <h4>Login</h4>
+        <input type="email" name="email">
+        <input type="password" name="password">
+      </div>
+      <div class="modal-footer">
+        <input type="submit" class=" modal-action modal-close waves-effect waves-green btn-flat" value="Log in">
+      </div>
+    </form>
   </div>
 
   <header>
-  <div id="gs-navbar">
-    <nav class="z-depth-0 border-bottom">
-      <div class="nav-wrapper white">
-
-        <ul id="nav-mobile" class="left hide-on-med-and-down">
-
-          <li><a href="/" style="padding: 15px;"><img class="left responsive-img-nav" width="200px" src="http://i.imgur.com/GKyEzxw.jpg"></a></li>
-          <li><a class="black-text " href="/store">Store</a></li>
-          <li><a class="black-text " href="/quests">Quests</a></li>
-          <li><a class="black-text " href="/about">About</a></li>
-        {{#if currentUser.profile.admin}}<li><a class="black-text " href="/admin">Admin</a></li>{{/if}}
-        </ul>
+    <div id="gs-navbar">
+      <nav class="z-depth-0 border-bottom">
+        <div class="nav-wrapper white">
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="/" style="padding: 20px;"><img class="left responsive-img-nav" width="200px" src="http://i.imgur.com/GKyEzxw.jpg"></a></li>
+            <li><a class="black-text " href="/store">Store</a></li>
+            <li><a class="black-text " href="/quests">Quests</a></li>
+            <li><a class="black-text " href="/about">About</a></li>
+            {{#if currentUser.profile.admin}}<li><a class="black-text " href="/admin">Admin</a></li>{{/if}}
+          </ul>
           <!-- This loads the dropdownMenu template -->
           {{> dropdownMenu}}        
           <!-- this isn't used atm. But if you need to check if user is currently logged in use this -->
           {{#if currentUser}}
-        {{/if}}
-      </div>
-    </nav>
-  </div>
+          {{/if}}
+        </div>
+      </nav>
+    </div>
   </header>
-      <!-- this is where any templates go inside this layout -->
-      <main>
-      {{> yield}}
-      </main>
 
-      <!-- The fricking footer -->
-<footer class="page-footer light-blue darken-3">
-        
+  <!-- this is where any templates go inside this layout -->
+  <main>
+    {{> yield}}
+  </main>
+
+  <!-- The fricking footer -->
+  <footer class="page-footer light-blue darken-3">        
             <div class="row">
                   <div class="col l6 offset-l3 s12">
                       
@@ -488,10 +483,10 @@
 	<div class="row">
     <div class="col s12">
     <div class="col s8 m8">
-    <h1 class="white-text">{{ competition.title }}</h1>
-      <p class="white-text">Created by HamiP</p>
-      <h4 class="white-text">${{ competition.prize }} USD Prize</h4>
-      <p class="white-text">July 22 - August 01</p>
+    <h1>{{ competition.title }}</h1>
+      <p>Created by HamiP</p>
+      <h4>${{ competition.prize }} USD Prize</h4>
+      <p>July 22 - August 01</p>
     </div>
     <div class="col s4" style="padding: 60px 30px;">
       
@@ -617,15 +612,15 @@
 
 <template name="test">
   <!-- Data send down includes: {{ competition.owner/title/prize/brief/slug }} -->
-  <div class="section blue lighten-4 Competition-hero">
+  <div class="section  Competition-hero col s12 " style="top: 0px; left: 0px; z-index: 100; opacity: 1;  display: block; background-size:100%; background-image: url(http://res.cloudinary.com/gamestarter/image/upload/o_40/v1436999623/Assets/heroes/web_banner_large.png);">
     <div class="container">
       <div class="row">
         <div class="col s12">
           <div class="col s8 m8">
-            <h1 class="white-text">Test Page</h1>
-            <p class="white-text">Created by HamiP</p>
-            <h4 class="white-text">$300 USD Prize</h4>
-            <p class="white-text">July 22 - August 01</p>
+            <h1>Moscow Metro Dogs</h1>
+            <p>Created by HamiP</p>
+            <h4 >$300 USD Prize</h4>
+            <p>July 22 - August 01</p>
           </div>
           <div class="col s4" style="padding: 60px 30px;">
             <div style="float: right; text-align: center;">
@@ -659,7 +654,7 @@
       <div class="col s8">
         <div class="section" id="prizes">
           <h5>Prizes</h5>
-          <p class="hide gs-hint-content">These are the list of Awards you can win! Not only can you win cash, but you can also win <a href="/About">GameStarter Tokens</a> which you can purchase all sort of awesome prizes with!</p>
+          <p class="hide gs-hint-content">These are the prizes you can win by contributing to this quest! You can win cash or <a href="/About">GameStarter Tokens</a> which you can purchase all sort of awesome prizes with!</p>
           <ol>
             <li>Prizes</li>
             <li>Brief</li>
