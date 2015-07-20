@@ -111,10 +111,61 @@ main {
   font-size: 12px 
 }
 
+.competition-content  label{
+  font-size: 12px; 
+  font-weight: 400;
+  font-color: #fff ;
+}
+
+.input-field label {
+  color: #9e9e9e !important;
+}
+
+
+.competition-content  h5{
+  font-size: 20px 
+}
+
 .competition-sub {
   border-top-style: solid;
   border-top-color: #ccc;
   border-top-width: 1px;
+}
+
+.competition-sub a {
+  color: #9e9e9e;
+}
+
+.competition-sub a:hover {
+  color: #ffa726;
+}
+
+.materialize-textarea {
+  overflow-y: hidden;
+  padding: 7px 0 0;
+  resize: none;
+  min-height: none;
+  border:none;
+
+}
+
+textarea.materialize-textarea {
+  overflow-y: hidden;
+  padding: 5px 0;
+  resize: none;
+  min-height: 5px;
+  transition: all .6s;
+  border-bottom: 1px solid #ccc;
+}
+
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #ffa726;
+  box-shadow: 0 1px 0 0 #ffa726;
+}
+
+.collapsible-header {
+    border:none;
+    border-bottom: 1px solid #ccc; 
 }
 
 td, th {

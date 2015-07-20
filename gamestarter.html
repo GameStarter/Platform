@@ -172,6 +172,12 @@
      edge: 'right'
   });
 
+
+  $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
   // Initialize collapsible (uncomment the line below if you use the dropdown variation)
   //$('.collapsible').collapsible();
 
@@ -221,22 +227,22 @@
         });
       };
 
-      $('.gs-hint-box').width($('.gs-hint-box').parent().width());
-      $('.gs-hint-box').pushpin({
-        top: $('.submenu').offset().top + $('.submenu').outerHeight(true),
-        offset: $('.submenu').outerHeight()
-      });
+      // $('.gs-hint-box').width($('.gs-hint-box').parent().width());
+      // $('.gs-hint-box').pushpin({
+      //   top: $('.submenu').offset().top + $('.submenu').outerHeight(true),
+      //   offset: $('.submenu').outerHeight()
+      // });
     };
   });
 
-  var windowHeight = $(window).height();
-  var scrollFireOffset = windowHeight - $('.submenu').outerHeight(true);
+  // var windowHeight = $(window).height();
+  // var scrollFireOffset = windowHeight - $('.submenu').outerHeight(true);
 
-  var options = [
-    {selector: '#prizes', offset: windowHeight, callback: '$(".gs-speech-bubble p").html($("#prizes .gs-hint-content").html())' },
-    {selector: '#brief', offset: windowHeight, callback: '$(".gs-speech-bubble p").html($("#brief .gs-hint-content").html())' }
-  ];
-  Materialize.scrollFire(options);
+  // var options = [
+  //   {selector: '#prizes', offset: windowHeight, callback: '$(".gs-speech-bubble p").html($("#prizes .gs-hint-content").html())' },
+  //   {selector: '#brief', offset: windowHeight, callback: '$(".gs-speech-bubble p").html($("#brief .gs-hint-content").html())' }
+  // ];
+  // Materialize.scrollFire(options);
 
   </script>
 </template>
@@ -744,47 +750,74 @@
           <p class="left-align">These dogs are believed to able to determine their routes via an ability to judge the length of time spent on the train in between station /time intervals
           Recognition of the place names announced over their train's loudspeaker
           The scents of particular stations</p>
+          <h5>Objective</h5>
+          <div class="competition-sub">
           <p class="left-align">The objective is to crowdsource GameStarter’s first game from ideation to completion. Moscow Metro Dogs has been a game I have been wanting to do for a while and thought it  would be the perfect candidate.</p>
           <p class="left-align">Submissions are for a smartphone game
            Keep your ideas simple. We won’t be able to build a MMO or Real Time Strategy Game
            Keep submission down to 400 characters
            Be creative with genre 
            Set in Moscow so incorporate key ideas</p>
-          <p class="left-align">https://en.wikipedia.org/wiki/Street_dogs_in_Moscow#Metro_dogs
-           https://en.wikipedia.org/wiki/Malchik
-          http://www.newyorker.com/culture/culture-desk/moscows-metro-dogs</p>
-          <p class="left-align">The Ideation Level will be worth $300. This is the first project on GameStarter so total project worth, number of levels or sequence of levels is yet to be decided </p>
+           </div>
+           <h5>Brief</h5>
+          <div class="competition-sub">
+          <p class="left-align"><a href="https://en.wikipedia.org/wiki/Street_dogs_in_Moscow#Metro_dogs
+           https://en.wikipedia.org/wiki/Malchik">https://en.wikipedia.org/wiki/Street_dogs_in_Moscow#Metro_dogs
+           https://en.wikipedia.org/wiki/Malchik</a>
+           <a href="http://www.newyorker.com/culture/culture-desk/moscows-metro-dogs">
+          http://www.newyorker.com/culture/culture-desk/moscows-metro-dogs
+          </a></p>
+          </div>
         </div>
         </div>
         <div class="section" id="examples">
           <h5>Examples</h5>
+          <div class="competition-sub">
           <p class="hide gs-hint-content">Those are some examples</p>
+              <ul class="collapsible z-depth-0" data-collapsible="accordion">
+                <li>
+                  <div class="collapsible-header">First</div>
+                  <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                </li>
+                <li>
+                  <div class="collapsible-header">Second</div>
+                  <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                </li>
+                <li>
+                  <div class="collapsible-header">Third</div>
+                  <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                </li>
+              </ul>
+              </div>
         </div>
+
+
+
         <div class="section" id="submissions">
           <p class="hide gs-hint-content">This is the submission form, Write down your awesome 500 word Idea and be in the chance to win $300.00 USD!!</p>
+
+
           <div id="enter" class="scrollspy">
             <form class="createIdea">
               <h5 class="black-text">Submit your awesome idea for a chance to win ${{competition.prize}}!</h5>
               <div class="row">
-                <br><br>
                 <div class="input-field col s12">
-                  <i class="material-icons prefix">wb_incandescent</i>
                   <textarea id="title" class="materialize-textarea" length="150"></textarea>
                    <label for="title">Idea</label>
                 </div>
               </div>
-              <div class="row">
+              <div class="row" style="margin-bottom: 0px;">
                 <div class="input-field col s12">
-                  <i class="material-icons prefix">subject</i>
                   <textarea id="description" class="materialize-textarea" length="1000"></textarea>
                   <label for="description">Description</label>
                 </div>
               </div>
-              <input class="btn-large orange accent-4" type="submit" value="Enter!">
+              <input class="btn-large orange accent-4 center" type="submit" value="Enter!">
             </form>
           </div>
         </div>
       </div>
+
       <div class="col s3">
         <div class="gs-hint-box">
           <div class="gs-speech-bubble">
