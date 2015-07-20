@@ -49,21 +49,40 @@ body {
     padding: 32px 0 0; 
   }
   .competition-hero {
- height:450px;
+ height:540px;
+
 }
 
 
 .competition-hero p {
-  font-size: 6px;
+  font-size: 12px;
 }
 
+.competition-hero h4 {
+  font-size: 25px;
+  font-style: bold;
+  text-transform: uppercase;
 
+}
+
+.competition-hero h5 {
+  font-size: 18px;
+  font-style: bold;
+  text-transform: uppercase;
+
+}
+
+.info-col {
+  border-top-style: solid;
+  border-top-color: #ccc;
+  border-top-width: 1px;
 }
 
 .page-footer {
   height: 200px;
 }
 
+}
 
 main {
   flex: 1 0 auto;
@@ -85,6 +104,17 @@ main {
 
 .container{
   width:55%;  
+}
+
+
+.competition-content  p{
+  font-size: 12px 
+}
+
+.competition-sub {
+  border-top-style: solid;
+  border-top-color: #ccc;
+  border-top-width: 1px;
 }
 
 td, th {
@@ -200,9 +230,6 @@ nav.submenu ul a {
 
 }
 
-
-.row
-
 .row .gs-hints {
   margin-top: 43px;
   padding: 0 30px 0 0x;
@@ -217,9 +244,9 @@ nav.submenu ul a {
   font-size: 13px;
 }
 
-.gs-hint-box div {
+/*.gs-hint-box div {
   display: none;
-}
+}*/
 
 .gs-hint-box .gs-speech-bubble {
   padding: 0 13px;
