@@ -849,10 +849,32 @@
           {{#if idea.comments}}
           {{#each idea.comments }}
             <p>{{points}} : <a class="upvote comment_{{_id}}">+1</a> : {{owner.username}}: {{comment}}</p>
+            {{#if comments}}
+                {{#each comments}}
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;{{points}} : <a class="upvote comment_{{_id}}">+1</a> : {{owner.username}}: {{comment}}</p>
+                {{#if comments}}
+                    {{#each comments}}
+                      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{points}} : <a class="upvote comment_{{_id}}">+1</a> : {{owner.username}}: {{comment}}</p>
+                    {{/each}}
+                {{/if}}
+                <div style="margin-left:20px;"><form class="createComment">
+                  <input type="hidden" name="parentComment" value="{{ _id }}">
+                  <textarea name="comment" placeholder="Comment"></textarea>
+                  <input type="submit" value="Add">
+                </form>
+              </div>
+                {{/each}}
+            {{/if}}
+            <form class="createComment">
+              <input type="hidden" name="parentComment" value="{{ _id }}">
+              <textarea name="comment" placeholder="Comment"></textarea>
+              <input type="submit" value="Add">
+            </form>
           {{/each }}
           {{else}}
           <p>There are currently no comments on your idea. Get people involved!</p>
           {{/if}}
+          <p> Comment: </p>
            <form class="createComment">
               <input type="hidden" name="parentIdea" value="{{ idea._id }}">
               <textarea name="comment" placeholder="Comment"></textarea>
@@ -870,7 +892,9 @@
 </template>
 
 
+<template name="comment">
 
+</template>
 
 
 <!-- template for each idea in the ideas table -->

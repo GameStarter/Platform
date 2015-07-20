@@ -307,9 +307,14 @@ Router.route('/:competition/:idea', function () {
 
   var competition = Competitions.findOne({slug: this.params.competition});
   var idea = Ideas.findOne({_id: this.params.idea});
-  console.log(idea);
   for(i=0;i<idea.comments.length;i++){
     idea.comments[i] = Comments.findOne({_id: idea.comments[i]});
+    for(j=0;j<idea.comments[i].comments.length;j++){
+      idea.comments[i].comments[j] = Comments.findOne({_id: idea.comments[i].comments[j]});
+      for(k=0;k<idea.comments[i].comments[j].comments.length;k++){
+        idea.comments[i].comments[j].comments[k] = Comments.findOne({_id: idea.comments[i].comments[j].comments[k]});
+      }
+    }
   }
   if(competition) competition_id = competition._id;
   this.layout('ApplicationLayout', {
@@ -443,22 +448,24 @@ Meteor.methods({
         throw new Meteor.Error("not-authorized");
       }
       var idea = Ideas.findOne({_id: ideaID});
-      var commentID = Comments.insert({
-            comment: comment,
-            points: 0,
-            voters: [],
-            owner: Meteor.user(),
-            createdAt: new Date(),
-            comments: [],
-            idea: ideaID
-      });
-      if(!parentComment){
-        idea.comments.push(commentID);
-        Ideas.update({_id: idea._id},{$set: {comments: idea.comments}});
-      }else{
-        var comment = Comments.findOne({_id: parentComment});
-        comment.comments.push(commentID);
-        Comments.update({_id: parentComment._id},{$set: {comments: comment.comments}});
+      if(comment){
+        var commentID = Comments.insert({
+              comment: comment,
+              points: 0,
+              voters: [],
+              owner: Meteor.user(),
+              createdAt: new Date(),
+              comments: [],
+              idea: ideaID
+        });
+        if(!parentComment){
+          idea.comments.push(commentID);
+          Ideas.update({_id: idea._id},{$set: {comments: idea.comments}});
+        }else{
+          var comment = Comments.findOne({_id: parentComment});
+          comment.comments.push(commentID);
+          Comments.update({_id: comment._id},{$set: {comments: comment.comments}});
+        }
       }
       //$('ul.tabs').tabs('select_tab', 'submissions');
 
@@ -680,7 +687,11 @@ Template.home.helpers({
     'submit .createComment': function (event) {
 
           var comment = event.target.comment.value;
-          var parentIdea = event.target.parentIdea.value;
+          if(event.target.parentIdea){
+            var parentIdea = event.target.parentIdea.value;
+          }else{
+            var parentIdea = null;
+          }
           if(event.target.parentComment){
             var parentComment = event.target.parentComment.value;
           }else{
