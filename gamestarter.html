@@ -821,7 +821,18 @@
         <h4><a href="/{{ competition.slug }}/entries"><i class="material-icons">keyboard_arrow_left</i></a> {{ idea.title }}</h4>  
          <p>{{ idea.description}}</p>  
           <hr>
-         <p>There are currently no comments on your idea. Get people involved!</p>
+          {{#if idea.comments}}
+          {{#each idea.comments }}
+            <p>{{points}} : <a class="upvote comment_{{_id}}">+1</a> : {{owner.username}}: {{comment}}</p>
+          {{/each }}
+          {{else}}
+          <p>There are currently no comments on your idea. Get people involved!</p>
+          {{/if}}
+           <form class="createComment">
+              <input type="hidden" name="parentIdea" value="{{ idea._id }}">
+              <textarea name="comment" placeholder="Comment"></textarea>
+              <input type="submit" value="Add">
+          </form>
        </div>
            <div class="col s3 gs-hints">
               <p>Here you can read the full idea and vote if you enjoy the Idea vote it up to help it win!</p>

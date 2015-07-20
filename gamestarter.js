@@ -9,6 +9,7 @@ Settings = new Mongo.Collection("settings");
 
 Competitions = new Mongo.Collection("competitions");
 Ideas = new Mongo.Collection("ideas");
+Comments = new Mongo.Collection("comments");
 
 // The Gamestarter Quest collections
 Heroes = new Mongo.Collection("heroes");
@@ -306,7 +307,11 @@ Router.route('/:competition/:idea', function () {
 
   var competition = Competitions.findOne({slug: this.params.competition});
   var idea = Ideas.findOne({_id: this.params.idea});
-  competition_id = competition._id;
+  console.log(idea);
+  for(i=0;i<idea.comments.length;i++){
+    idea.comments[i] = Comments.findOne({_id: idea.comments[i]});
+  }
+  if(competition) competition_id = competition._id;
   this.layout('ApplicationLayout', {
     data: {
       competition: competition,
@@ -384,7 +389,8 @@ Meteor.methods({
             description: description,
             points: 0,
             createdAt: new Date(),
-            voters: []
+            voters: [],
+            comments: []
         });
       //$('ul.tabs').tabs('select_tab', 'submissions');
 
@@ -432,6 +438,57 @@ Meteor.methods({
       //$('ul.tabs').tabs('select_tab', 'submissions');
 
     },
+    addComment: function(ideaID,comment,parentComment){
+      if (! Meteor.userId()) {
+        throw new Meteor.Error("not-authorized");
+      }
+      var idea = Ideas.findOne({_id: ideaID});
+      var commentID = Comments.insert({
+            comment: comment,
+            points: 0,
+            voters: [],
+            owner: Meteor.user(),
+            createdAt: new Date(),
+            comments: [],
+            idea: ideaID
+      });
+      if(!parentComment){
+        idea.comments.push(commentID);
+        Ideas.update({_id: idea._id},{$set: {comments: idea.comments}});
+      }else{
+        var comment = Comments.findOne({_id: parentComment});
+        comment.comments.push(commentID);
+        Comments.update({_id: parentComment._id},{$set: {comments: comment.comments}});
+      }
+      //$('ul.tabs').tabs('select_tab', 'submissions');
+
+    },
+    upvoteComment: function(comment){
+      comment = Comments.findOne({_id: comment});
+      var found = false;
+      for(i=0;i<comment.voters.length;i++){
+        if(comment.voters[i] == Meteor.userId()){
+          found = true;
+          break;
+        }
+      }
+      if(found){
+        comment.voters.splice(i,1);
+        comment.points--;
+      }else{
+        if (! Meteor.userId()) {
+          // TODO:
+          // APPEND IP ADDRESS
+        }else{
+          comment.voters.push(Meteor.userId());
+          comment.points++; 
+        }
+      }
+
+      Comments.update({_id: comment._id},{$set: {points: comment.points, voters: comment.voters}});
+
+
+    },
     upvoteIdea: function(idea){
       idea = Ideas.findOne({_id: idea});
       var found = false;
@@ -454,8 +511,8 @@ Meteor.methods({
         }
       }
 
-
       Ideas.update({_id: idea._id},{$set: {points: idea.points, voters: idea.voters}});
+
 
     }
 });
@@ -619,6 +676,32 @@ Template.home.helpers({
     }
   });
 
+  Template.idea.events({
+    'submit .createComment': function (event) {
+
+          var comment = event.target.comment.value;
+          var parentIdea = event.target.parentIdea.value;
+          if(event.target.parentComment){
+            var parentComment = event.target.parentComment.value;
+          }else{
+            var parentComment = null;
+          }
+        Meteor.call("addComment", parentIdea,comment,parentComment);
+
+        event.target.comment.value = "";
+        // Prevent default form submit
+        return false;
+    },
+    'click .upvote': function (event) {
+          var comment = event.target.className.split(" ");
+          comment = comment[1].split('_');
+          comment = comment[1];
+          Meteor.call("upvoteComment", comment);
+
+        // Prevent default form submit
+        event.preventDefault();
+    }
+  });
 
   Template.competition.events({
     'submit .createIdea': function (event) {
