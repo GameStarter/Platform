@@ -182,10 +182,33 @@ td, th p {
 font-size: 11px;
 }
 
-.border-top{
-  border-top-style: solid;
-  border-top-color: #ff6d00;
+
+.entries a {
+  font-size: 15px;
+  color:black;
+
 }
+
+.entries a:hover {
+  font-size: 15px;
+  color: #ff8f00;
+  transition: color .4s ease;
+}
+
+.entries-border-top{
+  border-bottom-style: solid;
+  border-bottom-color: #ccc;
+  border-bottom-width: 1px;
+}
+
+.entries-vote {
+  width: 70px;
+  border-left-style: solid;
+  border-left-color: #ccc;
+  border-left-width: 1px;
+
+}
+
 
 .border-bottom{
   border-bottom-style: solid;
@@ -336,6 +359,22 @@ h5{
   border: 15px solid;
   border-color: #fff transparent transparent #fff;
 }*/
+
+.idea-content {
+
+}
+
+.idea-content h5 {
+  font-size: 20px;
+}
+
+.idea-content h6 {
+  font-size: 16px;
+}
+
+.idea-content p {
+  font-size: 12px;
+}
 
 .gs-hint-box .gs-talking-noob {
   width: 50%;

@@ -401,39 +401,66 @@
 </template> 
 
 <template name="entries">
-<div class="section blue lighten-4">
-  <div class="row">
-    <div class="container">
-      <div class="col s12 m12">  
-        <div class="col s8 m9">    
-              <h3 class="white-text">{{ competition.title }}</h3>
-              <h4 class="white-text">${{ competition.prize }} USD Prize</h4>
+<div class="section banner competition-hero col s12  blue lighten-5" style="top: 0px; left: 0px; z-index: 100; opacity: 1;  display: block; background-size:100%; background-image: url();">
+  <div class="container">
+      <div class="row" style="margin-bottom: 0px;">
+        <div class="col s12" style=" margin-top: 30px;">
+
+          <div class="col s9" style="padding: 0 0 0 0;">
+              <img style="max-width: 100%; max-height: 100%; " src="https://res.cloudinary.com/gamestarter/image/upload/v1437066521/Competition/Moscow_Metro_Dog_v01-01.jpg">
+              
+          </div>
+          <div class="col s3">
+            
+             <h4>Moscow Metro Dogs</h4>   
+             <br>           
+              <h5 >$300 USD </h5>
+              <br>
+              <h5>July 22 - August 01</h5>
+              <br>
+            </div>
+
+          
         </div>
-          <div class="col s4 m3" style="padding-top: 30px; text-align: center;">
-              <p class="white-text">July 22 - August 01</p>   
-              <a href="/#enter" class="waves-effect waves-light btn-large orange accent-4 button2">SUBMIT YOUR IDEA</a>
-              <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 z-depth-0 button_invisible hide">ENTER</a>
-              <p class="white-text">Learn more about GameStarter</p>              
-          </div>  
+      </div>
 
+          <div class="row">
+            <div class="col s12 ">
+              <div class="col s9" style="padding:0 0 0 0;">
 
-             
-      
-    </div>
+                    <div class="col s8" style="margin-top:10px; padding:0 0 0 0;">
+                    
+                    <a href="/moscow-metro-dogs/#enter" class="waves-effect waves-light btn-large orange accent-4 button2">SUBMIT YOUR IDEA</a>
+                    <a href="/moscow-metro-dogs/#prizes" class="waves-effect waves-light btn-large light-green accent-4 button2" id="gs-button-start">Get Started</a>
+                    <p ><a href="/about">Learn more about GameStarter</a></p>
+                    </div>
+
+                    <div class="col s4">
+                    <br>
+                      <h5>3days 17:52:12</h5>
+                    </div>
+
+                 
+
+               </div>
+              <div class="col s3">
+              <div class="info-col">
+              <h5>Hosted by GameStarter</h5>
+              </div>
+              </div>
+            </div>
+          </div>
    </div>
-  </div> 
-</div>
+  </div>
 
-  <nav class="submenu">
-    <div class="nav-wrapper">
-      <div class="container"> 
+  <nav class="submenu z-depth-0">
+    <div class="container nav-wrapper">
+      <div class=""> 
       <div class="col s12">
       <ul id="nav-mobile" class=" hide-on-med-and-down">
-        <li><a href="/{{competition.slug}}#prizes">Prizes</a></li>
-        <li><a href="/{{competition.slug}}#brief">Brief</a></li>
-        <li><a href="/{{competition.slug}}#examples">Examples</a></li>
+        <li style="border-left:1px solid #ccc;"><a href="/{{competition.slug}}#brief">Brief</a></li>
         <li><a href="/{{competition.slug}}#submissions">Submit</a></li>
-        <li class="right hide-on-med-and-down" style="padding-right: 5px;"><a href="#submissions">All Entries</a></li>
+        <li class="right hide-on-med-and-down" style="background-color:#ddd; border-left:1px solid #ccc; border-right:1px solid #ccc;  "><a href="#submissions">All Entries</a></li>
       </ul>
     </div>
     </div>
@@ -443,10 +470,13 @@
 
   <div class="section container">
     <div class="row">
-      <div class="col s8">
+      <div class="col s9">
+        
+
+
         <table>
         <thead>
-          <tr>
+          <tr >
               <th data-field="id"></th>
               <th data-field="name">Idea</th>
               <th data-field="name">Votes</th>
@@ -455,15 +485,19 @@
 
         <tbody>
         {{#each ideas}}
-          <tr>
-            <td>{{#if owner.username }}{{owner.username}}: {{/if}}</td>
+          <tr class="entries entries-border-top">
+            <td> <img class="responsive-img" src="http://placehold.it/60x60"> <br>{{#if owner.username }}{{owner.username}}: {{/if}}</td>
             <td><a href="/{{competition}}/{{_id}}">{{title}}</a></td>
-            <td>{{points}}</td>
+            <td class="entries-vote">  <i class="material-icons center">thumb_up</i>{{points}}</td>
           </tr>
         {{/each}}
         </tbody>
       </table>
-          <div class="row">
+
+
+
+
+          <div class="rosw">
       <div class="col s6 offset-s3">
        <ul class="pagination center-align">
           <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
@@ -490,135 +524,215 @@
 <!-- template for the home page -->
 <template name="competition">
   <!-- Data send down includes: {{ competition.owner/title/prize/brief/slug }} -->
-<div class="section blue lighten-4 Competition-hero">
-<div class="container-comp">
-	<div class="row">
-    <div class="col s12">
-    <div class="col s8 m8">
-    <h1>{{ competition.title }}</h1>
-      <p>Created by HamiP</p>
-      <h4>${{ competition.prize }} USD Prize</h4>
-      <p>July 22 - August 01</p>
-    </div>
-    <div class="col s4" style="padding: 60px 30px;">
-      
-      <div style="float: right; text-align: center;">
-      <p class="white-text">3days 17:52:12</p>
-      <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 button2 " >SUBMIT YOUR IDEA</a>
-      <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 z-depth-0 button_invisible hide">ENTER</a>
-      <p class="white-text"><a href="/about">Learn more about GameStarter</a></p>
-    </div>
-    </div>
+<div class="section banner competition-hero col s12  blue lighten-5" style="top: 0px; left: 0px; z-index: 100; opacity: 1;  display: block; background-size:100%; background-image: url();">
+  <div class="container">
+      <div class="row" style="margin-bottom: 0px;">
+        <div class="col s12" style=" margin-top: 30px;">
+
+          <div class="col s9" style="padding: 0 0 0 0;">
+              <img style="max-width: 100%; max-height: 100%; " src="https://res.cloudinary.com/gamestarter/image/upload/v1437066521/Competition/Moscow_Metro_Dog_v01-01.jpg">
+              
+          </div>
+          <div class="col s3">
+            
+             <h4>{{ competition.title }}</h4>   
+             <br>           
+              <h5 >${{ competition.prize }}.00 USD </h5>
+              <br>
+              <h5>July 22 - August 01</h5>
+              <br>
+            </div>
+
+          
+        </div>
+      </div>
+
+          <div class="row">
+            <div class="col s12 ">
+              <div class="col s9" style="padding:0 0 0 0;">
+
+                    <div class="col s8" style="margin-top:10px; padding:0 0 0 0;">
+                    
+                    <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 button2">SUBMIT YOUR IDEA</a>
+                    <a href="#prizes" class="waves-effect waves-light btn-large light-green accent-4 button2" id="gs-button-start">Get Started</a>
+                    <p ><a href="/about">Learn more about GameStarter</a></p>
+                    </div>
+
+                    <div class="col s4">
+                    <br>
+                      <h5>3days 17:52:12</h5>
+                    </div>
+
+                 
+
+               </div>
+              <div class="col s3">
+              <div class="info-col">
+              <h5>Hosted by GameStarter</h5>
+              </div>
+              </div>
+            </div>
+          </div>
+   </div>
   </div>
-</div>
-</div>
-</div>
 
+  <nav class="submenu z-depth-0">
 
-  <nav class="submenu">
-    <div class="nav-wrapper">
-      <div class="container"> 
-      <ul id="nav-mobile" class=" hide-on-med-and-down">
-        <li><a href="#prizes">Prizes</a></li>
-        <li><a href="#brief">Brief</a></li>
-        <li><a href="#examples">Examples</a></li>
+    <div class="container nav-wrapper">
+    
+      <ul id="nav-mobile" class="hide-on-med-and-down">
+        <li style="border-left:1px solid #ccc;"><a href="#brief">Brief</a></li>
         <li><a href="#submissions">Submit</a></li>
-        <li class="right hide-on-med-and-down"><a href="{{competition.slug}}/entries">All Entries</a></li>
+        <li class="right hide-on-med-and-down " style="border-left:1px solid #ccc; border-right:1px solid #ccc;  "><a href="/{{competition.slug}}/entries">All Entries</a></li>
       </ul>
     </div>
-    </div>
+
   </nav>
 
-
-<div class="section container" id="prizes">
-  <div class="row">
-    <div class="col s8">
-      <h5>Prizes</h5>
-      <ol>
-        <li>Prizes</li>
-        <li>Brief</li>
-        <li>Examples</li>
-        <li>Submit</li>
-
-      </ol>
-    </div>
-        <div class="col s3 gs-hints">
-      <p>These are the list of Awards you can win! Not only can you win cash, but you can also win <a href="/About">GameStarter Tokens</a> which you can purchase all sort of awesome prizes with!</p> 
-    </div>
-  </div>
-</div>
-
-<div class="section container" id="brief">
-  <div class="row">
-    <div class="col s8">
-      <h5>Brief</h5>
-      <p>A smart phone game based on the metro dogs of Moscow which have learnt to ride the subway to get food in downtown Moscow and then ride the subway to get home. </p>
-      <p class="left-align">Ever since reading a New Yorker article on the “commuter dogs” of Russia. I have been fascinated by the resilience, adaptability and intelligence of these dogs whom have figured out how to ride the subway in search of food. </p>
-      <p class="left-align">These dogs are believed to able to determine their routes via an ability to judge the length of time spent on the train in between station /time intervals
-      Recognition of the place names announced over their train's loudspeaker
-      The scents of particular stations </p>
-      <p class="left-align">The objective is to crowdsource GameStarter’s first game from ideation to completion. Moscow Metro Dogs has been a game I have been wanting to do for a while and thought it  would be the perfect candidate.</p>
-      <p class="left-align">Submissions are for a smartphone game
-       Keep your ideas simple. We won’t be able to build a MMO or Real Time Strategy Game
-       Keep submission down to 400 characters
-       Be creative with genre 
-       Set in Moscow so incorporate key ideas</p>
-      <p class="left-align">https://en.wikipedia.org/wiki/Street_dogs_in_Moscow#Metro_dogs
-       https://en.wikipedia.org/wiki/Malchik
-      http://www.newyorker.com/culture/culture-desk/moscows-metro-dogs </p>
-      <p class="left-align">The Ideation Level will be worth $300. This is the first project on GameStarter so total project worth, number of levels or sequence of levels is yet to be decided </p>
-    </div>
-    <div class="col s3 gs-hints">
-      <p>This is the submission form, Write down your awesome 500 word Idea and be in the chance to win $300.00 USD!!</p>
-    </div>
+  <div class="container">
+    <div class="row competition-content">
+      <div class="col s9">
+        <div class="section" id="prizes">
+ 
+          <p class="hide gs-hint-content">These are the prizes you can win by contributing to this quest! You can win cash or <a href="/About">GameStarter Tokens</a> which you can purchase all sort of awesome prizes with!</p>
 
 
-  </div>
-</div>
+      <table >
+        <thead >
+          <tr class="bordered">
+              <th data-field="Prizes">Prizes</th>
+              <th data-field="cash">Cash</th>
+              <th data-field="tokens">tokens</th>
+              <th data-field="Hero points">tokens</th>
+          </tr>
+        </thead>
 
-<div class="section container" id="examples">
-  <div class="row">
-    <div class="col s8">
-      <h5>Examples</h5>
-    </div>
-    <div class="col s3 gs-hints">
-      <p>This is the submission form, Write down your awesome 500 word Idea and be in the chance to win $300.00 USD!!</p>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="section container" id="submissions">
-  <div class="row">
-    <div class="col s8">
-      <div id="enter" class="scrollspy">
-        <form class="createIdea">
-          <h5 class="black-text">Submit your awesome idea for a chance to win ${{competition.prize}}!</h5>
-          <div class="row">
-            <br><br>
-            <div class="input-field col s12">
-              <i class="material-icons prefix">wb_incandescent</i>
-              <textarea id="title" class="materialize-textarea" length="150"></textarea>
-               <label for="title">Idea</label>
-            </div>
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>$0.87</td>
+            <td>$0.87</td>
+            <td>$0.87</td>
+          </tr>
+          <tr>
+            <td>Alan</td>
+            <td>$3.76</td>
+            <td>$3.76</td>
+            <td>$3.76</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>$7.00</td>
+            <td>$7.00</td>
+            <td>$7.00</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>$7.00</td>
+            <td>$7.00</td>
+            <td>$7.00</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>$7.00</td>
+            <td>$7.00</td>
+            <td>$7.00</td>
+          </tr>
+        </tbody>
+      </table>
+        </div>
+        <div class="section " id="brief">
+          <h5>Brief</h5>
+          <div class="competition-sub">
+          <p class="hide gs-hint-content ">This is the brief</p>
+          <p>A smart phone game based on the metro dogs of Moscow which have learnt to ride the subway to get food in downtown Moscow and then ride the subway to get home. </p>
+          <p class="left-align">Ever since reading a New Yorker article on the “commuter dogs” of Russia. I have been fascinated by the resilience, adaptability and intelligence of these dogs whom have figured out how to ride the subway in search of food.</p>
+          <p class="left-align">These dogs are believed to able to determine their routes via an ability to judge the length of time spent on the train in between station /time intervals
+          Recognition of the place names announced over their train's loudspeaker
+          The scents of particular stations</p>
+          <h5>Objective</h5>
+          <div class="competition-sub">
+          <p class="left-align">The objective is to crowdsource GameStarter’s first game from ideation to completion. Moscow Metro Dogs has been a game I have been wanting to do for a while and thought it  would be the perfect candidate.</p>
+          <p class="left-align">Submissions are for a smartphone game
+           Keep your ideas simple. We won’t be able to build a MMO or Real Time Strategy Game
+           Keep submission down to 400 characters
+           Be creative with genre 
+           Set in Moscow so incorporate key ideas</p>
+           </div>
+           <h5>References</h5>
+          <div class="competition-sub">
+          <p class="left-align"><a href="https://en.wikipedia.org/wiki/Street_dogs_in_Moscow#Metro_dogs
+           https://en.wikipedia.org/wiki/Malchik">https://en.wikipedia.org/wiki/Street_dogs_in_Moscow#Metro_dogs
+           https://en.wikipedia.org/wiki/Malchik</a>
+           <a href="http://www.newyorker.com/culture/culture-desk/moscows-metro-dogs">
+          http://www.newyorker.com/culture/culture-desk/moscows-metro-dogs
+          </a></p>
           </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">subject</i>
-              <textarea id="description" class="materialize-textarea" length="1000"></textarea>
-              <label for="description">Description</label>
-            </div>
+        </div>
+        </div>
+        <div class="section" id="examples">
+          <h5>Examples</h5>
+          <div class="competition-sub">
+          <p class="hide gs-hint-content">Those are some examples</p>
+              <ul class="collapsible z-depth-0" data-collapsible="accordion">
+                <li>
+                  <div class="collapsible-header">First</div>
+                  <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                </li>
+                <li>
+                  <div class="collapsible-header">Second</div>
+                  <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                </li>
+                <li>
+                  <div class="collapsible-header">Third</div>
+                  <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                </li>
+              </ul>
+              </div>
+        </div>
+
+
+
+        <div class="section" id="submissions">
+          <p class="hide gs-hint-content">This is the submission form, Write down your awesome 500 word Idea and be in the chance to win $300.00 USD!!</p>
+
+
+          <div id="enter" class="scrollspy">
+            <form class="createIdea">
+              <h5 class="black-text">Submit your awesome idea for a chance to win ${{competition.prize}}!</h5>
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="title" class="materialize-textarea" length="50"></textarea>
+                   <label for="title">Idea</label>
+                </div>
+              </div>
+              <div class="row" style="margin-bottom: 0px;">
+                <div class="input-field col s12">
+                  <textarea id="description" class="materialize-textarea" length="1000"></textarea>
+                  <label for="description">Description</label>
+                </div>
+              </div>
+              <input class="btn-large orange accent-4 center" type="submit" value="Enter!">
+            </form>
           </div>
-          <input class="btn-large orange accent-4" type="submit" value="Enter!">
-        </form>
+        </div>
+      </div>
+
+      <div class="col s3">
+        <div class="gs-hint-box">
+          <div class="gs-speech-bubble">
+            <p>These are all the awesome prizes you could win if you take part in this quest!</p>
+          </div>
+          <div class="gs-talking-noob left">
+            <img src="http://res.cloudinary.com/gamestarter/image/upload/v1436999443/Assets/heroes/godzirra.png">
+          </div>
+<!--           <div>
+            <a class="waves-effect waves-light btn">Next</a>
+          </div>
+ -->        </div>
       </div>
     </div>
-    <div class="col s3 gs-hints">
-      <p>This is the submission form, Write down your awesome 500 word Idea and be in the chance to win $300.00 USD!!</p>
-    </div>
   </div>
-</div>
 </template>
 
 
@@ -635,9 +749,9 @@
           </div>
           <div class="col s3">
             
-             <h4>Moscow Metro Dogs</h4>   
+             <h4>{{ competition.title }}</h4>   
              <br>           
-              <h5 >$300 USD </h5>
+              <h5 >${{ competition.prize }}.00 USD </h5>
               <br>
               <h5>July 22 - August 01</h5>
               <br>
@@ -838,35 +952,66 @@
 
 <!-- template for the idea page -->
 <template name="idea">
-<div class="section blue lighten-4">
-  <div class="row">
-    <div class="container">
-      <div class="col s12 m12">  
-        <div class="col s8 m9">    
-              <h3 class="white-text">{{ competition.title }}</h3>
-              <h4 class="white-text">${{ competition.prize }} USD Prize</h4>
-          </div>
-          <div class="col s4 m3" style="padding-top: 30px; text-align: center">
-              <p class="white-text">July 22 - August 01</p>   
-              <a href="/#enter" class="waves-effect waves-light btn-large orange accent-4 button2">SUBMIT YOUR IDEA</a>
-              <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 z-depth-0 button_invisible hide">ENTER</a>
-              <p class="white-text">Learn more about GameStarter</p>             
-          </div>    
-    </div>
-   </div>
-  </div> 
-</div>
+  <div class="section banner competition-hero col s12  blue lighten-5" style="top: 0px; left: 0px; z-index: 100; opacity: 1;  display: block; background-size:100%; background-image: url();">
+  <div class="container">
+      <div class="row" style="margin-bottom: 0px;">
+        <div class="col s12" style=" margin-top: 30px;">
 
-  <nav class="submenu">
-    <div class="nav-wrapper">
-      <div class="container"> 
+          <div class="col s9" style="padding: 0 0 0 0;">
+              <img style="max-width: 100%; max-height: 100%; " src="https://res.cloudinary.com/gamestarter/image/upload/v1437066521/Competition/Moscow_Metro_Dog_v01-01.jpg">
+              
+          </div>
+          <div class="col s3">
+            
+             <h4>{{ competition.title }}</h4>   
+             <br>           
+              <h5 >${{ competition.prize }}.00 USD </h5>
+              <br>
+              <h5>July 22 - August 01</h5>
+              <br>
+            </div>
+
+          
+        </div>
+      </div>
+
+          <div class="row">
+            <div class="col s12 ">
+              <div class="col s9" style="padding:0 0 0 0;">
+
+                    <div class="col s8" style="margin-top:10px; padding:0 0 0 0;">
+                    
+                    <a href="/moscow-metro-dogs/#enter" class="waves-effect waves-light btn-large orange accent-4 button2">SUBMIT YOUR IDEA</a>
+                    <a href="/moscow-metro-dogs/#brief" class="waves-effect waves-light btn-large light-green accent-4 button2" id="gs-button-start">Get Started</a>
+                    <p ><a href="/about">Learn more about GameStarter</a></p>
+                    </div>
+
+                    <div class="col s4">
+                    <br>
+                      <h5>3days 17:52:12</h5>
+                    </div>
+
+                 
+
+               </div>
+              <div class="col s3">
+              <div class="info-col">
+              <h5>Hosted by GameStarter</h5>
+              </div>
+              </div>
+            </div>
+          </div>
+   </div>
+  </div>
+
+  <nav class="submenu z-depth-0">
+    <div class="container nav-wrapper">
+      <div class=""> 
       <div class="col s12">
       <ul id="nav-mobile" class=" hide-on-med-and-down">
-        <li><a href="/moscow-metro-dogs/#prizes">Prizes</a></li>
-        <li><a href="/moscow-metro-dogs/#brief">Brief</a></li>
-        <li><a href="/moscow-metro-dogs/#examples">Examples</a></li>
+        <li style="border-left:1px solid #ccc;"><a href="/moscow-metro-dogs/#brief">Brief</a></li>
         <li><a href="/moscow-metro-dogs/#submissions">Submit</a></li>
-        <li class="right hide-on-med-and-down" style="padding-right: 5px;"><a href="/moscow-metro-dogs/entries">All Entries</a></li>
+        <li class="right hide-on-med-and-down"  style="border-left:1px solid #ccc; border-right:1px solid #ccc;"><a href="/moscow-metro-dogs/entries">All Entries</a></li>
       </ul>
     </div>
     </div>
@@ -875,8 +1020,8 @@
 
 <div class="section">
   <div class="row container">
-    <div class="col s8">
-        <h4><a href="/{{ competition.slug }}/entries"><i class="material-icons">keyboard_arrow_left</i></a> {{ idea.title }}</h4>  
+    <div class="col s9 idea-content">
+        <h5><a href="/{{ competition.slug }}/entries"><i class="material-icons">keyboard_arrow_left</i></a> {{ idea.title }}</h5>  
          <p>{{ idea.description}}</p>  
           <hr>
           {{#if idea.comments}}
@@ -905,7 +1050,7 @@
             </form>
           {{/each }}
           {{else}}
-          <p>There are currently no comments on your idea. Get people involved!</p>
+          <h6>There are currently no comments on your idea. Get people involved!</h6>
           {{/if}}
           <p> Comment: </p>
            <form class="createComment">
