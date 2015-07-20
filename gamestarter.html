@@ -45,8 +45,8 @@
     <div id="gs-navbar">
       <nav class="z-depth-0 border-bottom">
         <div class="nav-wrapper white">
-          <ul id="nav-mobile" class="left hide-on-med-and-down">
-            <li><a href="/" style="padding: 20px;"><img class="left responsive-img-nav" width="200px" src="http://i.imgur.com/GKyEzxw.jpg"></a></li>
+          <ul id="nav-mobile" class="left hide-on-med-and-down" >
+            <li><a href="/" ><img class="left" width="200px" src="http://i.imgur.com/GKyEzxw.jpg"></a></li>
             <li><a class="black-text " href="/store">Store</a></li>
             <li><a class="black-text " href="/quests">Quests</a></li>
             <li><a class="black-text " href="/about">About</a></li>
@@ -479,7 +479,7 @@
 <template name="competition">
   <!-- Data send down includes: {{ competition.owner/title/prize/brief/slug }} -->
 <div class="section blue lighten-4 Competition-hero">
-<div class="container">
+<div class="container-comp">
 	<div class="row">
     <div class="col s12">
     <div class="col s8 m8">
@@ -612,19 +612,22 @@
 
 <template name="test">
   <!-- Data send down includes: {{ competition.owner/title/prize/brief/slug }} -->
-  <div class="section  Competition-hero col s12 " style="top: 0px; left: 0px; z-index: 100; opacity: 1;  display: block; background-size:100%; background-image: url(http://res.cloudinary.com/gamestarter/image/upload/o_40/v1436999623/Assets/heroes/web_banner_large.png);">
-    <div class="container">
-      <div class="row">
+  <div class="section banner competition-hero col s12  blue lighten-5" style="top: 0px; left: 0px; z-index: 100; opacity: 1;  display: block; background-size:100%; background-image: url();">
+  <div class="container">
+      <div class="row" style="margin-bottom: 0px;">
         <div class="col s12">
-          <div class="col s8 m8">
-            <h1>Moscow Metro Dogs</h1>
-            <p>Created by HamiP</p>
-            <h4 >$300 USD Prize</h4>
-            <p>July 22 - August 01</p>
+
+          <div class="col s9" style="padding: 0 0 0 0;">
+              <img style="max-width: 100%; max-height: 100%; " src="https://res.cloudinary.com/gamestarter/image/upload/v1437066521/Competition/Moscow_Metro_Dog_v01-01.jpg">
+              
           </div>
-          <div class="col s4" style="padding: 60px 30px;">
-            <div style="float: right; text-align: center;">
-              <p class="white-text">3days 17:52:12</p>
+          <div class="col s3">
+             <h5>Moscow Metro Dogs</h5>              
+              <p>Created by HamiP</p>
+              <h4 >$300 USD Prize</h4>
+              <p>July 22 - August 01</p>
+              <div class="center-align">
+              <p>3days 17:52:12</p>
               <a href="#enter" class="waves-effect waves-light btn-large orange accent-4 button2">SUBMIT YOUR IDEA</a>
               <a href="" class="waves-effect waves-light btn-large orange accent-4 button2" id="gs-button-start">Get Started</a>
               <p class="white-text"><a href="/about">Learn more about GameStarter</a></p>
@@ -632,35 +635,82 @@
           </div>
         </div>
       </div>
-    </div>
+
+          <div class="row" style="margin-bottom: 0px;">
+            <div class="col s12">
+              <div class="col s9">
+               </div>
+              <div class="col s3">
+              </div>
+            </div>
+          </div>
+   </div>
   </div>
 
-  <nav class="submenu">
-    <div class="nav-wrapper">
-      <div class="container"> 
-      <ul id="nav-mobile" class=" hide-on-med-and-down">
-        <li><a href="#prizes">Prizes</a></li>
-        <li><a href="#brief">Brief</a></li>
-        <li><a href="#examples">Examples</a></li>
+  <nav class="submenu z-depth-0">
+
+    <div class="container nav-wrapper">
+    
+      <ul id="nav-mobile" class="hide-on-med-and-down">
+        <li style="border-left:1px solid #ccc;"><a href="#brief">Brief</a></li>
         <li><a href="#submissions">Submit</a></li>
-        <li class="right hide-on-med-and-down"><a href="{{competition.slug}}/entries">All Entries</a></li>
+        <li class="right hide-on-med-and-down " style="border-left:1px solid #ccc; border-right:1px solid #ccc;  "><a href="{{competition.slug}}/entries">All Entries</a></li>
       </ul>
     </div>
-    </div>
+
   </nav>
 
   <div class="container">
     <div class="row">
-      <div class="col s8">
+      <div class="col s9">
         <div class="section" id="prizes">
-          <h5>Prizes</h5>
+ 
           <p class="hide gs-hint-content">These are the prizes you can win by contributing to this quest! You can win cash or <a href="/About">GameStarter Tokens</a> which you can purchase all sort of awesome prizes with!</p>
-          <ol>
-            <li>Prizes</li>
-            <li>Brief</li>
-            <li>Examples</li>
-            <li>Submit</li>
-          </ol>
+
+
+      <table >
+        <thead >
+          <tr class="bordered">
+              <th data-field="Prizes">Prizes</th>
+              <th data-field="cash">Cash</th>
+              <th data-field="tokens">tokens</th>
+              <th data-field="Hero points">tokens</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>$0.87</td>
+            <td>$0.87</td>
+            <td>$0.87</td>
+          </tr>
+          <tr>
+            <td>Alan</td>
+            <td>$3.76</td>
+            <td>$3.76</td>
+            <td>$3.76</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>$7.00</td>
+            <td>$7.00</td>
+            <td>$7.00</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>$7.00</td>
+            <td>$7.00</td>
+            <td>$7.00</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>$7.00</td>
+            <td>$7.00</td>
+            <td>$7.00</td>
+          </tr>
+        </tbody>
+      </table>
         </div>
         <div class="section" id="brief">
           <h5>Brief</h5>

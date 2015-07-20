@@ -29,7 +29,7 @@ body {
     height:40px; 
     padding: px 0 0; 
   }
-  .splash-hero {
+  .competition-hero {
  height:300px;
 }
 }
@@ -48,9 +48,15 @@ body {
     height:100px;
     padding: 32px 0 0; 
   }
-  .splash-hero {
+  .competition-hero {
  height:450px;
 }
+
+
+.competition-hero p {
+  font-size: 6px;
+}
+
 
 }
 
@@ -76,8 +82,23 @@ main {
   border-width: 5px;
   border-color: white;
 }
+
 .container{
-  width:45%;
+  width:55%;  
+}
+
+td, th {
+  padding: 8px 5px;
+  display: table-cell;
+  text-align: left;
+  vertical-align: middle;
+  border-radius: 2px;
+  font-size: 13px;
+}
+
+
+td, th p {
+font-size: 11px;
 }
 
 .border-top{
@@ -131,24 +152,60 @@ main {
 }
 
 .Competition-hero {
-  padding: 80px 0;
+  padding: 30px 0;
 }
 
 .Competition-hero h1 {
   font-weight: 500px;
 }
 
+.container-comp {
+  padding: 0 0 0 0;
+}
 
+nav {
+  background-color: #fff;
+  border-bottom: 1px solid;
+  border-color: lightgray;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 
+}
 
-nav.submenu ul a {
-  padding: 0 35px;
+nav ul a {
+  padding: 0 25px;
+   color: #000;
+   font-weight:400;
+
+}
+
+nav ul li:hover, nav ul li.active {
+    background-color: #ffcc80;
+}
+
+nav ul li {
+    transition: background-color .9s;
+}
+
+.container-sub {
+    width:60%;
+    margin: 0 auto;
 }
 
 
+nav.submenu ul a {
+  padding: 0 55px;
+   color: #000;
+   font-style:black;
+
+}
+
+
+.row
+
 .row .gs-hints {
   margin-top: 43px;
-  padding: 0 30px 0 00px;
+  padding: 0 30px 0 0x;
   font-size: 13px;
   float: right;
 }
