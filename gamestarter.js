@@ -23,6 +23,7 @@ Prizes = new Mongo.Collection("prizes");
 // We have a main competition!
 var main_comp = 'Moscow Metro Dogs';
 var competition_id;
+var idea_id;
 Router.route('/', function () {
   this.layout('ApplicationLayout', {
     data: {
@@ -386,7 +387,7 @@ Meteor.methods({
       if (! Meteor.userId()) {
         throw new Meteor.Error("not-authorized");
       }
-      Ideas.insert({
+      idea_id = Ideas.insert({
             competition: competition,
             owner: Meteor.user(),
             title: title,
@@ -721,7 +722,8 @@ Template.home.helpers({
 
           var description = event.target.description.value;
         Meteor.call("addIdea", competition_id,title,description);
-
+        competition = Competitions.findOne({_id: competition_id});
+        Router.go('/'+competition.slug+'/'+idea_id);
         event.target.title.value = "";
         event.target.description.value = "";
         // Prevent default form submit
