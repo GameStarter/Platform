@@ -592,9 +592,38 @@
   <div class="container">
     <div class="row competition-content">
       <div class="col s9">
-        <div class="section" id="prizes">
- 
-          <p class="hide gs-hint-content">These are the prizes you can win by contributing to this quest! You can win cash or <a href="/About">GameStarter Tokens</a> which you can purchase all sort of awesome prizes with!</p>
+        
+        <div class="section " id="brief">
+          <h5>Brief</h5>
+          <div class="competition-sub">
+          <p class="hide gs-hint-content ">This is the brief</p>
+          <p>A smart phone game based on the metro dogs of Moscow which have learnt to ride the subway to get food in downtown Moscow and then ride the subway to get home. </p>
+          <p class="left-align">Ever since reading a New Yorker article on the “commuter dogs” of Russia. I have been fascinated by the resilience, adaptability and intelligence of these dogs whom have figured out how to ride the subway in search of food.</p>
+          <p class="left-align">These dogs are believed to able to determine their routes via an ability to judge the length of time spent on the train in between station /time intervals
+          Recognition of the place names announced over their train's loudspeaker
+          The scents of particular stations</p>
+          <h5>Objective</h5>
+          <div class="competition-sub">
+          <p class="left-align">The objective is to crowdsource GameStarter’s first game from ideation to completion. Moscow Metro Dogs has been a game I have been wanting to do for a while and thought it  would be the perfect candidate.</p>
+          <p class="left-align">Submissions are for a smartphone game
+           Keep your ideas simple. We won’t be able to build a MMO or Real Time Strategy Game
+           Keep submission down to 400 characters
+           Be creative with genre 
+           Set in Moscow so incorporate key ideas</p>
+           </div>
+           <h5>References</h5>
+          <div class="competition-sub">
+          <p class="left-align"><a href="https://en.wikipedia.org/wiki/Street_dogs_in_Moscow#Metro_dogs
+           https://en.wikipedia.org/wiki/Malchik">https://en.wikipedia.org/wiki/Street_dogs_in_Moscow#Metro_dogs
+           https://en.wikipedia.org/wiki/Malchik</a>
+           <a href="http://www.newyorker.com/culture/culture-desk/moscows-metro-dogs">
+          http://www.newyorker.com/culture/culture-desk/moscows-metro-dogs
+          </a></p>
+          </div>
+        </div>
+        </div>
+
+    <div class="section" id="prizes">
 
 
       <table >
@@ -641,35 +670,7 @@
         </tbody>
       </table>
         </div>
-        <div class="section " id="brief">
-          <h5>Brief</h5>
-          <div class="competition-sub">
-          <p class="hide gs-hint-content ">This is the brief</p>
-          <p>A smart phone game based on the metro dogs of Moscow which have learnt to ride the subway to get food in downtown Moscow and then ride the subway to get home. </p>
-          <p class="left-align">Ever since reading a New Yorker article on the “commuter dogs” of Russia. I have been fascinated by the resilience, adaptability and intelligence of these dogs whom have figured out how to ride the subway in search of food.</p>
-          <p class="left-align">These dogs are believed to able to determine their routes via an ability to judge the length of time spent on the train in between station /time intervals
-          Recognition of the place names announced over their train's loudspeaker
-          The scents of particular stations</p>
-          <h5>Objective</h5>
-          <div class="competition-sub">
-          <p class="left-align">The objective is to crowdsource GameStarter’s first game from ideation to completion. Moscow Metro Dogs has been a game I have been wanting to do for a while and thought it  would be the perfect candidate.</p>
-          <p class="left-align">Submissions are for a smartphone game
-           Keep your ideas simple. We won’t be able to build a MMO or Real Time Strategy Game
-           Keep submission down to 400 characters
-           Be creative with genre 
-           Set in Moscow so incorporate key ideas</p>
-           </div>
-           <h5>References</h5>
-          <div class="competition-sub">
-          <p class="left-align"><a href="https://en.wikipedia.org/wiki/Street_dogs_in_Moscow#Metro_dogs
-           https://en.wikipedia.org/wiki/Malchik">https://en.wikipedia.org/wiki/Street_dogs_in_Moscow#Metro_dogs
-           https://en.wikipedia.org/wiki/Malchik</a>
-           <a href="http://www.newyorker.com/culture/culture-desk/moscows-metro-dogs">
-          http://www.newyorker.com/culture/culture-desk/moscows-metro-dogs
-          </a></p>
-          </div>
-        </div>
-        </div>
+
         <div class="section" id="examples">
           <h5>Examples</h5>
           <div class="competition-sub">
@@ -1019,46 +1020,54 @@
   </nav>
 
 <div class="section">
+
   <div class="row container">
-    <div class="col s9 idea-content">
-        <h5><a href="/{{ competition.slug }}/entries"><i class="material-icons">keyboard_arrow_left</i></a> {{ idea.title }}</h5>  
-         <p>{{ idea.description}}</p>  
-          <hr>
+
+    <div class="col s9 " style="padding:0 0 0 0;">
+    <a href="/{{ competition.slug }}/entries"><i class="material-icons">keyboard_arrow_left</i></a>
+      <div class="idea-content">
+        <h5> {{ idea.title }}</h5>  
+         <p>{{ idea.description}}</p> 
+         <div class="col s12"> 
+          <i class="material-icons center-align" style="margin: 0 auto;">thumb_up</i>
+         </div>
+      </div>
+          
+
+
+          <div class="idea-comment">
           {{#if idea.comments}}
           {{#each idea.comments }}
             <p>{{points}} : <a class="upvote comment_{{_id}}">+1</a> : {{owner.username}}: {{comment}}</p>
             {{#if comments}}
                 {{#each comments}}
-                  <p>&nbsp;&nbsp;&nbsp;&nbsp;{{points}} : <a class="upvote comment_{{_id}}">+1</a> : {{owner.username}}: {{comment}}</p>
-                {{#if comments}}
-                    {{#each comments}}
-                      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{points}} : <a class="upvote comment_{{_id}}">+1</a> : {{owner.username}}: {{comment}}</p>
-                    {{/each}}
-                {{/if}}
-                <div style="margin-left:20px;"><form class="createComment">
-                  <input type="hidden" name="parentComment" value="{{ _id }}">
-                  <textarea name="comment" placeholder="Comment"></textarea>
-                  <input type="submit" value="Add">
-                </form>
-              </div>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;{{points}} : <a class="upvote comment_{{_id}}">+1</a> : {{owner.username}}: {{comment}}</p>              
                 {{/each}}
             {{/if}}
-            <form class="createComment">
+
+
+            <form class="createComment sub-comment">
+            <div class="input-field">
               <input type="hidden" name="parentComment" value="{{ _id }}">
-              <textarea name="comment" placeholder="Comment"></textarea>
+              <textarea name="comment"  class="materialize-textarea" ></textarea>
               <input type="submit" value="Add">
+              <label for="title">Comment</label>
+              </div>
             </form>
           {{/each }}
           {{else}}
           <h6>There are currently no comments on your idea. Get people involved!</h6>
           {{/if}}
-          <p> Comment: </p>
            <form class="createComment">
+           <div class="input-field">
               <input type="hidden" name="parentIdea" value="{{ idea._id }}">
-              <textarea name="comment" placeholder="Comment"></textarea>
+              <textarea name="comment"   class="materialize-textarea" ></textarea>
               <input type="submit" value="Add">
+              <label for="title">Comment</label>
+              </div>
           </form>
        </div>
+      </div>
            <div class="col s3 gs-hints">
               <p>Here you can read the full idea and vote if you enjoy the Idea vote it up to help it win!</p>
            </div>
